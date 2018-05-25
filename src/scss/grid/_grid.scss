@@ -1,0 +1,170 @@
+// Custom header bottom spacing
+$ua-header-margin-bottom-small: 2rem;
+$ua-header-margin-bottom: $ua-header-margin-bottom-small * 4;
+
+.#{$layout-footer} {
+  padding-top: $global-padding;
+  padding-bottom: $global-padding;
+  color: $white;
+}
+
+.o-layout {
+  @include shared-content-layout-spacing;
+
+  &__header {
+    width: 100%;
+    margin-bottom: $ua-header-margin-bottom-small;
+
+    @include breakpoint(large) {
+      margin-bottom: $ua-header-margin-bottom;
+    }
+
+    .fixed-vegas-slider & {
+      @include breakpoint(medium) {
+        margin-bottom: $ua-header-margin-bottom * 2;
+      }
+    }
+  }
+
+  &__main-nav,
+  &__main-content {
+    background: $white;
+  }
+
+  &__main-nav {
+    @include mobile-reset();
+    @include grid-column(3.25);
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__main-content {
+
+    @include breakpoint(large) {
+
+      .ua-standard & {
+        @include grid-column(12.75, $gutters: $base-font-size * 4);
+      }
+    }
+  }
+
+  &__local-footer {
+    padding-top: $global-padding;
+    background-color: $lighter-primary;
+  }
+
+  &__slider {
+    width: 100%;
+    margin-top: -$ua-header-margin-bottom-small;
+    overflow: hidden;
+
+    @include breakpoint(large) {
+      margin-top: -$ua-header-margin-bottom;
+    }
+
+    &--fixed {
+      position: absolute;
+      z-index: -1;
+      margin-top: 0;
+    }
+
+    &--mobile {
+      @include breakpoint(medium) {
+        display: none;
+      }
+    }
+  }
+
+  &__slider-container {
+    position: relative;
+  }
+
+  &__page-title {
+    width: 100%;
+
+    @include breakpoint(large) {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  &__app {
+    @include clearfix;
+  }
+
+
+
+  // @TODO: move all of this to home page classes and scss file
+  &__section {
+    @include clearfix;
+
+    &-content {
+      @include mobile-reset();
+      padding-top: 1rem;
+
+      @include breakpoint(medium) {
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+      }
+
+      &:first-child {
+
+        @include breakpoint(medium) {
+          padding-top: 4rem;
+        }
+
+        .is-pulled-up & {
+
+          @include breakpoint(medium) {
+            margin-top: -9rem;
+          }
+        }
+      }
+
+      &:last-child {
+
+        @include breakpoint(medium) {
+          padding-bottom: 3rem;
+        }
+      }
+
+      &.is-centered {
+        text-align: center;
+      }
+
+      .is-dark &,
+      .is-primary &,
+      .is-secondary &,
+      .is-quaternary & {
+        @extend %inverse-anchors;
+      }
+    }
+
+    &.is-dark {
+      background: $black;
+    }
+
+    &.is-primary {
+      background: get-color(primary);
+    }
+
+    &.is-secondary {
+      background: get-color(secondary);
+    }
+
+    &.is-quaternary {
+      background: get-color(quaternary);
+    }
+
+    &.is-pulled-up {
+
+      @include breakpoint(medium) {
+        margin-top: 5rem;
+      }
+    }
+  }
+}

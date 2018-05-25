@@ -1,0 +1,65 @@
+@import 'variables';
+
+.fa {
+  font-size: $global-icon-font-size;
+
+  .c-header__title-bar & {
+    font-size: 1.5rem;
+  }
+}
+
+// Reusable hamburger menu icon
+.ua-hamburger-icon {
+  @include hamburger($color: $titlebar-icon-color, $color-hover: $titlebar-icon-color-hover);
+}
+
+// Hidden H1 for content pages only.
+.u-hidden-h1 {
+  @include element-invisible;
+}
+
+// Intro sized lead paragraph text
+.u-lead-text {
+  font-size: $lead-font-size;
+  font-weight: 300;
+  line-height: 2.1rem;
+}
+
+.u-small-text {
+  @extend %small-text;
+  color: $darker-gray;
+}
+
+
+// Off canvas
+@include off-canvas-basics;
+
+.o-off-canvas__wrapper {
+  @include off-canvas-wrapper;
+}
+
+.o-off-canvas__content {
+  @include off-canvas-content;
+}
+
+
+// Reveal
+body {
+
+  &.is-reveal-open {
+    overflow: hidden;
+  }
+}
+
+// html gets this class only in iOS
+html {
+
+  &.is-reveal-open,
+  &.is-reveal-open body { // sass-lint:disable-line force-element-nesting
+    position: fixed;
+    min-height: 100%;
+    overflow: hidden;
+    user-select: none;
+  }
+
+}

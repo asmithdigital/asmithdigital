@@ -1,0 +1,10 @@
+@import 'node_modules/font-awesome/scss/font-awesome';
+
+.ua-dropdown-icon {
+  @include css-triangle(15px, white, down);
+}
+
+// Override any specificity
+.fa {
+  font-style: normal !important;
+}

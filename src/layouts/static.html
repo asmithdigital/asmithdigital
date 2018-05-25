@@ -1,0 +1,210 @@
+{{> head}}
+
+<body{{#unless full-width}} class="ua-standard{{#if fixed-slider}} fixed-vegas-slider{{/if}}"{{/unless}}>
+
+  <div class="o-off-canvas__wrapper">
+
+    {{#if global-assets-loader}}
+    <div id="ua-search"></div>
+    {{/if}}
+    {{#unless global-assets-loader}}
+    {{> static-search}}
+    {{/unless}}
+
+    <div class="o-off-canvas__content" data-off-canvas-content>
+
+      {{#if fixed-slider}}
+      <div class="o-layout__slider o-layout__slider--fixed">
+        {{> static-vegas}}
+      </div>
+      {{/if}}
+
+      <header class="o-layout__header" id="ua-top" role="banner">
+        {{> static-global-header}}
+      </header>
+
+      <main class="o-layout__main">
+
+        {{#unless fixed-slider}}
+        <div class="o-layout__slider-container">
+          <div class="o-layout__slider">
+            {{> static-vegas}}
+          </div>
+          <div class="o-layout__page-title">
+            <div class="o-layout__container">
+              {{> static-page-title}}
+            </div>
+          </div>
+        </div>
+        {{/unless}}
+
+        {{#if degree-finder-grid}}
+        {{> degree-finder}}
+        {{/if}}
+
+        {{#unless degree-finder-grid}}
+
+        {{#if fixed-slider}}
+        <div class="o-layout__slider o-layout__slider--mobile">
+          <img src="assets/img/unsplash3-mobile.jpg">
+        </div>
+        {{/if}}
+
+        {{#unless campaign}}
+        <div class="o-layout__container">
+        {{/unless}}
+
+          {{#if fixed-slider}}
+            {{> static-page-title}}
+          {{/if}}
+
+          {{#unless campaign}}
+          <div class="o-layout__main-nav">
+
+            {{#if services-menu}}
+            {{> static-services-menu}}
+            <a href="static.html" class="c-btn c-btn--block c-btn--secondary"><i class="fa fa-undo"></i> Static home</a>
+            {{/if}}
+
+            {{#unless services-menu}}
+            {{> static-site-menu}}
+            {{/unless}}
+
+          </div>
+          {{/unless}}
+
+          <article{{#unless campaign}} class="o-layout__main-content"{{/unless}} id="ua-main-content" role="main">
+
+            {{#if campaign}}
+            <div class="u-hidden-h1"><h1>I am a hidden H1</h1></div>
+            {{/if}}
+
+            {{#if has-login}}
+            {{> static-login}}
+            {{/if}}
+
+            {{#unless hide-breadcrumb}}
+            {{> static-breadcrumbs}}
+            {{/unless}}
+
+            {{#unless hide-title-data}}
+            <h1 class="docs-page-title">{{ title }}</h1>
+            <p class="u-lead-text">{{description}}</p>
+            {{#unless hide-demo-paragraph}}
+            <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+            {{/unless}}
+            {{/unless}}
+
+            {{#if filter-grid-nav}}
+            {{> static-filter-nav}}
+            {{/if}}
+
+            {{#if degree-finder}}
+
+            {{#if campaign}}
+            <section class="o-layout__section">
+              <div class="o-layout__container">
+                <div class="o-layout__section-content is-centered">
+                  {{> static-degree-finder}}
+                </div>
+              </div>
+            </section>
+            <section class="o-layout__section is-dark">
+              <div class="o-layout__container">
+                <div class="o-layout__section-content is-centered">
+            {{/if}}
+
+            {{> static-degree-finder}}
+
+            {{#if campaign}}
+                </div>
+              </div>
+            </section>
+            {{/if}}
+
+            {{/if}}
+
+            {{#if autocomplete}}
+            {{> static-autocomplete}}
+            {{/if}}
+
+            {{#if featured}}
+            {{> static-featured-content}}
+            {{/if}}
+
+            {{> body}}
+
+            {{#if news-feed-demo}}
+            {{> static-news-feed-item}}
+            {{/if}}
+
+            {{#if pagination}}
+            {{> static-pagination}}
+            {{/if}}
+
+            {{#if rss-feed-demo}}
+            {{> static-rss-feed}}
+            {{/if}}
+
+            {{#if media-objects-demo}}
+            {{> static-media-object}}
+            {{/if}}
+
+            {{#if video-demo}}
+            {{> static-video}}
+            {{/if}}
+          </article>
+
+        {{#unless campaign}}
+        </div>
+        {{/unless}}
+
+        {{/unless}}
+
+      </main>
+
+      {{#unless hide-local-footer}}
+      <div class="o-layout__local-footer">
+        <div class="o-layout__container">
+          {{> static-local-footer}}
+        </div>
+      </div>
+      {{/unless}}
+
+      <footer  class="o-layout__footer">
+
+        {{#if global-assets-loader}}
+        <div id="ua-footer"></div>
+        {{/if}}
+        {{#unless global-assets-loader}}
+        {{> static-global-footer}}
+        {{/unless}}
+
+        {{> static-footer-meta}}
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="{{root}}assets/js/app.jquery.js"></script>
+
+  {{#if callout-cookie}}
+  {{> static-callout-cookie}}
+  {{/if}}
+
+
+  {{#if degree-finder}}
+  <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="{{root}}assets/js/vendor/df-search.js"></script>
+  {{/if}}
+
+  {{#unless global-assets-loader}}
+  {{> global-assets-plugin}}
+  {{/unless}}
+
+  {{#if global-assets-loader}}
+  {{> global-assets-loader}}
+  {{/if}}
+
+  </body>
+</html>

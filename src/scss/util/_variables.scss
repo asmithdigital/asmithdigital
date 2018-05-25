@@ -1,0 +1,38 @@
+// Global assets class names
+$site-menu: 'c-site-menu';
+$services-menu: 'c-services-menu';
+$header: 'c-header';
+$page-title: 'c-page-title';
+$logo: $header + '__logo';
+$layout-footer: 'o-layout__footer';
+
+// Gloab assets mobile menu border colors
+$mobile-border-top-color: lighten($brand-dark-blue, 5);
+$mobile-border-bottom-color: darken($brand-dark-blue, 10);
+
+// Shared mobile close button
+$closebutton-color: $white;
+$closebutton-color-hover: $white;
+
+// Global variables
+$global-icon-font-size: 1rem;
+$paragraph-lineheight: 1.5;
+$header-lineheight: 1.2;
+$header-color: $brand-dark-blue;
+$lead-font-size: $global-font-size * 1.6;
+$global-weight-bold: 600;
+
+// Mobile spacing styles used by site menu and header menu mixins
+$mobile-padding: $global-padding $global-padding * 0.8;
+$mobile-line-height: 1.4;
+$mobile-text-transform: uppercase;
+
+// Anchors
+$anchor-color: get-color(primary);
+$anchor-color-hover: $light-primary;
+$anchor-text-decoration: underline;
+$anchor-text-decoration-hover: underline;
+
+// Pagination
+$pagination-mobile-items: true;
+$pagination-item-padding: 0;

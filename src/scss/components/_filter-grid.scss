@@ -1,0 +1,60 @@
+.c-filter-nav {
+  @include component-grid($two-column: small);
+
+  &__group {
+    @include button-group;
+    display: table;
+    margin: 0 auto $global-margin;
+  }
+
+  &__button {
+    @include button($color: $black, $background: $light-gray, $background-hover: get-color(secondary));
+    margin-right: 1px;
+    margin-bottom: 1px;
+    text-decoration: none;
+
+    @include breakpoint(small only) {
+      margin-right: 2px;
+      margin-bottom: 2px;
+    }
+
+    &:hover,
+    &:active,
+    &:focus,
+    &.is-checked {
+      background: get-color(secondary);
+      color: $white;
+    }
+  }
+
+  &__content {
+    padding: $global-padding;
+    background: $light-gray;
+    color: $black;
+    text-align: center;
+
+    a:hover & { // sass-lint:disable-line force-pseudo-nesting
+      background: get-color(secondary);
+      color: $white;
+    }
+
+    *:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a,
+  a * {
+    text-decoration: none;
+  }
+
+  &__title {
+    @include get-header-style($header-passed-in: 'h6');
+    font-weight: 400;
+    text-transform: uppercase;
+
+    a:hover & { // sass-lint:disable-line force-pseudo-nesting
+      color: $white;
+    }
+  }
+}
