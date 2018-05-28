@@ -2,10 +2,7 @@
 
 function buildDocsCSS(GV) {
   return function() {
-    GV.gulp.src([
-      GV.PATHS.src + '/docs/scss/docs.scss',
-      GV.PATHS.src + '/scss/reset.scss'
-    ])
+    GV.gulp.src(GV.PATHS.src + '/docs/scss/docs.scss')
       .pipe(GV.$.sourcemaps.init())
       .pipe(GV.$.sass({
         includePaths: GV.PATHS.sass
@@ -27,10 +24,7 @@ module.exports = (GV) => {
   return function(done) {
     GV.TASKS.rimraf(GV.PATHS.src  + '/assets/css/*.css', done);
     let stream = GV.gulp
-      .src([
-        GV.PATHS.src + '/scss/app.scss',
-        GV.PATHS.src + '/scss/header-footer.scss'
-      ])
+      .src(GV.PATHS.src + '/scss/app.scss')
       .pipe(GV.$.sourcemaps.init())
       .pipe(GV.$.sass({
         includePaths: GV.PATHS.sass

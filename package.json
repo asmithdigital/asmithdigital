@@ -1,7 +1,7 @@
 {
-  "name": "University-of-Adelaide-V2",
-  "version": "0.19.0",
-  "description": "UA Style Guide V2.",
+  "name": "Style-guide",
+  "version": "0.0.0",
+  "description": "Style Guide",
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp start",
@@ -12,7 +12,7 @@
     "release:finish": "gulp release:finish",
     "deploy": "gulp deploy:assets"
   },
-  "author": "webteam",
+  "author": "smithy",
   "license": "MIT",
   "dependencies": {
     "corejs-typeahead": "^1.1.1",
@@ -68,7 +68,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.adelaide.edu.au/web-team/ua-styleguide-v2"
+    "url": "https://github.com/asmithdigital/styleguide"
   },
   "babel": {
     "presets": [

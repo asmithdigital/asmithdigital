@@ -74,7 +74,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 42);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4655,6 +4655,17 @@ __webpack_require__(21);
 __webpack_require__(38);
 
 __webpack_require__(39);
+
+__webpack_require__(40);
+
+// OffCanvas global settings
+
+// import '../../node_modules/motion-ui/dist/motion-ui.js';
+Foundation.OffCanvas.defaults.transitionTime = '.2s';
+
+// app.js only imports and code goes here
+
+Foundation.OffCanvas.defaults.transition = 'overlap';
 
 /***/ }),
 /* 21 */
@@ -12521,7 +12532,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }return !1;
   }function v(e, t, n, o, i) {
     var a = e.charAt(0).toUpperCase() + e.slice(1),
-        s = (e + " " + F.join(a + " ") + a).split(" ");return r(t, "string") || r(t, "undefined") ? h(s, t, o, i) : (s = (e + " " + q.join(a + " ") + a).split(" "), g(s, t, n));
+        s = (e + " " + $.join(a + " ") + a).split(" ");return r(t, "string") || r(t, "undefined") ? h(s, t, o, i) : (s = (e + " " + A.join(a + " ") + a).split(" "), g(s, t, n));
   }function S(e, t, r) {
     return v(e, n, n, t, r);
   }var C = [],
@@ -12655,25 +12666,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         t = !1;try {
       t = !!e.canPlayType, t && (t = new Boolean(t), t.ogg = e.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ""), t.mp3 = e.canPlayType('audio/mpeg; codecs="mp3"').replace(/^no$/, ""), t.opus = e.canPlayType('audio/ogg; codecs="opus"') || e.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, ""), t.wav = e.canPlayType('audio/wav; codecs="1"').replace(/^no$/, ""), t.m4a = (e.canPlayType("audio/x-m4a;") || e.canPlayType("audio/aac;")).replace(/^no$/, ""));
     } catch (n) {}return t;
-  });var P = l("input"),
-      j = "autocomplete autofocus list placeholder max min multiple pattern required step".split(" "),
-      k = {};Modernizr.input = function (t) {
-    for (var n = 0, r = t.length; r > n; n++) {
-      k[t[n]] = !!(t[n] in P);
-    }return k.list && (k.list = !(!l("datalist") || !e.HTMLDataListElement)), k;
-  }(j);var z = E.testStyles = c;Modernizr.addTest("checked", function () {
-    return z("#modernizr {position:absolute} #modernizr input {margin-left:10px} #modernizr :checked {margin-left:20px;display:block}", function (e) {
+  });var P = E.testStyles = c;Modernizr.addTest("checked", function () {
+    return P("#modernizr {position:absolute} #modernizr input {margin-left:10px} #modernizr :checked {margin-left:20px;display:block}", function (e) {
       var t = l("input");return t.setAttribute("type", "checkbox"), t.setAttribute("checked", "checked"), e.appendChild(t), 20 === t.offsetLeft;
     });
-  });var $ = "CSS" in e && "supports" in e.CSS,
-      A = "supportsCSS" in e;Modernizr.addTest("supports", $ || A), Modernizr.addTest("target", function () {
+  });var j = "CSS" in e && "supports" in e.CSS,
+      k = "supportsCSS" in e;Modernizr.addTest("supports", j || k), Modernizr.addTest("target", function () {
     var t = e.document;if (!("querySelectorAll" in t)) return !1;try {
       return t.querySelectorAll(":target"), !0;
     } catch (n) {
       return !1;
     }
-  }), Modernizr.addTest("contains", r(String.prototype.contains, "function")), Modernizr.addTest("svg", !!t.createElementNS && !!t.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect);var L = "Moz O ms Webkit",
-      F = E._config.usePrefixes ? L.split(" ") : [];E._cssomPrefixes = F;var q = E._config.usePrefixes ? L.toLowerCase().split(" ") : [];E._domPrefixes = q, E.testAllProps = v, E.testAllProps = S, Modernizr.addTest("ellipsis", S("textOverflow", "ellipsis")), Modernizr.addTest("ruby", function () {
+  }), Modernizr.addTest("contains", r(String.prototype.contains, "function")), Modernizr.addTest("svg", !!t.createElementNS && !!t.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect);var z = "Moz O ms Webkit",
+      $ = E._config.usePrefixes ? z.split(" ") : [];E._cssomPrefixes = $;var A = E._config.usePrefixes ? z.toLowerCase().split(" ") : [];E._domPrefixes = A, E.testAllProps = v, E.testAllProps = S, Modernizr.addTest("ellipsis", S("textOverflow", "ellipsis")), Modernizr.addTest("ruby", function () {
     function n(n, r) {
       var o;return e.getComputedStyle ? o = t.defaultView.getComputedStyle(n, null).getPropertyValue(r) : n.currentStyle && (o = n.currentStyle[r]), o;
     }function r() {
@@ -12683,7 +12688,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         a = l("rp"),
         s = "display",
         u = "fontSize";return o.appendChild(a), o.appendChild(i), w.appendChild(o), "none" == n(a, s) || "ruby" == n(o, s) && "ruby-text" == n(i, s) || "6pt" == n(a, u) && "6pt" == n(i, u) ? (r(), !0) : (r(), !1);
-  }), Modernizr.addTest("template", "content" in l("template")), o(), i(b), delete E.addTest, delete E.addAsyncTest;for (var M = 0; M < Modernizr._q.length; M++) {
+  });var L = l("input"),
+      F = "autocomplete autofocus list placeholder max min multiple pattern required step".split(" "),
+      q = {};Modernizr.input = function (t) {
+    for (var n = 0, r = t.length; r > n; n++) {
+      q[t[n]] = !!(t[n] in L);
+    }return q.list && (q.list = !(!l("datalist") || !e.HTMLDataListElement)), q;
+  }(F), Modernizr.addTest("template", "content" in l("template")), o(), i(b), delete E.addTest, delete E.addAsyncTest;for (var M = 0; M < Modernizr._q.length; M++) {
     Modernizr._q[M]();
   }e.Modernizr = Modernizr;
 }(window, document);
@@ -12694,25 +12705,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+// Import all the remaining plugins that arent alredy in the header footer file.
 
-
-__webpack_require__(20);
-
-__webpack_require__(41);
 
 /***/ }),
 /* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-// Import all the remaining plugins that arent alredy in the header footer file.
-
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(40);
+module.exports = __webpack_require__(20);
 
 
 /***/ })

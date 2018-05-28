@@ -33,7 +33,7 @@ module.exports = (GV) => {
       quiet: false,
       pageRoot: GV.PATHS.src + '/pages',
       data: {
-        repoName: 'ua-styleguide-v2',
+        repoName: 'styleguide',
         editBranch: 'develop'
       }
     })
@@ -45,32 +45,14 @@ module.exports = (GV) => {
     .adapter('sass')
     .adapter('js');
 
-  function headerFooter() {
-    let stream = GV.gulp
-      .src(GV.PATHS.src + '/pages/header-footer.md')
-      .pipe(GV.TASKS.supercollider.init())
-      .pipe(GV.TASKS.panini(paniniConfig))
-      // .pipe(GV.$.cacheBust(cacheBustConfig))
-      .pipe(GV.gulp.dest(GV.PATHS.src + '/assets/header-footer'))
-      .pipe(GV.gulp.dest(GV.PATHS.dist));
-    return stream;
-  }
-
   function buildSearch() {
     GV.TASKS.supercollider.buildSearch(GV.PATHS.dist + '/data/search.json', function() {});
   }
 
-  return function(done) {
-
-    GV.TASKS.rimraf(GV.PATHS.src  + '/assets/header-footer/*.html', done);
-
-    headerFooter();
+  return function() {
 
     let stream = GV.gulp
-      .src([
-        GV.PATHS.src + '/pages/**/*',
-        '!' + GV.PATHS.src + '/pages/header-footer.md'
-      ])
+      .src(GV.PATHS.src + '/pages/**/*')
       .pipe(GV.TASKS.supercollider.init())
       .pipe(GV.TASKS.panini(paniniConfig))
       .pipe(GV.$.cacheBust(cacheBustConfig))
