@@ -4,8 +4,6 @@ description: Header footer template.
 layout: header-footer
 header-footer: true
 header-footer-template: true
-hide-local-footer: true
-global-assets-loader: true
 ---
 
 ## Hello

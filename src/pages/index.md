@@ -1,8 +1,8 @@
 ---
-title: Style guide V2
-description: University of Adelaide style guide V2 documentation.
+title: Style guide
+description: Style guide documentation.
 ---
 
-Welcome to the University of Adelaide style guide V2.
+Welcome to Style guide.
 
 <a href="getting-started.html" class="button large">Get started</a>
