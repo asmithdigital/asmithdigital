@@ -20,8 +20,6 @@
 .o-layout__footer,
 .o-layout__header {
   @import 'util/global-utilities';
-  @import 'components/images';
-  @import 'components/buttons';
 }
 
 // Scope fonts
@@ -36,11 +34,5 @@
 // Layouts
 @import 'grid/grid';
 @import 'grid/header';
-@import 'grid/footer-meta';
 
 // Components
-@import 'components/social-icons';
-@import 'components/local-footer';
-
-// Required to active component mixins
-@include social-icon-component('ua-social-icon');
