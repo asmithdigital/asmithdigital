@@ -4,6 +4,4 @@ import 'what-input';
 import '../../src/assets/js/vendor/modernizr.js';
 
 // Only importing what is needed for header and footer
-import './lib/fonts';
-import './lib/header-menu';
-import './lib/logo';
+
