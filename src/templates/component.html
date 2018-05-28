@@ -2,12 +2,7 @@
 {{ docs }}
 {{/if}}
 
-{{#if header-footer}}
-{{ docs }}
-{{/if}}
-
 {{#unless static}}
-{{#unless header-footer}}
 <article class="docs-component" id="docs-{{escape title}}">
 
   <!--<a href="#docs-menu" class="small secondary button expanded hide-for-medium mobile-nav-button">Jump to Nav</a>-->
@@ -85,5 +80,4 @@
   {{!-- End container for docs and table of contents --}}
 
 </article>
-{{/unless}}
 {{/unless}}

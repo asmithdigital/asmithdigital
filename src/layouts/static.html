@@ -6,33 +6,19 @@
 
     <div class="o-off-canvas__content" data-off-canvas-content>
 
-      <header class="o-layout__header" id="ua-top" role="banner">
+      <header class="o-layout__header" id="top" role="banner">
         {{> static-global-header}}
       </header>
 
       <main class="o-layout__main">
 
-        {{#unless campaign}}
-        <div class="o-layout__container">
-        {{/unless}}
-
-          {{#unless campaign}}
-          <div class="o-layout__main-nav">
-
-            {{> static-site-menu}}
-
-          </div>
-          {{/unless}}
-
-          <article{{#unless campaign}} class="o-layout__main-content"{{/unless}} id="ua-main-content" role="main">
-
-            {{> body}}
-
-          </article>
-
-        {{#unless campaign}}
+        <div class="o-layout__main-nav">
+          {{> static-site-menu}}
         </div>
-        {{/unless}}
+
+        <article class="o-layout__main-content" id="main-content" role="main">
+          {{> body}}
+        </article>
 
       </main>
 
