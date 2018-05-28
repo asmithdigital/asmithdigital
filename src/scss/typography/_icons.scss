@@ -1,8 +1,6 @@
-@import 'node_modules/font-awesome/scss/font-awesome';
+// Import and use font awesome
 
-.ua-dropdown-icon {
-  @include css-triangle(15px, white, down);
-}
+@import 'node_modules/font-awesome/scss/font-awesome';
 
 // Override any specificity
 .fa {

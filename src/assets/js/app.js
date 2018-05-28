@@ -4655,14 +4655,12 @@ __webpack_require__(39);
 
 __webpack_require__(40);
 
-// OffCanvas global settings
+// Temporarily use foundation
 
 // import '../../node_modules/motion-ui/dist/motion-ui.js';
-Foundation.OffCanvas.defaults.transitionTime = '.2s';
+$(document).foundation();
 
 // app.js only imports and code goes here
-
-Foundation.OffCanvas.defaults.transition = 'overlap';
 
 /***/ }),
 /* 21 */

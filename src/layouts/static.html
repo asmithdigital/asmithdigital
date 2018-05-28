@@ -4,6 +4,8 @@
 
   <div class="o-off-canvas__wrapper">
 
+    {{> static-off-canvas}}
+
     <div class="o-off-canvas__content" data-off-canvas-content>
 
       <header class="o-layout__header" id="top" role="banner">
@@ -12,12 +14,11 @@
 
       <main class="o-layout__main">
 
-        <div class="o-layout__main-nav">
-          {{> static-site-menu}}
-        </div>
-
         <article class="o-layout__main-content" id="main-content" role="main">
           {{> body}}
+
+          <button type="button" class="button" data-toggle="offCanvas">Open Menu</button>
+
         </article>
 
       </main>
