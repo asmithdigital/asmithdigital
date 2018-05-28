@@ -27,17 +27,11 @@
   {{/if}}
   {{#unless static}}
     {{#unless header-footer}}
-      {{#unless global-assets}}
   <link href="{{root}}assets/css/docs.css" rel="stylesheet" />
-      {{/unless}}
     {{/unless}}
   {{/unless}}
-  {{#if global-assets}}
-  <link href="assets/css/global-assets.css" rel="stylesheet">
-  {{/if}}
   {{#if header-footer-template}}
-  <link href="//global.adelaide.edu.au/style-guide-v2/{{global.version}}/css/header-footer.css" rel="stylesheet">
-  <link href="//global.adelaide.edu.au/style-guide-v2/latest/css/global-assets.css" rel="stylesheet">
+  <!-- Path to global CSS for header footer template -->
   {{/if}}
   <!--<![endif]-->
 

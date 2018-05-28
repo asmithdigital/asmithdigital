@@ -9,10 +9,7 @@ module.exports = {
     'node_modules/foundation-sites/dist/js/foundation.min.js'
   ],
   JS_POLLYFILLS: [
-    './node_modules/picturefill/dist/picturefill.min.js',
-    './node_modules/mediaelement/build/mediaelement-and-player.js',
-    './node_modules/mediaelement/build/mediaelementplayer.css',
-    './node_modules/mediaelement/build/mejs-controls.svg'
+    './node_modules/picturefill/dist/picturefill.min.js'
   ],
   JS_DOCS: [
     'node_modules/clipboard/dist/clipboard.min.js',

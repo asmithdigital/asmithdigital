@@ -29,8 +29,7 @@ module.exports = (GV) => {
     let stream = GV.gulp
       .src([
         GV.PATHS.src + '/scss/app.scss',
-        GV.PATHS.src + '/scss/header-footer.scss',
-        GV.PATHS.src + '/scss/global-assets.scss'
+        GV.PATHS.src + '/scss/header-footer.scss'
       ])
       .pipe(GV.$.sourcemaps.init())
       .pipe(GV.$.sass({

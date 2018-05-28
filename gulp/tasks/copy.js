@@ -17,7 +17,7 @@ function copyDemoJS(GV) {
 
   return function () {
     GV.gulp
-      .src('src/docs/demo/df-search.js')
+      .src('src/docs/demo/*.js')
       .pipe(GV.gulp.dest(GV.PATHS.dist + '/assets/js/vendor'))
       .on('finish', copyFdIcons(GV));
   }
@@ -39,10 +39,7 @@ function copyJsDeps(GV) {
 function copyGlobalPartials(GV) {
   return function () {
     GV.gulp
-      .src([
-        GV.PATHS.src + '/partials/static/global/*.html',
-        GV.PATHS.src + '/docs/partials/*.html'
-      ])
+      .src(GV.PATHS.src + '/docs/partials/*.html')
       .pipe(GV.gulp.dest(GV.PATHS.dist + '/partials'))
       .on('finish', copyJsDeps(GV));
   }
