@@ -26,9 +26,8 @@ PATHS:
     - "src/assets/**/*"
     - "src/media/**/*"
     - "src/ajax/**/*"
-    - "src/cubeportfolio/**/*"
     - "src/docs/dist/**/*"
-    - "!src/{docs,assets}/{img,scss}/**/*"
+    - "!src/**/{img,scss}/**/*"
     - "!src/**/*.yml"
     - "!src/**/scss"
   # Paths to Sass libraries, which can then be loaded with @import

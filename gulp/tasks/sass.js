@@ -22,7 +22,7 @@ function buildDocsCSS(GV) {
 
 module.exports = (GV) => {
   return function(done) {
-    GV.TASKS.rimraf(GV.PATHS.src  + '/assets/css/*.css', done);
+    GV.TASKS.rimraf(GV.PATHS.src  + '/assets/css/all.css', done);
     let stream = GV.gulp
       .src(GV.PATHS.src + '/scss/app.scss')
       .pipe(GV.$.sourcemaps.init())
