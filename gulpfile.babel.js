@@ -49,7 +49,7 @@ gulp.task('build',
 // This task is used outside of Docker and sets up a local server.
 // We don't need to run any build of CSS of JS, just copy the already built assets and html.
 gulp.task('start',
-  gulp.series('pages', gulp.parallel('images'), 'copy', server));
+  gulp.series('pages', gulp.parallel('images'), 'copy', server, watch));
 
 // Default gulp task.
 gulp.task('default',
@@ -92,7 +92,7 @@ function reload(done) {
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
   gulp.watch(PATHS.assets, {usePolling: true}).on('all', gulp.series('copy'));
-  gulp.watch('src/pages/**/*', {usePolling: true}).on('all', gulp.series('pages', TASKS.browser.reload));
+  gulp.watch('src/pages/**/*.md', {usePolling: true}).on('all', gulp.series('pages', TASKS.browser.reload));
   gulp.watch('src/{layouts,partials}/**/*', {usePolling: true}).on('all', gulp.series(resetPages, 'pages', TASKS.browser.reload));
   gulp.watch(['src/assets/scss/**/*.scss', 'src/docs/scss/**/*.scss'], {usePolling: true}).on('all',  gulp.series('sass', TASKS.browser.reload));
   gulp.watch('src/assets/js/**/*.js', {usePolling: true}).on('all', gulp.series('javascript', TASKS.browser.reload));

@@ -25,6 +25,8 @@ PATHS:
   assets:
     - "src/assets/**/*"
     - "src/media/**/*"
+    - "src/ajax/**/*"
+    - "src/cubeportfolio/**/*"
     - "src/docs/dist/**/*"
     - "!src/**/{img,scss}/**/*"
     - "!src/**/*.yml"
