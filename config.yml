@@ -25,7 +25,6 @@ PATHS:
   assets:
     - "src/assets/**/*"
     - "src/media/**/*"
-    - "src/ajax/**/*"
     - "src/docs/dist/**/*"
     - "!src/**/{img,scss}/**/*"
     - "!src/**/*.yml"
