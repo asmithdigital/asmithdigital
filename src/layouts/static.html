@@ -17,6 +17,10 @@
         <article class="o-layout__main-content" id="main-content" role="main">
           {{> body}}
 
+          {{#if portfolio}}
+          {{> static-portfolio}}
+          {{/if}}
+
           <button type="button" class="button" data-toggle="offCanvas">Open Menu</button>
 
         </article>
