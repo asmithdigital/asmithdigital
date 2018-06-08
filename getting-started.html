@@ -1,0 +1,289 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentation for getting started.">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/img/apple-touch-icon-114x114.png">
+  <title>Style guide | Getting started</title>
+
+  <!--[if gt IE 8]><!-->
+  <link href="assets/css/docs.css?t=1528435985538" rel="stylesheet" />
+  <!--<![endif]-->
+
+</head>
+
+<body>
+
+<div class="off-canvas-wrapper">
+  <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left">
+    <button class="close-button" aria-label="Close menu" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <ul class="mobile-ofc vertical menu">
+  
+      <li>
+        <a href="/">Resources</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li class="title">Section 1</li>
+          <li><a href="#0">Link 1</a></li>
+          <li class="divider"></li>
+          <li class="title">Section 2</li>
+          <li><a href="#0">Link 1</a></li>
+          <li class="divider"></li>
+        </ul>
+      </li>
+  
+      <!--<li><a href="/" class="button">Getting Started</a></li>-->
+  
+    </ul>
+  </div>
+
+  <div class="docs-off-canvas-content off-canvas-content" data-off-canvas-content>
+    <div class="docs-sticky-top-bar">
+      <nav class="global-nav show-for-smedium">
+      
+        <div class="global-nav-title">
+          <a class="zurb-logo" href="/"><img src="https://via.placeholder.com/468x144/"></a>
+        </div>
+      
+        <ul class="dropdown menu right-side" data-dropdown-menu data-click-open="true">
+      
+          <li class="menu-item">
+            <a href="/">Resources</a>
+            <ul class="menu">
+              <li class="title">Section 1</li>
+              <li><a href="#0">Link 1</a></li>
+              <li class="divider"></li>
+              <li class="title">Section 2</li>
+              <li><a href="#0">Link 1</a></li>
+              <li class="divider"></li>
+            </ul>
+          </li>
+      
+          <!--<li class="menu-button"><a href="/" class="button">Getting Started</a></li>-->
+      
+        </ul>
+      
+      </nav>
+      <div class="global-nav-mobile-wrapper hide-for-smedium-up">
+        <button type="button" data-toggle="offCanvasLeft">
+          <img class="hamburger-icon" alt="Menu icon" src="assets/img/icons/menu-grey.png">
+        </button>
+        <div class="global-nav-title">
+          <a class="zurb-logo" href="/"><img src="https://via.placeholder.com/468x144/"></a>
+        </div>
+      </div>
+      <div class="collapse expanded row secondary-bar">
+        <div class="small-5 medium-3 large-2 columns">
+          <a target="_blank" href="https://gitlab.adelaide.edu.au/web-team/ua-styleguide-v2-theme/blob/master/CHANGELOG.md" class="version-dropdown-label"><span class="foundation-version-label">Style guide</span><span class="foundation-version-number">0.0.0</span> <span class="changelog-link">changelog</span></a>
+        </div>
+      
+        <div class="small-7 columns show-for-small-only">
+          <span class="search-button" data-toggle="inline-search"></span>
+          <a href="#" class="float-right small hollow button mobile-nav-button" data-open="navModal">Component List</a>
+          <div class="reveal nav-modal" id="navModal" data-reveal>
+            <div class="docs-nav" id="docs-menu">
+            
+            <!--
+              <ul class="docs-nav-version-container">
+                <li class="docs-nav-version">
+                  <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">Changelog</a>
+                </li>
+              </ul>
+            -->
+            
+              <ul class="accordion docs-nav-category" data-accordion data-allow-all-closed="true" data-multi-expand="true">
+                <a class="docs-expand-all" data-expand-all="true"></a>
+                <li class="accordion-item is-active" data-accordion-item>
+                  <a href="#" class="accordion-title">Setup</a>
+                  <div class="accordion-content is-active" data-tab-content>
+                    <ul class="docs-nav-subcategory">
+                      <li><a href="styleguide.html">Welcome</a></li>
+                      <li class="current"><a href="getting-started.html">Getting started</a></li>
+                      <li><a href="javascript.html">JavaScript</a></li>
+                    </ul>
+                  </div>
+                </li>
+            
+              </ul>
+            
+            </div>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="inline-search" class="inline-search" data-toggler="expanded">
+            <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+          </div>
+        </div>
+        <div class="small-12 medium-9 large-10 columns show-for-medium docs-search-wrapper">
+          <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+        </div>
+        <!--<div class="social-list show-for-medium">-->
+          <!--<div class="github-button">-->
+            <!--<a class="github-button" href="https://github.com/zurb/foundation-sites" data-size="large" data-count-aria-label="# stargazers on GitHub" aria-label="Star zurb/foundation-sites on GitHub">Star</a>-->
+          <!--</div>-->
+        <!--</div>-->
+      </div>
+    </div>
+
+    <div class="collapse expanded row">
+      <div id="body-container" class="small-12 medium-9 large-10 medium-push-3 large-push-2 columns">
+<!-- do not indent -->
+
+
+<article class="docs-component" id="docs-getting-started">
+
+  <!--<a href="#docs-menu" class="small secondary button expanded hide-for-medium mobile-nav-button">Jump to Nav</a>-->
+
+
+  <div class="row">
+
+    <div class="large-9 columns docs-component-inner " id="docs">
+      <div>
+        <header>
+          <h1 class="docs-page-title">Getting started</h1>
+        
+            <p class="docs-description lead">Documentation for getting started.</p>
+        
+          
+        
+        </header>
+
+        <h2 id="hello" class="docs-heading" data-magellan-target="hello">Hello<a class="docs-heading-icon" href="#hello"></a></h2><div class="alert callout">
+<p>Hello</p>
+</div>
+
+<div class="docs-code" data-docs-code><pre><code class="bash">git <span class="hljs-built_in">clone</span> https://github.com/hello/hello.git</code></pre></div><p><a href="#0" class="button large" target="_blank"><i class="fa fa-download"></i> Download .zip</a></p>
+<div class="docs-code" data-docs-code><pre><code class="html">├─ css/app.css         complete css build
+└─ js
+   ├─ app.jquery.js    complete JS build including jQuery
+   └─ app.js           complete JS build without jQuery</code></pre></div>
+
+
+
+
+        <hr>
+
+        <nav aria-label="Pagination">
+          <ul class="menu" style="display: block !important">
+            <li class="docs-pagination-prev float-left"><a href="#" aria-label="Previous page"><i class="fa fa-arrow-left"></i> <span></span></a></li>
+            <li class="docs-pagination-next float-right"><a href="#" aria-label="Next page"><span></span> <i class="fa fa-arrow-right"></i></a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+
+
+    <div class="large-3 columns show-for-medium">
+      <nav class="docs-toc-wrap" id="docsToc" data-sticky-container>
+        <div class="docs-toc hide" id="docsTOC" data-sticky data-margin-top="6" data-anchor="docs">
+          <ul class="vertical menu" data-docs-toc>
+            <li class="docs-nav-title">Getting started</li>
+          </ul>
+          <hr class="docs-toc-divider small">
+          <ul class="docs-contribute-menu">
+            <li><a href="#0" target="_blank"><i class="fi-social-github"></i>Report a Bug</a></li>
+            <li><a href="#0" target="_blank"><i class="fi-comment"></i>Get Help</a></li>
+          </ul>
+          <div class="foundation-toc-ad-unit" id="TOCAdUnit">
+            <div class="ad-unit">
+              <h3 class="ad-unit-title">Static demo</h3>
+              <p class="ad-unit-text">View a static demonstration of Getting started in the context of the site template.</p>
+              <a class="button ad-unit-button" href="static.html" target="_blank">View demonstration</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+  </div>
+
+</article>
+
+      </div>
+      <div class="medium-3 large-2 medium-pull-9 large-pull-10 hide-for-small-only columns" data-sticky-container>
+        <div class="docs-nav-container" data-sticky data-anchor="body-container" data-margin-top="6">
+          <div class="docs-nav" id="docs-menu">
+          
+          <!--
+            <ul class="docs-nav-version-container">
+              <li class="docs-nav-version">
+                <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">Changelog</a>
+              </li>
+            </ul>
+          -->
+          
+            <ul class="accordion docs-nav-category" data-accordion data-allow-all-closed="true" data-multi-expand="true">
+              <a class="docs-expand-all" data-expand-all="true"></a>
+              <li class="accordion-item is-active" data-accordion-item>
+                <a href="#" class="accordion-title">Setup</a>
+                <div class="accordion-content is-active" data-tab-content>
+                  <ul class="docs-nav-subcategory">
+                    <li><a href="styleguide.html">Welcome</a></li>
+                    <li class="current"><a href="getting-started.html">Getting started</a></li>
+                    <li><a href="javascript.html">JavaScript</a></li>
+                  </ul>
+                </div>
+              </li>
+          
+            </ul>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-nav row expanded collapse">
+      <div class="footer-nav-left">
+        <p class="footer-copyright">© 2018 hello</p>
+      </div>
+      <div class="footer-nav-center">
+        <ul class="footer-nav-menu">
+          <li class="footer-nav-menu-item">
+            <a href="/">Menu</a>
+          </li>
+          <li class="footer-nav-menu-item">
+            <a href="/">Menu</a>
+          </li>
+          <li class="footer-nav-menu-item">
+            <a href="/">Menu</a>
+          </li>
+          <li class="footer-nav-menu-item">
+            <a href="/">Menu</a>
+          </li>
+          <li class="footer-nav-menu-item">
+            <a href="/">Menu</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-nav-right">
+        <ul class="footer-nav-menu-icons">
+          <li class="footer-nav-menu-item">
+            <a href=""><img class="footer-social-icon" src="assets/img/icons/email-icon.svg" alt=""></a>
+          </li>
+          <li class="footer-nav-menu-item">
+            <a href=""><img class="footer-social-icon" src="assets/img/icons/facebook-icon.svg" alt=""></a>
+          </li>
+          <li class="footer-nav-menu-item">
+            <a href=""><img class="footer-social-icon" src="assets/img/icons/twitter-icon.svg" alt=""></a>
+          </li>
+          <li class="footer-nav-menu-item">
+            <a href=""><img class="footer-social-icon" src="assets/img/icons/youtube-icon.svg" alt=""></a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/js/docs.bundle.js?t=1528435985538"></script>
+
+</body>
+</html>
