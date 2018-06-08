@@ -4663,21 +4663,9 @@ __webpack_require__(42);
 // import '../../node_modules/motion-ui/dist/motion-ui.js';
 $(document).foundation();
 
-// function stickyMenu(el) {
-//   var top = window.pageYOffset || document.documentElement.scrollTop;
-//   if (top > 0) {
-//     if (el.className.indexOf('top') < 0) {
-//       el.className += ' top';
-//     }
-//   } else {
-//     el.className = el.className.replace(' top', '');
-//   }
-// }
-// window.addEventListener("scroll", function() {
-//   stickyMenu(document.getElementsByClassName('menu-box')[0])
-// });
-
 // app.js only imports and code goes here
+
+
 $(document).ready(function () {
   $(window).scroll(function () {
     var scrollTop = $(window).scrollTop();
