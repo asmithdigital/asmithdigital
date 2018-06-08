@@ -1,0 +1,40 @@
+[
+  {
+    "type": "old version",
+    "name": "An old version",
+    "description": "Description for an old version",
+    "link": "http://link.to.old.version",
+    "tags": [
+      "old",
+      "previous"
+    ]
+  },
+  {
+    "type": "page",
+    "name": "Getting started",
+    "description": "Documentation for getting started.",
+    "link": "getting-started.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "home page",
+    "description": "Static demonstration of style guide.",
+    "link": "index.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "JavaScript",
+    "description": "Documentation for JavaScript.",
+    "link": "javascript.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "Style guide",
+    "description": "Style guide documentation.",
+    "link": "styleguide.html",
+    "tags": []
+  }
+]
