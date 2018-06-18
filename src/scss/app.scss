@@ -50,7 +50,9 @@ section.alternate {
   color: #fff;
 }
 .hero {
-  background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
+  //background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
+  //background: url('https://picsum.photos/1405/1053/?random') no-repeat center;
+  background: url('http://p-hold.com/1405/1053') no-repeat center;
   background-size: cover;
   background-color: rgba(0,0,0,0.5);
   background-blend-mode: multiply;
@@ -88,9 +90,10 @@ header.menu-fixed {
   max-height: 128px;
   fill: white;
   transition: 0.7s all;
+  overflow: visible !important;
 }
 .menu-fixed .logo_svg {
-  max-width: 75px;
+  max-width: 145px;
   max-height: 64px;
   fill: black;
   margin-top: 6px;
@@ -120,6 +123,6 @@ header.menu-fixed {
 @media screen and (min-width:1201px) {
   .logo_svg {
     max-width: 180px;
-    max-height: 154px;
+    max-height: 84px;
   }
 }
