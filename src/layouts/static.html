@@ -7,7 +7,9 @@
     <div class="o-off-canvas__content" data-off-canvas-content>
 
       <header id="sp-header" class="o-layout__header menu-fixed-out" role="banner">
+        <div class="row">
         {{> static-global-header}}
+        </div>
       </header>
 
       <main class="o-layout__main">
@@ -15,8 +17,9 @@
         <article class="o-layout__main-content" id="main-content" role="main">
 
           <section class="hero" id="hero" data-magellan-target="hero"></section>
-          <section id="about" data-magellan-target="about">
-            <div class="inner">
+
+          <section id="about" class="row" data-magellan-target="about">
+            <div class="inner column medium-8 medium-centered">
             {{> body}}
             </div>
           </section>
@@ -32,8 +35,8 @@
       </main>
 
       <footer class="o-layout__footer">
-        <section id="contact" data-magellan-target="contact">
-          <div class="inner">
+        <section id="contact" class="row" data-magellan-target="contact">
+          <div class="inner  column medium-8 medium-centered">
           {{> static-global-footer}}
           </div>
         </section>
