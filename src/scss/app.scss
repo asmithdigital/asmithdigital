@@ -11,58 +11,135 @@
 @import 'theme';
 
 *, *:before, *:after {box-sizing: border-box;}
+
 body {
   font-family: 'Raleway', sans-serif;
-  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   line-height: 1;
 }
 
+// Logo
+// ===============
+.logo {
+  float: left;
+
+  .logo_svg {
+    display: block;
+    max-width: 180px;
+    max-height: 84px;
+    fill: white;
+    transition: 0.7s all;
+    overflow: visible !important;
+
+    .menu-fixed & {
+      max-width: 145px;
+      max-height: 64px;
+      fill: black;
+      margin-top: 6px;
+    }
+  }
+}
 
 // Menu
 // ===============
-nav ul {float: right; margin: 0;}
-nav li {
-  display: none; float: left; list-style: none;
+nav {
 
-  @media screen and (min-width:721px) {
-    display: inline;
+  ul {
+    margin: 0;
+
+    @include breakpoint(medium) {
+      float: right;
+    }
+  }
+
+  li {
+    list-style: none;
+
+    @media screen and (min-width:721px) {
+      float: left;
+      display: inline;
+    }
+  }
+
+  a {
+    &,
+    &:visited,
+    .hamburger {
+      color: #fff;
+      display: block;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 28px 25px;
+      transition: 0.3s all;
+
+      @include breakpoint(medium) {
+        display: inline-block;
+      }
+
+      .menu-fixed & {
+        color: #000;
+      }
+    }
+
+    &:hover,
+    &.is-active {
+
+      &,
+      .menu-fixed & {
+        background: #75a6d9;
+        color: #FFF
+      }
+    }
   }
 }
-nav a, nav a:visited, .hamburger {display: inline-block; color: #fff;
-  text-transform: uppercase; text-decoration: none; padding: 28px 25px;
-  transition: 0.3s all;}
-nav a:hover, .menu-fixed a:hover, .menu-fixed a.is-active {background: #75a6d9; color: #FFF}
 
+// Hamburger menu
+// ===============
 .hamburger {
   float: right;
   @media screen and (min-width:721px) {
     display: none;
   }
-}
-.hamburger span {
-  display: inline-block;
-  width: 0;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.hamburger:before {
-  content: '\2630';
-  font-size: 2em;
-}
 
-.menu-fixed nav a, .menu-fixed .hamburger {
-  color: #000;
-}
-.menu-fixed .hamburger {
-  padding: 20px;
-}
+  span {
+    display: inline-block;
+    width: 0;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
-
+  &:before {
+    content: '\2630';
+    font-size: 2em;
+  }
+  .menu-fixed & {
+    padding: 20px;
+  }
+}
 
 // Layout
 // ===============
+header {
+  position: fixed;
+  width: 100%;
+  padding-top: 30px;
+  transition: 0.7s all;
+  z-index: 100;
+
+  &.menu-fixed {
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding-top: 0;
+    background: rgba(255,255,255,0.9);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    z-index: 2;
+  }
+}
+
 .inner {
   padding: 0 3vw;
 
@@ -72,73 +149,27 @@ nav a:hover, .menu-fixed a:hover, .menu-fixed a.is-active {background: #75a6d9; 
   }
 }
 
-section .inner {
-  padding: 50px 3vw;
-  line-height: 1.5;
-}
-section.alternate {
-  background: #000;
-  color: #fff;
-}
+section {
 
+  .inner {
+    padding: 50px 3vw;
+    line-height: 1.5;
+  }
 
-.hero {
-  //background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
-  background: url('https://picsum.photos/1405/1053/?random') no-repeat center;
-  //background: url('https://picsum.photos/1405/1053?image=180') no-repeat center;
-  //background: url('http://p-hold.com/1405/1053') no-repeat center;
-  background-size: cover;
-  background-color: rgba(0,0,0,0.5);
-  background-blend-mode: multiply;
-  min-height: 100vh;
-  width: 100%;
-}
+  &.alternate {
+    background: #000;
+    color: #fff;
+  }
 
-header {
-  position: fixed;
-  width: 100%;
-  padding-top: 30px;
-  transition: 0.7s all;
-  z-index: 100;
+  &.hero {
+    //background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
+    background: url('https://picsum.photos/1405/1053/?random') no-repeat center;
+    //background: url('https://picsum.photos/1405/1053?image=180') no-repeat center;
+    //background: url('http://p-hold.com/1405/1053') no-repeat center;
+    background-size: cover;
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: multiply;
+    min-height: 100vh;
+    width: 100%;
+  }
 }
-
-header.menu-fixed {
-  top: 0;
-  right: 0;
-  width: 100%;
-  padding-top: 0;
-  background: rgba(255,255,255,0.9);
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-  z-index: 2;
-}
-
-
-// Logo
-// ===============
-.logo {
-  float: left;
-}
-.logo_svg {
-  display: block;
-  //max-width: 150px;
-  //max-height: 128px;
-  max-width: 180px;
-  max-height: 84px;
-  fill: white;
-  transition: 0.7s all;
-  overflow: visible !important;
-}
-.menu-fixed .logo_svg {
-  max-width: 145px;
-  max-height: 64px;
-  fill: black;
-  margin-top: 6px;
-}
-.logo_svg #logo_text {
-  opacity: 1;
-  transition: 0.7s opacity;
-}
-.menu-fixed .logo_svg #logo_text {
-  opacity: 0;
-}
-
