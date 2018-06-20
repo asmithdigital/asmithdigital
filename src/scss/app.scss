@@ -17,14 +17,28 @@ body {
   font-weight: 400;
   line-height: 1;
 }
+
+
+// Menu
+// ===============
 nav ul {float: right; margin: 0;}
-nav li {display: none; float: left; list-style: none;}
-nav a, .hamburger {display: inline-block; color: #fff;
+nav li {
+  display: none; float: left; list-style: none;
+
+  @media screen and (min-width:721px) {
+    display: inline;
+  }
+}
+nav a, nav a:visited, .hamburger {display: inline-block; color: #fff;
   text-transform: uppercase; text-decoration: none; padding: 28px 25px;
   transition: 0.3s all;}
-nav a:hover, .menu-fixed a:hover, .menu-fixed a.is-active {background: #f26522; color: #FFF}
+nav a:hover, .menu-fixed a:hover, .menu-fixed a.is-active {background: #75a6d9; color: #FFF}
+
 .hamburger {
   float: right;
+  @media screen and (min-width:721px) {
+    display: none;
+  }
 }
 .hamburger span {
   display: inline-block;
@@ -38,9 +52,26 @@ nav a:hover, .menu-fixed a:hover, .menu-fixed a.is-active {background: #f26522; 
   font-size: 2em;
 }
 
+.menu-fixed nav a, .menu-fixed .hamburger {
+  color: #000;
+}
+.menu-fixed .hamburger {
+  padding: 20px;
+}
+
+
+
+// Layout
+// ===============
 .inner {
   padding: 0 3vw;
+
+  @media screen and (min-width:960px) {
+    width: 800px;
+    margin: 0 auto;
+  }
 }
+
 section .inner {
   padding: 50px 3vw;
   line-height: 1.5;
@@ -49,9 +80,12 @@ section.alternate {
   background: #000;
   color: #fff;
 }
+
+
 .hero {
   //background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
   background: url('https://picsum.photos/1405/1053/?random') no-repeat center;
+  //background: url('https://picsum.photos/1405/1053?image=180') no-repeat center;
   //background: url('http://p-hold.com/1405/1053') no-repeat center;
   background-size: cover;
   background-color: rgba(0,0,0,0.5);
@@ -59,6 +93,7 @@ section.alternate {
   min-height: 100vh;
   width: 100%;
 }
+
 header {
   position: fixed;
   width: 100%;
@@ -66,6 +101,7 @@ header {
   transition: 0.7s all;
   z-index: 100;
 }
+
 header.menu-fixed {
   top: 0;
   right: 0;
@@ -75,12 +111,10 @@ header.menu-fixed {
   border-bottom: 1px solid rgba(0,0,0,0.1);
   z-index: 2;
 }
-.menu-fixed nav a, .menu-fixed .hamburger {
-  color: #000;
-}
-.menu-fixed .hamburger {
-  padding: 20px;
-}
+
+
+// Logo
+// ===============
 .logo {
   float: left;
 }
@@ -108,23 +142,3 @@ header.menu-fixed {
   opacity: 0;
 }
 
-@media screen and (min-width:721px) {
-  .hamburger {
-    display: none;
-  }
-  nav ul li {
-    display: inline;
-  }
-}
-@media screen and (min-width:960px) {
-  .inner {
-    width: 800px;
-    margin: 0 auto;
-  }
-}
-//@media screen and (min-width:1201px) {
-//  .logo_svg {
-//    max-width: 180px;
-//    max-height: 84px;
-//  }
-//}

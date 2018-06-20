@@ -4,8 +4,6 @@
 
   <div class="o-off-canvas__wrapper">
 
-    {{> static-off-canvas}}
-
     <div class="o-off-canvas__content" data-off-canvas-content>
 
       <header id="sp-header" class="o-layout__header menu-fixed-out" role="banner">
@@ -15,18 +13,30 @@
       <main class="o-layout__main">
 
         <article class="o-layout__main-content" id="main-content" role="main">
-          {{> body}}
+
+          <section class="hero" id="hero" data-magellan-target="hero"></section>
+          <section id="about" data-magellan-target="about">
+            <div class="inner">
+            {{> body}}
+            </div>
+          </section>
 
           {{#if portfolio}}
+          <section id="portfolio" data-magellan-target="portfolio">
           {{> static-portfolio}}
+          </section>
           {{/if}}
 
         </article>
 
       </main>
 
-      <footer  class="o-layout__footer">
-        {{> static-global-footer}}
+      <footer class="o-layout__footer">
+        <section id="contact" data-magellan-target="contact">
+          <div class="inner">
+          {{> static-global-footer}}
+          </div>
+        </section>
       </footer>
 
     </div>

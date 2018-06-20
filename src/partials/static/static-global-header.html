@@ -7,12 +7,19 @@
       </text>
     </svg>
   </div>
+
   <nav role='navigation'>
     <a class="hamburger" href="#0" title="Menu" data-toggle="offCanvas"><span>Menu</span></a>
-    <ul data-magellan>
-      <li><a href="#hero" class="menu_item">Home</a></li>
-      <li><a href="#first" class="menu_item">Portfolio</a></li>
-      <li><a href="#second" class="menu_item">About</a></li>
-    </ul>
+    <div class="off-canvas in-canvas-for-medium position-left" id="offCanvas" data-off-canvas>
+      <ul data-magellan>
+        <li><a href="#about" class="menu_item">About</a></li>
+        <li><a href="#portfolio" class="menu_item">Portfolio</a></li>
+        <li><a href="#contact" class="menu_item">Contact</a></li>
+      </ul>
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
   </nav>
 </div>
