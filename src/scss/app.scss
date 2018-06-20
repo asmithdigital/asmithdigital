@@ -86,8 +86,10 @@ header.menu-fixed {
 }
 .logo_svg {
   display: block;
-  max-width: 150px;
-  max-height: 128px;
+  //max-width: 150px;
+  //max-height: 128px;
+  max-width: 180px;
+  max-height: 84px;
   fill: white;
   transition: 0.7s all;
   overflow: visible !important;
@@ -120,9 +122,9 @@ header.menu-fixed {
     margin: 0 auto;
   }
 }
-@media screen and (min-width:1201px) {
-  .logo_svg {
-    max-width: 180px;
-    max-height: 84px;
-  }
-}
+//@media screen and (min-width:1201px) {
+//  .logo_svg {
+//    max-width: 180px;
+//    max-height: 84px;
+//  }
+//}
