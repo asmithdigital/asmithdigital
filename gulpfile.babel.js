@@ -92,7 +92,7 @@ function reload(done) {
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
   gulp.watch(PATHS.assets, {usePolling: true}).on('all', gulp.series('copy'));
-  gulp.watch('src/pages/**/*.md', {usePolling: true}).on('all', gulp.series('pages', TASKS.browser.reload));
+  gulp.watch('src/{pages, media}/**/*.{md,html}', {usePolling: true}).on('all', gulp.series('pages', TASKS.browser.reload));
   gulp.watch('src/{layouts,partials}/**/*', {usePolling: true}).on('all', gulp.series(resetPages, 'pages', TASKS.browser.reload));
   gulp.watch(['src/scss/**/*.scss', 'src/docs/scss/**/*.scss'], {usePolling: true}).on('all',  gulp.series('sass', TASKS.browser.reload));
   gulp.watch('src/js/**/*.js', {usePolling: true}).on('all', gulp.series('javascript', TASKS.browser.reload));
