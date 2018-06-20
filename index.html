@@ -14,7 +14,7 @@
 
   <!--[if gt IE 8]><!-->
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700%7CRoboto:400,500,700%7CRoboto+Condensed%7CLato:400,700" rel="stylesheet" type="text/css">
-  <link href="assets/css/app.css?t=1529459307607" rel="stylesheet">
+  <link href="assets/css/app.css?t=1529467670560" rel="stylesheet">
   <!--<![endif]-->
 
 </head>
@@ -23,25 +23,6 @@
 
   <div class="o-off-canvas__wrapper">
 
-    <!--Demo content for demo offCanvas-->
-    <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
-    
-      <!-- Menu -->
-      <ul class="vertical menu">
-        <li><a href="#">Foundation</a></li>
-        <li><a href="#">Dot</a></li>
-        <li><a href="#">ZURB</a></li>
-        <li><a href="#">Com</a></li>
-        <li><a href="#">Slash</a></li>
-        <li><a href="#">Sites</a></li>
-      </ul>
-    
-      <!-- Close button -->
-      <button class="close-button" aria-label="Close menu" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
-    
-    </div>
     <div class="o-off-canvas__content" data-off-canvas-content>
 
       <header id="sp-header" class="o-layout__header menu-fixed-out" role="banner">
@@ -54,13 +35,20 @@
               </text>
             </svg>
           </div>
+        
           <nav role='navigation'>
             <a class="hamburger" href="#0" title="Menu" data-toggle="offCanvas"><span>Menu</span></a>
-            <ul data-magellan>
-              <li><a href="#hero" class="menu_item">Home</a></li>
-              <li><a href="#first" class="menu_item">Portfolio</a></li>
-              <li><a href="#second" class="menu_item">About</a></li>
-            </ul>
+            <div class="off-canvas in-canvas-for-medium position-left" id="offCanvas" data-off-canvas>
+              <ul data-magellan>
+                <li><a href="#about" class="menu_item">About</a></li>
+                <li><a href="#portfolio" class="menu_item">Portfolio</a></li>
+                <li><a href="#contact" class="menu_item">Contact</a></li>
+              </ul>
+              <button class="close-button" aria-label="Close menu" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        
           </nav>
         </div>
       </header>
@@ -68,25 +56,23 @@
       <main class="o-layout__main">
 
         <article class="o-layout__main-content" id="main-content" role="main">
-          
+
           <section class="hero" id="hero" data-magellan-target="hero"></section>
-          <section  id="first" data-magellan-target="first">
+          <section id="about" data-magellan-target="about">
             <div class="inner">
-              <h1>Demo section</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet culpa quasi repellendus impedit voluptate rem quisquam eaque. Facere fugit iure unde id aperiam. Minus, soluta.</p>
-              <p>Voluptate exercitationem dolore corporis consequuntur distinctio excepturi sint, iusto cupiditate, quibusdam deleniti nulla, sit ab, amet perspiciatis eum. Reiciendis veniam voluptatem in dignissimos. Saepe, quos!</p>
-              <p>Excepturi dignissimos autem alias id! Laboriosam totam deserunt recusandae sequi culpa doloribus? Fuga aperiam numquam, fugit, deserunt excepturi facere rem, enim accusantium ea consequatur provident.</p>
-              <p>Ex eius, corporis earum sit autem deleniti omnis odio error recusandae quae sequi optio eveniet! Rerum dolorum modi culpa reiciendis quo officiis minima, dolore aliquam.</p>
-              <p>Iste dicta similique quo, obcaecati officia ad unde sequi ipsam, sit at delectus natus inventore debitis deleniti. Porro esse id, iure quas labore laboriosam sapiente?</p>
-              <p>Repellat cupiditate eius, dolorum ut esse iusto nulla veritatis inventore, hic blanditiis soluta quas. Nam, numquam aliquid velit sequi minus quidem quis ab consectetur tempora.</p>
-              <p>Aperiam repellat voluptatem perspiciatis fugiat dolor veniam esse rem officiis, totam laudantium sunt quae praesentium, voluptatum harum suscipit sed maxime obcaecati, ab dolores ad. Eaque.</p>
+            
+            <h1 id="demo-section" class="docs-heading">Demo section<a class="docs-heading-icon" href="#demo-section"></a></h1><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet culpa quasi repellendus impedit voluptate rem quisquam eaque. Facere fugit iure unde id aperiam. Minus, soluta.</p>
+            <p>Voluptate exercitationem dolore corporis consequuntur distinctio excepturi sint, iusto cupiditate, quibusdam deleniti nulla, sit ab, amet perspiciatis eum. Reiciendis veniam voluptatem in dignissimos. Saepe, quos!</p>
+            <p>Excepturi dignissimos autem alias id! Laboriosam totam deserunt recusandae sequi culpa doloribus? Fuga aperiam numquam, fugit, deserunt excepturi facere rem, enim accusantium ea consequatur provident.</p>
+            <p>Ex eius, corporis earum sit autem deleniti omnis odio error recusandae quae sequi optio eveniet! Rerum dolorum modi culpa reiciendis quo officiis minima, dolore aliquam.</p>
+            <p>Iste dicta similique quo, obcaecati officia ad unde sequi ipsam, sit at delectus natus inventore debitis deleniti. Porro esse id, iure quas labore laboriosam sapiente?</p>
+            
+            
+            
             </div>
           </section>
-          
-          
-          
-          
 
+          <section id="portfolio" data-magellan-target="portfolio">
           <div class="clearfix">
             <div id="js-filters-juicy-projects" class="cbp-l-filters-button cbp-l-filters-alignCenter">
               <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
@@ -105,7 +91,7 @@
           <div id="js-grid-lightbox-gallery" class="cbp">
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project1.html" class="cbp-caption cbp-singlePageInline" data-title="World Clock<br>by Paul Flavius Nechita" rel="nofollow">
+              <a href="assets/ajax/seek-light.html" class="cbp-caption cbp-singlePageInline" data-title="World Clock<br>by Paul Flavius Nechita" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/seek-light-thumb.jpg" alt="">
                 </div>
@@ -121,7 +107,7 @@
             </div>
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project1.html" class="cbp-caption cbp-singlePageInline" data-title="World Clock<br>by Paul Flavius Nechita" rel="nofollow">
+              <a href="assets/ajax/hand-property.html" class="cbp-caption cbp-singlePageInline" data-title="World Clock<br>by Paul Flavius Nechita" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/handy-thumb.jpg" alt="">
                 </div>
@@ -137,7 +123,7 @@
             </div>
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project2.html" class="cbp-caption cbp-singlePageInline" data-title="Bolt UI<br>by Tiberiu Neamu" rel="nofollow">
+              <a href="assets/ajax/martyn-parry.html" class="cbp-caption cbp-singlePageInline" data-title="Bolt UI<br>by Tiberiu Neamu" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/martyn-thumb.jpg" alt="">
                 </div>
@@ -153,7 +139,7 @@
             </div>
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project3.html" class="cbp-caption cbp-singlePageInline" data-title="WhereTO App<br>by Tiberiu Neamu" rel="nofollow">
+              <a href="assets/ajax/syndeo.html" class="cbp-caption cbp-singlePageInline" data-title="WhereTO App<br>by Tiberiu Neamu" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/syndeo-thumb.jpg" alt="">
                 </div>
@@ -169,7 +155,7 @@
             </div>
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project4.html" class="cbp-caption cbp-singlePageInline" data-title="iDevices<br>by Tiberiu Neamu" rel="nofollow">
+              <a href="assets/ajax/jims-plumbing.html" class="cbp-caption cbp-singlePageInline" data-title="iDevices<br>by Tiberiu Neamu" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/jims-thumb.jpg" alt="">
                 </div>
@@ -185,7 +171,7 @@
             </div>
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project5.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
+              <a href="assets/ajax/mastracorp.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/mastra-thumb.jpg" alt="">
                 </div>
@@ -201,7 +187,7 @@
             </div>
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project5.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
+              <a href="assets/ajax/yvonne.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/yvonne-thumb.jpg" alt="">
                 </div>
@@ -217,7 +203,7 @@
             </div>
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project5.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
+              <a href="assets/ajax/bass-podiatry.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/bass-thumb.jpg" alt="">
                 </div>
@@ -233,7 +219,7 @@
             </div>
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project5.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
+              <a href="assets/ajax/bcs.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/bcs-thumb.jpg" alt="">
                 </div>
@@ -249,7 +235,7 @@
             </div>
           
             <div class="cbp-item  web-design">
-              <a href="assets/ajax/project5.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
+              <a href="assets/ajax/seg.html" class="cbp-caption cbp-singlePageInline" data-title="Seemple* Music<br>by Tiberiu Neamu" rel="nofollow">
                 <div class="cbp-caption-defaultWrap">
                   <img src="assets/img/folio/seg-thumb.jpg" alt="">
                 </div>
@@ -266,25 +252,29 @@
           
           </div>
           
-          <div id="js-loadMore-lightbox-gallery" class="cbp-l-loadMore-button">
-            <a href="assets/ajax/loadMore.html" class="cbp-l-loadMore-link" rel="nofollow">
-              <span class="cbp-l-loadMore-defaultText">LOAD MORE (<span class="cbp-l-loadMore-loadItems">4</span>)</span>
-              <span class="cbp-l-loadMore-loadingText">LOADING...</span>
-              <span class="cbp-l-loadMore-noMoreLoading">NO MORE WORKS</span>
-            </a>
-          </div>
+          <!--<div id="js-loadMore-lightbox-gallery" class="cbp-l-loadMore-button">-->
+            <!--<a href="assets/ajax/loadMore.html" class="cbp-l-loadMore-link" rel="nofollow">-->
+              <!--<span class="cbp-l-loadMore-defaultText">LOAD MORE (<span class="cbp-l-loadMore-loadItems">4</span>)</span>-->
+              <!--<span class="cbp-l-loadMore-loadingText">LOADING...</span>-->
+              <!--<span class="cbp-l-loadMore-noMoreLoading">NO MORE WORKS</span>-->
+            <!--</a>-->
+          <!--</div>-->          </section>
+
         </article>
 
       </main>
 
-      <footer  class="o-layout__footer">
-        <p>footer</p>
+      <footer class="o-layout__footer">
+        <section id="contact" data-magellan-target="contact">
+          <div class="inner">
+          <a href='ma&#105;lt&#111;&#58;i&#110;%66&#111;&#37;2E%61sm%69t&#104;digi&#116;al&#37;&#52;0g%6Dail&#46;com'>info&#46;a&#115;m&#105;&#116;hd&#105;gital&#64;gm&#97;i&#108;&#46;&#99;om</a>          </div>
+        </section>
       </footer>
 
     </div>
   </div>
 
-  <script src="assets/js/app.jquery.js?t=1529459307607"></script>
+  <script src="assets/js/app.jquery.js?t=1529467670560"></script>
 
   </body>
 </html>
