@@ -12543,7 +12543,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }return !1;
   }function v(e, t, n, o, i) {
     var a = e.charAt(0).toUpperCase() + e.slice(1),
-        s = (e + " " + k.join(a + " ") + a).split(" ");return r(t, "string") || r(t, "undefined") ? h(s, t, o, i) : (s = (e + " " + $.join(a + " ") + a).split(" "), y(s, t, n));
+        s = (e + " " + L.join(a + " ") + a).split(" ");return r(t, "string") || r(t, "undefined") ? h(s, t, o, i) : (s = (e + " " + D.join(a + " ") + a).split(" "), y(s, t, n));
   }function A(e, t, r) {
     return v(e, n, n, t, r);
   }var S = [],
@@ -12677,19 +12677,25 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         t = !1;try {
       t = !!e.canPlayType, t && (t = new Boolean(t), t.ogg = e.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ""), t.mp3 = e.canPlayType('audio/mpeg; codecs="mp3"').replace(/^no$/, ""), t.opus = e.canPlayType('audio/ogg; codecs="opus"') || e.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, ""), t.wav = e.canPlayType('audio/wav; codecs="1"').replace(/^no$/, ""), t.m4a = (e.canPlayType("audio/x-m4a;") || e.canPlayType("audio/aac;")).replace(/^no$/, ""));
     } catch (n) {}return t;
-  });var P = C.testStyles = c;Modernizr.addTest("checked", function () {
-    return P("#modernizr {position:absolute} #modernizr input {margin-left:10px} #modernizr :checked {margin-left:20px;display:block}", function (e) {
+  });var P = l("input"),
+      N = "autocomplete autofocus list placeholder max min multiple pattern required step".split(" "),
+      z = {};Modernizr.input = function (t) {
+    for (var n = 0, r = t.length; r > n; n++) {
+      z[t[n]] = !!(t[n] in P);
+    }return z.list && (z.list = !(!l("datalist") || !e.HTMLDataListElement)), z;
+  }(N);var j = C.testStyles = c;Modernizr.addTest("checked", function () {
+    return j("#modernizr {position:absolute} #modernizr input {margin-left:10px} #modernizr :checked {margin-left:20px;display:block}", function (e) {
       var t = l("input");return t.setAttribute("type", "checkbox"), t.setAttribute("checked", "checked"), e.appendChild(t), 20 === t.offsetLeft;
     });
-  });var N = "CSS" in e && "supports" in e.CSS,
-      z = "supportsCSS" in e;Modernizr.addTest("supports", N || z), Modernizr.addTest("target", function () {
+  });var k = "CSS" in e && "supports" in e.CSS,
+      $ = "supportsCSS" in e;Modernizr.addTest("supports", k || $), Modernizr.addTest("target", function () {
     var t = e.document;if (!("querySelectorAll" in t)) return !1;try {
       return t.querySelectorAll(":target"), !0;
     } catch (n) {
       return !1;
     }
-  }), Modernizr.addTest("contains", r(String.prototype.contains, "function")), Modernizr.addTest("svg", !!t.createElementNS && !!t.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect);var j = "Moz O ms Webkit",
-      k = C._config.usePrefixes ? j.split(" ") : [];C._cssomPrefixes = k;var $ = C._config.usePrefixes ? j.toLowerCase().split(" ") : [];C._domPrefixes = $, C.testAllProps = v, C.testAllProps = A, Modernizr.addTest("ellipsis", A("textOverflow", "ellipsis")), Modernizr.addTest("ruby", function () {
+  }), Modernizr.addTest("contains", r(String.prototype.contains, "function")), Modernizr.addTest("svg", !!t.createElementNS && !!t.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect);var B = "Moz O ms Webkit",
+      L = C._config.usePrefixes ? B.split(" ") : [];C._cssomPrefixes = L;var D = C._config.usePrefixes ? B.toLowerCase().split(" ") : [];C._domPrefixes = D, C.testAllProps = v, C.testAllProps = A, Modernizr.addTest("ellipsis", A("textOverflow", "ellipsis")), Modernizr.addTest("ruby", function () {
     function n(n, r) {
       var o;return e.getComputedStyle ? o = t.defaultView.getComputedStyle(n, null).getPropertyValue(r) : n.currentStyle && (o = n.currentStyle[r]), o;
     }function r() {
@@ -12699,13 +12705,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         a = l("rp"),
         s = "display",
         u = "fontSize";return o.appendChild(a), o.appendChild(i), T.appendChild(o), "none" == n(a, s) || "ruby" == n(o, s) && "ruby-text" == n(i, s) || "6pt" == n(a, u) && "6pt" == n(i, u) ? (r(), !0) : (r(), !1);
-  });var B = l("input"),
-      L = "autocomplete autofocus list placeholder max min multiple pattern required step".split(" "),
-      D = {};Modernizr.input = function (t) {
-    for (var n = 0, r = t.length; r > n; n++) {
-      D[t[n]] = !!(t[n] in B);
-    }return D.list && (D.list = !(!l("datalist") || !e.HTMLDataListElement)), D;
-  }(L), Modernizr.addTest("template", "content" in l("template")), Modernizr.addAsyncTest(function () {
+  }), Modernizr.addTest("template", "content" in l("template")), Modernizr.addAsyncTest(function () {
     var e,
         t,
         n,
