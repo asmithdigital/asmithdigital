@@ -6,13 +6,6 @@ static: true
 portfolio: true
 ---
 
-# Demo section
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet culpa quasi repellendus impedit voluptate rem quisquam eaque. Facere fugit iure unde id aperiam. Minus, soluta.
+# About me
 
-Voluptate exercitationem dolore corporis consequuntur distinctio excepturi sint, iusto cupiditate, quibusdam deleniti nulla, sit ab, amet perspiciatis eum. Reiciendis veniam voluptatem in dignissimos. Saepe, quos!
-
-Excepturi dignissimos autem alias id! Laboriosam totam deserunt recusandae sequi culpa doloribus? Fuga aperiam numquam, fugit, deserunt excepturi facere rem, enim accusantium ea consequatur provident.
-
-Ex eius, corporis earum sit autem deleniti omnis odio error recusandae quae sequi optio eveniet! Rerum dolorum modi culpa reiciendis quo officiis minima, dolore aliquam.
-
-Iste dicta similique quo, obcaecati officia ad unde sequi ipsam, sit at delectus natus inventore debitis deleniti. Porro esse id, iure quas labore laboriosam sapiente?
+I am a front end developer and digital design specialist. I work as in-house front end developer at organisations such as <a href="//adelaide.edu.au">The University of Adelaide</a> and <a href="//privatemedia.com.au">Private Media</a>. I have also worked as a freelance web developer and have worked on many projects including the ones seen below.
