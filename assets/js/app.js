@@ -12448,14 +12448,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*! modernizr 3.6.0 (Custom Build) | MIT *
- * https://modernizr.com/download/?-audio-checked-contains-ellipsis-input-picture-ruby-sizes-srcset-supports-svg-target-template-addtest-fnbind-printshiv-setclasses-testprop !*/
+ * https://modernizr.com/download/?-audio-checked-contains-ellipsis-hidden-history-input-opacity-picture-ruby-sizes-srcset-supports-svg-target-template-video-addtest-fnbind-printshiv-setclasses-testprop !*/
 !function (e, t, n) {
   function r(e, t) {
     return (typeof e === "undefined" ? "undefined" : _typeof(e)) === t;
   }function o() {
-    var e, t, n, o, i, a, s;for (var l in S) {
-      if (S.hasOwnProperty(l)) {
-        if (e = [], t = S[l], t.name && (e.push(t.name.toLowerCase()), t.options && t.options.aliases && t.options.aliases.length)) for (n = 0; n < t.options.aliases.length; n++) {
+    var e, t, n, o, i, a, s;for (var l in T) {
+      if (T.hasOwnProperty(l)) {
+        if (e = [], t = T[l], t.name && (e.push(t.name.toLowerCase()), t.options && t.options.aliases && t.options.aliases.length)) for (n = 0; n < t.options.aliases.length; n++) {
           e.push(t.options.aliases[n].toLowerCase());
         }for (o = r(t.fn, "function") ? t.fn() : t.fn, i = 0; i < e.length; i++) {
           a = e[i], s = a.split("."), 1 === s.length ? Modernizr[s[0]] = o : (!Modernizr[s[0]] || Modernizr[s[0]] instanceof Boolean || (Modernizr[s[0]] = new Boolean(Modernizr[s[0]])), Modernizr[s[0]][s[1]] = o), b.push((o ? "" : "no-") + s.join("-"));
@@ -12463,10 +12463,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }
     }
   }function i(e) {
-    var t = T.className,
+    var t = C.className,
         n = Modernizr._config.classPrefix || "";if (w && (t = t.baseVal), Modernizr._config.enableJSClass) {
       var r = new RegExp("(^|\\s)" + n + "no-js(\\s|$)");t = t.replace(r, "$1" + n + "js$2");
-    }Modernizr._config.enableClasses && (t += " " + n + e.join(" " + n), w ? T.className.baseVal = t : T.className = t);
+    }Modernizr._config.enableClasses && (t += " " + n + e.join(" " + n), w ? C.className.baseVal = t : C.className = t);
   }function a(e, t) {
     if ("object" == (typeof e === "undefined" ? "undefined" : _typeof(e))) for (var n in e) {
       E(e, n) && a(n, e[n]);
@@ -12478,18 +12478,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     return !!~("" + e).indexOf(t);
   }function l() {
     return "function" != typeof t.createElement ? t.createElement(arguments[0]) : w ? t.createElementNS.call(t, "http://www.w3.org/2000/svg", arguments[0]) : t.createElement.apply(t, arguments);
-  }function u() {
+  }function c() {
     var e = t.body;return e || (e = l(w ? "svg" : "body"), e.fake = !0), e;
-  }function c(e, n, r, o) {
+  }function u(e, n, r, o) {
     var i,
         a,
         s,
-        c,
+        u,
         d = "modernizr",
         f = l("div"),
-        p = u();if (parseInt(r, 10)) for (; r--;) {
+        p = c();if (parseInt(r, 10)) for (; r--;) {
       s = l("div"), s.id = o ? o[r] : d + (r + 1), f.appendChild(s);
-    }return i = l("style"), i.type = "text/css", i.id = "s" + d, (p.fake ? p : f).appendChild(i), p.appendChild(f), i.styleSheet ? i.styleSheet.cssText = e : i.appendChild(t.createTextNode(e)), f.id = d, p.fake && (p.style.background = "", p.style.overflow = "hidden", c = T.style.overflow, T.style.overflow = "hidden", T.appendChild(p)), a = n(f, e), p.fake ? (p.parentNode.removeChild(p), T.style.overflow = c, T.offsetHeight) : f.parentNode.removeChild(f), !!a;
+    }return i = l("style"), i.type = "text/css", i.id = "s" + d, (p.fake ? p : f).appendChild(i), p.appendChild(f), i.styleSheet ? i.styleSheet.cssText = e : i.appendChild(t.createTextNode(e)), f.id = d, p.fake && (p.style.background = "", p.style.overflow = "hidden", u = C.style.overflow, C.style.overflow = "hidden", C.appendChild(p)), a = n(f, e), p.fake ? (p.parentNode.removeChild(p), C.style.overflow = u, C.offsetHeight) : f.parentNode.removeChild(f), !!a;
   }function d(e) {
     return e.replace(/([A-Z])/g, function (e, t) {
       return "-" + t.toLowerCase();
@@ -12508,7 +12508,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }if ("CSSSupportsRule" in e) {
       for (var i = []; o--;) {
         i.push("(" + d(t[o]) + ":" + r + ")");
-      }return i = i.join(" or "), c("@supports (" + i + ") { #modernizr { position: absolute; } }", function (e) {
+      }return i = i.join(" or "), u("@supports (" + i + ") { #modernizr { position: absolute; } }", function (e) {
         return "absolute" == f(e, null, "position");
       });
     }return n;
@@ -12518,55 +12518,55 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }).replace(/^-/, "");
   }function h(e, t, o, i) {
     function a() {
-      c && (delete _.style, delete _.modElem);
+      u && (delete P.style, delete P.modElem);
     }if (i = r(i, "undefined") ? !1 : i, !r(o, "undefined")) {
-      var u = p(e, o);if (!r(u, "undefined")) return u;
-    }for (var c, d, f, h, g, y = ["modernizr", "tspan", "samp"]; !_.style && y.length;) {
-      c = !0, _.modElem = l(y.shift()), _.style = _.modElem.style;
+      var c = p(e, o);if (!r(c, "undefined")) return c;
+    }for (var u, d, f, h, y, v = ["modernizr", "tspan", "samp"]; !P.style && v.length;) {
+      u = !0, P.modElem = l(v.shift()), P.style = P.modElem.style;
     }for (f = e.length, d = 0; f > d; d++) {
-      if (h = e[d], g = _.style[h], s(h, "-") && (h = m(h)), _.style[h] !== n) {
+      if (h = e[d], y = P.style[h], s(h, "-") && (h = m(h)), P.style[h] !== n) {
         if (i || r(o, "undefined")) return a(), "pfx" == t ? h : !0;try {
-          _.style[h] = o;
-        } catch (v) {}if (_.style[h] != g) return a(), "pfx" == t ? h : !0;
+          P.style[h] = o;
+        } catch (g) {}if (P.style[h] != y) return a(), "pfx" == t ? h : !0;
       }
     }return a(), !1;
-  }function g(e, t) {
+  }function y(e, t) {
     return function () {
       return e.apply(t, arguments);
     };
-  }function y(e, t, n) {
+  }function v(e, t, n) {
     var o;for (var i in e) {
-      if (e[i] in t) return n === !1 ? e[i] : (o = t[e[i]], r(o, "function") ? g(o, n || t) : o);
+      if (e[i] in t) return n === !1 ? e[i] : (o = t[e[i]], r(o, "function") ? y(o, n || t) : o);
     }return !1;
-  }function v(e, t, n, o, i) {
+  }function g(e, t, n, o, i) {
     var a = e.charAt(0).toUpperCase() + e.slice(1),
-        s = (e + " " + L.join(a + " ") + a).split(" ");return r(t, "string") || r(t, "undefined") ? h(s, t, o, i) : (s = (e + " " + D.join(a + " ") + a).split(" "), y(s, t, n));
+        s = (e + " " + L.join(a + " ") + a).split(" ");return r(t, "string") || r(t, "undefined") ? h(s, t, o, i) : (s = (e + " " + D.join(a + " ") + a).split(" "), v(s, t, n));
   }function A(e, t, r) {
-    return v(e, n, n, t, r);
-  }var S = [],
-      C = { _version: "3.6.0", _config: { classPrefix: "", enableClasses: !0, enableJSClass: !0, usePrefixes: !0 }, _q: [], on: function on(e, t) {
+    return g(e, n, n, t, r);
+  }var T = [],
+      S = { _version: "3.6.0", _config: { classPrefix: "", enableClasses: !0, enableJSClass: !0, usePrefixes: !0 }, _q: [], on: function on(e, t) {
       var n = this;setTimeout(function () {
         t(n[e]);
       }, 0);
     }, addTest: function addTest(e, t, n) {
-      S.push({ name: e, fn: t, options: n });
+      T.push({ name: e, fn: t, options: n });
     }, addAsyncTest: function addAsyncTest(e) {
-      S.push({ name: null, fn: e });
+      T.push({ name: null, fn: e });
     } },
-      Modernizr = function Modernizr() {};Modernizr.prototype = C, Modernizr = new Modernizr();var E,
+      Modernizr = function Modernizr() {};Modernizr.prototype = S, Modernizr = new Modernizr();var E,
       b = [],
-      T = t.documentElement,
-      w = "svg" === T.nodeName.toLowerCase();!function () {
+      C = t.documentElement,
+      w = "svg" === C.nodeName.toLowerCase();!function () {
     var e = {}.hasOwnProperty;E = r(e, "undefined") || r(e.call, "undefined") ? function (e, t) {
       return t in e && r(e.constructor.prototype[t], "undefined");
     } : function (t, n) {
       return e.call(t, n);
     };
-  }(), C._l = {}, C.on = function (e, t) {
+  }(), S._l = {}, S.on = function (e, t) {
     this._l[e] || (this._l[e] = []), this._l[e].push(t), Modernizr.hasOwnProperty(e) && setTimeout(function () {
       Modernizr._trigger(e, Modernizr[e]);
     }, 0);
-  }, C._trigger = function (e, t) {
+  }, S._trigger = function (e, t) {
     if (this._l[e]) {
       var n = this._l[e];setTimeout(function () {
         var e, r;for (e = 0; e < n.length; e++) {
@@ -12575,32 +12575,32 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }, 0), delete this._l[e];
     }
   }, Modernizr._q.push(function () {
-    C.addTest = a;
+    S.addTest = a;
   });w || !function (e, t) {
     function n(e, t) {
       var n = e.createElement("p"),
           r = e.getElementsByTagName("head")[0] || e.documentElement;return n.innerHTML = "x<style>" + t + "</style>", r.insertBefore(n.lastChild, r.firstChild);
     }function r() {
-      var e = T.elements;return "string" == typeof e ? e.split(" ") : e;
+      var e = C.elements;return "string" == typeof e ? e.split(" ") : e;
     }function o(e, t) {
-      var n = T.elements;"string" != typeof n && (n = n.join(" ")), "string" != typeof e && (e = e.join(" ")), T.elements = n + " " + e, u(t);
+      var n = C.elements;"string" != typeof n && (n = n.join(" ")), "string" != typeof e && (e = e.join(" ")), C.elements = n + " " + e, c(t);
     }function i(e) {
-      var t = b[e[C]];return t || (t = {}, E++, e[C] = E, b[E] = t), t;
+      var t = b[e[S]];return t || (t = {}, E++, e[S] = E, b[E] = t), t;
     }function a(e, n, r) {
-      if (n || (n = t), g) return n.createElement(e);r || (r = i(n));var o;return o = r.cache[e] ? r.cache[e].cloneNode() : S.test(e) ? (r.cache[e] = r.createElem(e)).cloneNode() : r.createElem(e), !o.canHaveChildren || A.test(e) || o.tagUrn ? o : r.frag.appendChild(o);
+      if (n || (n = t), y) return n.createElement(e);r || (r = i(n));var o;return o = r.cache[e] ? r.cache[e].cloneNode() : T.test(e) ? (r.cache[e] = r.createElem(e)).cloneNode() : r.createElem(e), !o.canHaveChildren || A.test(e) || o.tagUrn ? o : r.frag.appendChild(o);
     }function s(e, n) {
-      if (e || (e = t), g) return e.createDocumentFragment();n = n || i(e);for (var o = n.frag.cloneNode(), a = 0, s = r(), l = s.length; l > a; a++) {
+      if (e || (e = t), y) return e.createDocumentFragment();n = n || i(e);for (var o = n.frag.cloneNode(), a = 0, s = r(), l = s.length; l > a; a++) {
         o.createElement(s[a]);
       }return o;
     }function l(e, t) {
       t.cache || (t.cache = {}, t.createElem = e.createElement, t.createFrag = e.createDocumentFragment, t.frag = t.createFrag()), e.createElement = function (n) {
-        return T.shivMethods ? a(n, e, t) : t.createElem(n);
+        return C.shivMethods ? a(n, e, t) : t.createElem(n);
       }, e.createDocumentFragment = Function("h,f", "return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&(" + r().join().replace(/[\w\-:]+/g, function (e) {
         return t.createElem(e), t.frag.createElement(e), 'c("' + e + '")';
-      }) + ");return n}")(T, t.frag);
-    }function u(e) {
-      e || (e = t);var r = i(e);return !T.shivCSS || h || r.hasCSS || (r.hasCSS = !!n(e, "article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")), g || l(e, r), e;
+      }) + ");return n}")(C, t.frag);
     }function c(e) {
+      e || (e = t);var r = i(e);return !C.shivCSS || h || r.hasCSS || (r.hasCSS = !!n(e, "article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")), y || l(e, r), e;
+    }function u(e) {
       for (var t, n = e.getElementsByTagName("*"), o = n.length, i = RegExp("^(?:" + r().join("|") + ")$", "i"), a = []; o--;) {
         t = n[o], i.test(t.nodeName) && a.push(t.applyElement(d(t)));
       }return a;
@@ -12623,8 +12623,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           o,
           a = i(e),
           s = e.namespaces,
-          l = e.parentWindow;return !_ || e.printShived ? e : ("undefined" == typeof s[x] && s.add(x), l.attachEvent("onbeforeprint", function () {
-        t();for (var i, a, s, l = e.styleSheets, u = [], d = l.length, p = Array(d); d--;) {
+          l = e.parentWindow;return !P || e.printShived ? e : ("undefined" == typeof s[x] && s.add(x), l.attachEvent("onbeforeprint", function () {
+        t();for (var i, a, s, l = e.styleSheets, c = [], d = l.length, p = Array(d); d--;) {
           p[d] = l[d];
         }for (; s = p.pop();) {
           if (!s.disabled && w.test(s.media)) {
@@ -12635,74 +12635,71 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             }for (d = 0; a > d; d++) {
               p.push(i[d]);
             }try {
-              u.push(s.cssText);
+              c.push(s.cssText);
             } catch (m) {}
           }
-        }u = f(u.reverse().join("")), o = c(e), r = n(e, u);
+        }c = f(c.reverse().join("")), o = u(e), r = n(e, c);
       }), l.attachEvent("onafterprint", function () {
         p(o), clearTimeout(a._removeSheetTimer), a._removeSheetTimer = setTimeout(t, 500);
       }), e.printShived = !0, e);
     }var h,
-        g,
-        y = "3.7.3",
-        v = e.html5 || {},
+        y,
+        v = "3.7.3",
+        g = e.html5 || {},
         A = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,
-        S = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,
-        C = "_html5shiv",
+        T = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,
+        S = "_html5shiv",
         E = 0,
         b = {};!function () {
       try {
-        var e = t.createElement("a");e.innerHTML = "<xyz></xyz>", h = "hidden" in e, g = 1 == e.childNodes.length || function () {
+        var e = t.createElement("a");e.innerHTML = "<xyz></xyz>", h = "hidden" in e, y = 1 == e.childNodes.length || function () {
           t.createElement("a");var e = t.createDocumentFragment();return "undefined" == typeof e.cloneNode || "undefined" == typeof e.createDocumentFragment || "undefined" == typeof e.createElement;
         }();
       } catch (n) {
-        h = !0, g = !0;
+        h = !0, y = !0;
       }
-    }();var T = { elements: v.elements || "abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video", version: y, shivCSS: v.shivCSS !== !1, supportsUnknownElements: g, shivMethods: v.shivMethods !== !1, type: "default", shivDocument: u, createElement: a, createDocumentFragment: s, addElements: o };e.html5 = T, u(t);var w = /^$|\b(?:all|print)\b/,
+    }();var C = { elements: g.elements || "abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video", version: v, shivCSS: g.shivCSS !== !1, supportsUnknownElements: y, shivMethods: g.shivMethods !== !1, type: "default", shivDocument: c, createElement: a, createDocumentFragment: s, addElements: o };e.html5 = C, c(t);var w = /^$|\b(?:all|print)\b/,
         x = "html5shiv",
-        _ = !g && function () {
+        P = !y && function () {
       var n = t.documentElement;return !("undefined" == typeof t.namespaces || "undefined" == typeof t.parentWindow || "undefined" == typeof n.applyElement || "undefined" == typeof n.removeNode || "undefined" == typeof e.attachEvent);
-    }();T.type += " print", T.shivPrint = m, m(t), "object" == ( false ? "undefined" : _typeof(module)) && module.exports && (module.exports = T);
+    }();C.type += " print", C.shivPrint = m, m(t), "object" == ( false ? "undefined" : _typeof(module)) && module.exports && (module.exports = C);
   }("undefined" != typeof e ? e : this, t);var x = { elem: l("modernizr") };Modernizr._q.push(function () {
     delete x.elem;
-  });var _ = { style: x.elem.style };Modernizr._q.unshift(function () {
-    delete _.style;
-  });C.testProp = function (e, t, r) {
+  });var P = { style: x.elem.style };Modernizr._q.unshift(function () {
+    delete P.style;
+  });S.testProp = function (e, t, r) {
     return h([e], n, t, r);
   };Modernizr.addTest("picture", "HTMLPictureElement" in e), Modernizr.addTest("srcset", "srcset" in l("img")), Modernizr.addTest("audio", function () {
     var e = l("audio"),
         t = !1;try {
       t = !!e.canPlayType, t && (t = new Boolean(t), t.ogg = e.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, ""), t.mp3 = e.canPlayType('audio/mpeg; codecs="mp3"').replace(/^no$/, ""), t.opus = e.canPlayType('audio/ogg; codecs="opus"') || e.canPlayType('audio/webm; codecs="opus"').replace(/^no$/, ""), t.wav = e.canPlayType('audio/wav; codecs="1"').replace(/^no$/, ""), t.m4a = (e.canPlayType("audio/x-m4a;") || e.canPlayType("audio/aac;")).replace(/^no$/, ""));
     } catch (n) {}return t;
-  });var P = l("input"),
+  });var _ = l("input"),
       N = "autocomplete autofocus list placeholder max min multiple pattern required step".split(" "),
       z = {};Modernizr.input = function (t) {
     for (var n = 0, r = t.length; r > n; n++) {
-      z[t[n]] = !!(t[n] in P);
+      z[t[n]] = !!(t[n] in _);
     }return z.list && (z.list = !(!l("datalist") || !e.HTMLDataListElement)), z;
-  }(N);var j = C.testStyles = c;Modernizr.addTest("checked", function () {
-    return j("#modernizr {position:absolute} #modernizr input {margin-left:10px} #modernizr :checked {margin-left:20px;display:block}", function (e) {
+  }(N), Modernizr.addTest("video", function () {
+    var e = l("video"),
+        t = !1;try {
+      t = !!e.canPlayType, t && (t = new Boolean(t), t.ogg = e.canPlayType('video/ogg; codecs="theora"').replace(/^no$/, ""), t.h264 = e.canPlayType('video/mp4; codecs="avc1.42E01E"').replace(/^no$/, ""), t.webm = e.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/, ""), t.vp9 = e.canPlayType('video/webm; codecs="vp9"').replace(/^no$/, ""), t.hls = e.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/, ""));
+    } catch (n) {}return t;
+  });var $ = S.testStyles = u;Modernizr.addTest("checked", function () {
+    return $("#modernizr {position:absolute} #modernizr input {margin-left:10px} #modernizr :checked {margin-left:20px;display:block}", function (e) {
       var t = l("input");return t.setAttribute("type", "checkbox"), t.setAttribute("checked", "checked"), e.appendChild(t), 20 === t.offsetLeft;
     });
+  });var j = S._config.usePrefixes ? " -webkit- -moz- -o- -ms- ".split(" ") : ["", ""];S._prefixes = j, Modernizr.addTest("opacity", function () {
+    var e = l("a").style;return e.cssText = j.join("opacity:.55;"), /^0.55$/.test(e.opacity);
   });var k = "CSS" in e && "supports" in e.CSS,
-      $ = "supportsCSS" in e;Modernizr.addTest("supports", k || $), Modernizr.addTest("target", function () {
+      O = "supportsCSS" in e;Modernizr.addTest("supports", k || O), Modernizr.addTest("target", function () {
     var t = e.document;if (!("querySelectorAll" in t)) return !1;try {
       return t.querySelectorAll(":target"), !0;
     } catch (n) {
       return !1;
     }
-  }), Modernizr.addTest("contains", r(String.prototype.contains, "function")), Modernizr.addTest("svg", !!t.createElementNS && !!t.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect);var B = "Moz O ms Webkit",
-      L = C._config.usePrefixes ? B.split(" ") : [];C._cssomPrefixes = L;var D = C._config.usePrefixes ? B.toLowerCase().split(" ") : [];C._domPrefixes = D, C.testAllProps = v, C.testAllProps = A, Modernizr.addTest("ellipsis", A("textOverflow", "ellipsis")), Modernizr.addTest("ruby", function () {
-    function n(n, r) {
-      var o;return e.getComputedStyle ? o = t.defaultView.getComputedStyle(n, null).getPropertyValue(r) : n.currentStyle && (o = n.currentStyle[r]), o;
-    }function r() {
-      T.removeChild(o), o = null, i = null, a = null;
-    }var o = l("ruby"),
-        i = l("rt"),
-        a = l("rp"),
-        s = "display",
-        u = "fontSize";return o.appendChild(a), o.appendChild(i), T.appendChild(o), "none" == n(a, s) || "ruby" == n(o, s) && "ruby-text" == n(i, s) || "6pt" == n(a, u) && "6pt" == n(i, u) ? (r(), !0) : (r(), !1);
-  }), Modernizr.addTest("template", "content" in l("template")), Modernizr.addAsyncTest(function () {
+  }), Modernizr.addTest("hidden", "hidden" in l("a")), Modernizr.addTest("contains", r(String.prototype.contains, "function")), Modernizr.addTest("svg", !!t.createElementNS && !!t.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect);var B = "Moz O ms Webkit",
+      L = S._config.usePrefixes ? B.split(" ") : [];S._cssomPrefixes = L;var D = S._config.usePrefixes ? B.toLowerCase().split(" ") : [];S._domPrefixes = D, S.testAllProps = g, S.testAllProps = A, Modernizr.addTest("ellipsis", A("textOverflow", "ellipsis")), Modernizr.addTest("template", "content" in l("template")), Modernizr.addAsyncTest(function () {
     var e,
         t,
         n,
@@ -12710,7 +12707,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         o = "sizes" in r;!o && "srcset" in r ? (t = "data:image/gif;base64,R0lGODlhAgABAPAAAP///wAAACH5BAAAAAAALAAAAAACAAEAAAICBAoAOw==", e = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==", n = function n() {
       a("sizes", 2 == r.width);
     }, r.onload = n, r.onerror = n, r.setAttribute("sizes", "9px"), r.srcset = e + " 1w," + t + " 8w", r.src = e) : a("sizes", o);
-  }), o(), i(b), delete C.addTest, delete C.addAsyncTest;for (var F = 0; F < Modernizr._q.length; F++) {
+  }), Modernizr.addTest("history", function () {
+    var t = navigator.userAgent;return -1 === t.indexOf("Android 2.") && -1 === t.indexOf("Android 4.0") || -1 === t.indexOf("Mobile Safari") || -1 !== t.indexOf("Chrome") || -1 !== t.indexOf("Windows Phone") || "file:" === location.protocol ? e.history && "pushState" in e.history : !1;
+  }), Modernizr.addTest("ruby", function () {
+    function n(n, r) {
+      var o;return e.getComputedStyle ? o = t.defaultView.getComputedStyle(n, null).getPropertyValue(r) : n.currentStyle && (o = n.currentStyle[r]), o;
+    }function r() {
+      C.removeChild(o), o = null, i = null, a = null;
+    }var o = l("ruby"),
+        i = l("rt"),
+        a = l("rp"),
+        s = "display",
+        c = "fontSize";return o.appendChild(a), o.appendChild(i), C.appendChild(o), "none" == n(a, s) || "ruby" == n(o, s) && "ruby-text" == n(i, s) || "6pt" == n(a, c) && "6pt" == n(i, c) ? (r(), !0) : (r(), !1);
+  }), o(), i(b), delete S.addTest, delete S.addAsyncTest;for (var F = 0; F < Modernizr._q.length; F++) {
     Modernizr._q[F]();
   }e.Modernizr = Modernizr;
 }(window, document);
