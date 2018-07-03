@@ -92,6 +92,12 @@ nav {
         color: #FFF
       }
     }
+
+    &.menu_item {
+      @include breakpoint(small only) {
+        color: #000;
+      }
+    }
   }
 }
 
