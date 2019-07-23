@@ -522,7 +522,7 @@ __webpack_require__(3);
   $('#docs-example-interchange').on('replaced.zf.interchange', function () {
     if (Foundation.MediaQuery.atLeast('large')) {
       if (!loaded) {
-        $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyDSkhZjhIjc_Dad1YGW5OxbWuOVuROHsc4&sensor=false&callback=initializeMaps").done(function () {
+        $.getScript("https://maps.googleapis.com/maps/api/js?key=xxx&sensor=false&callback=initializeMaps").done(function () {
           loaded = true;
         });
       } else {
