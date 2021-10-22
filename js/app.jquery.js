@@ -44,7 +44,7 @@
     gapHorizontal: 35,
     gapVertical: 30,
     gridAdjustment: 'responsive',
-    caption: 'overlayBottomPush',
+    caption: 'overlayBottom',
     displayType: 'sequentially',
     displayTypeSpeed: 100,
 
