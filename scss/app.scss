@@ -1,0 +1,174 @@
+@charset 'utf-8';
+
+@import 'foundation';
+@import 'settings';
+@import 'motion-ui';
+
+@import 'util/variables';
+@import 'util/utilities';
+@import 'util/framework';
+
+@import 'theme';
+
+*, *:before, *:after {box-sizing: border-box;}
+
+body {
+  //font-family: 'Open Sans', sans-serif;
+  //font-family: 'Raleway', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  line-height: 1;
+}
+
+// Logo
+// ===============
+.logo {
+  float: left;
+
+  .logo_svg {
+    display: block;
+    max-width: 180px;
+    max-height: 84px;
+    fill: white;
+    transition: 0.7s all;
+    overflow: visible !important;
+
+    .menu-fixed & {
+      max-width: 145px;
+      max-height: 64px;
+      fill: black;
+      margin-top: 6px;
+    }
+  }
+}
+
+// Menu
+// ===============
+nav {
+
+  ul {
+    margin: 0;
+
+    @include breakpoint(medium) {
+      float: right;
+    }
+  }
+
+  li {
+    list-style: none;
+
+    @media screen and (min-width:721px) {
+      float: left;
+      display: inline;
+    }
+  }
+
+  a {
+    &,
+    &:visited,
+    .hamburger {
+      color: #fff;
+      display: block;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 28px 25px;
+      transition: 0.3s all;
+
+      @include breakpoint(medium) {
+        display: inline-block;
+      }
+
+      .menu-fixed & {
+        color: #000;
+      }
+    }
+
+    &:hover,
+    &.is-active {
+
+      &,
+      .menu-fixed & {
+        background: #75a6d9;
+        color: #FFF
+      }
+    }
+
+    &.menu_item {
+      @include breakpoint(small only) {
+        color: #000;
+      }
+    }
+  }
+}
+
+// Hamburger menu
+// ===============
+.hamburger {
+  float: right;
+  @media screen and (min-width:721px) {
+    display: none;
+  }
+
+  span {
+    display: inline-block;
+    width: 0;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &:before {
+    content: '\2630';
+    font-size: 2em;
+  }
+  .menu-fixed & {
+    padding: 20px;
+  }
+}
+
+// Layout
+// ===============
+header {
+  position: fixed;
+  width: 100%;
+  padding-top: 30px;
+  transition: 0.7s all;
+  z-index: 100;
+
+  &.menu-fixed {
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding-top: 0;
+    background: rgba(255,255,255,0.9);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+}
+
+.inner {
+  padding: 0 3vw;
+}
+
+section {
+
+  .inner {
+    padding: 50px 3vw;
+    line-height: 1.5;
+  }
+
+  &.alternate {
+    background: #000;
+    color: #fff;
+  }
+
+  &.hero {
+    //background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
+    background: url('https://picsum.photos/1405/1053/?random') no-repeat center;
+    background-size: cover;
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: multiply;
+    min-height: 100vh;
+    width: 100%;
+  }
+}
