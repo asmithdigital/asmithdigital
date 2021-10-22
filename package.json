@@ -1,0 +1,11 @@
+{
+  "name": "asmithdigital",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:asmithdigital/asmithdigital.git",
+  "license": "MIT",
+  "dependencies": {
+    "foundation-sites": "^6.7.3",
+    "gulp": "^4.0.2"
+  }
+}
