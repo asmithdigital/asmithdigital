@@ -35,7 +35,8 @@ function javascript() {
 }
 
 exports.default = function() {
-    watch('src/*.css', { ignoreInitial: false, queue: false }, css);
-    watch('src/*.js', { ignoreInitial: false, queue: false }, javascript);
+    watch('scss/*.scss', css);
+    watch('js/*.js', javascript);
 };
+
 exports.build = parallel(css, javascript);
