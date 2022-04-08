@@ -10,13 +10,13 @@
 $(document).foundation();
 
 // Scroll class toggle
-// $(document).ready(function() {
-//   $(window).scroll(function() {
-//     var scrollTop = $(window).scrollTop();
-//     if (scrollTop > 1) {
-//       $("#sp-header").addClass("menu-fixed");
-//     } else {
-//       $("#sp-header").removeClass("menu-fixed");
-//     }
-//   });
-// });
+$(document).ready(function() {
+  $(window).scroll(function() {
+    var scrollTop = $(window).scrollTop();
+    if (scrollTop > 1) {
+      $("#sp-header").addClass("menu-fixed");
+    } else {
+      $("#sp-header").removeClass("menu-fixed");
+    }
+  });
+});

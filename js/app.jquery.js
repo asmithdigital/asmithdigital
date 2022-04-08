@@ -41,10 +41,101 @@
     }],
     defaultFilter: '*',
     animationType: 'quicksand',
-    gapHorizontal: 35,
-    gapVertical: 30,
+    gapHorizontal: 30,
+    gapVertical: 20,
     gridAdjustment: 'responsive',
-    caption: 'overlayBottom',
+    caption: 'zoom',
+    displayType: 'sequentially',
+    displayTypeSpeed: 100,
+
+    // lightbox
+    lightboxDelegate: '.cbp-lightbox',
+    lightboxGallery: true,
+    lightboxTitleSrc: 'data-title',
+    lightboxCounter: '<div class="cbp-popup-lightbox-counter">{{current}} of {{total}}</div>',
+
+    // singlePage popup
+    singlePageDelegate: '.cbp-singlePage',
+    singlePageDeeplinking: true,
+    singlePageStickyNavigation: true,
+    singlePageCounter: '<div class="cbp-popup-singlePage-counter">{{current}} of {{total}}</div>',
+    singlePageCallback: function(url, element) {
+      // to update singlePage content use the following method: this.updateSinglePage(yourContent)
+      var t = this;
+
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'html',
+        timeout: 30000
+      })
+        .done(function(result) {
+          t.updateSinglePage(result);
+        })
+        .fail(function() {
+          t.updateSinglePage('AJAX Error! Please refresh the page!');
+        });
+    },
+
+    // singlePageInline
+    singlePageInlineDelegate: '.cbp-singlePageInline',
+    singlePageInlinePosition: 'below',
+    singlePageInlineInFocus: true,
+    singlePageInlineCallback: function(url, element) {
+      // to update singlePageInline content use the following method: this.updateSinglePageInline(yourContent)
+      var t = this;
+
+      $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'html',
+        timeout: 30000
+      })
+        .done(function(result) {
+
+          t.updateSinglePageInline(result);
+
+        })
+        .fail(function() {
+          t.updateSinglePageInline('AJAX Error! Please refresh the page!');
+        });
+    },
+
+    plugins: {
+      loadMore: {
+        element: '#js-loadMore-lightbox-gallery',
+        action: 'click',
+        loadItems: 3,
+      }
+    },
+  });
+
+
+  $('#js-grid-lightbox-gallery-2').cubeportfolio({
+    filters: '#js-filters-juicy-projects',
+    layoutMode: 'grid',
+    mediaQueries: [{
+      width: 1500,
+      cols: 2,
+    }, {
+      width: 1100,
+      cols: 2,
+    }, {
+      width: 800,
+      cols: 2,
+    }, {
+      width: 480,
+      cols: 1,
+      options: {
+        caption: '',
+      }
+    }],
+    defaultFilter: '*',
+    animationType: 'quicksand',
+    gapHorizontal: 50,
+    gapVertical: 60,
+    gridAdjustment: 'responsive',
+    caption: 'zoom',
     displayType: 'sequentially',
     displayTypeSpeed: 100,
 
@@ -123,13 +214,13 @@
 $(document).foundation();
 
 // Scroll class toggle
-// $(document).ready(function() {
-//   $(window).scroll(function() {
-//     var scrollTop = $(window).scrollTop();
-//     if (scrollTop > 1) {
-//       $("#sp-header").addClass("menu-fixed");
-//     } else {
-//       $("#sp-header").removeClass("menu-fixed");
-//     }
-//   });
-// });
+$(document).ready(function() {
+  $(window).scroll(function() {
+    var scrollTop = $(window).scrollTop();
+    if (scrollTop > 1) {
+      $("#sp-header").addClass("menu-fixed");
+    } else {
+      $("#sp-header").removeClass("menu-fixed");
+    }
+  });
+});
