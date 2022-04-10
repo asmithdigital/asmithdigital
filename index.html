@@ -1,1006 +1,419 @@
-
 <!doctype html>
-<html lang="en-US">
-<head><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let i;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",i=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")&&this._isValidScriptType(i)?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}_isValidScriptType(e){return!e||""===e||"string"==typeof e&&["text/javascript","text/x-javascript","text/ecmascript","text/jscript","application/javascript","application/x-javascript","application/ecmascript","application/jscript","module"].includes(e.toLowerCase())}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){const n=e[t];Object.defineProperty(e,t,{get:n||function(){},set:n=>{e["rocket"+t]=n}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let a=e.get(n);void 0===a&&(a=n.nextSibling,e.set(n,a));const o=document.createDocumentFragment();i.setStart(o,0),o.appendChild(i.createContextualFragment(t)),r.insertBefore(o,a)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","touchcancel","touchforcechange","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();
-</script>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+<head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-<script type="text/javascript">
-var gform;gform||(document.addEventListener("gform_main_scripts_loaded",function(){gform.scriptsLoaded=!0}),window.addEventListener("DOMContentLoaded",function(){gform.domLoaded=!0}),gform={domLoaded:!1,scriptsLoaded:!1,initializeOnLoaded:function(o){gform.domLoaded&&gform.scriptsLoaded?o():!gform.domLoaded&&gform.scriptsLoaded?window.addEventListener("DOMContentLoaded",o):document.addEventListener("gform_main_scripts_loaded",o)},hooks:{action:{},filter:{}},addAction:function(o,n,r,t){gform.addHook("action",o,n,r,t)},addFilter:function(o,n,r,t){gform.addHook("filter",o,n,r,t)},doAction:function(o){gform.doHook("action",o,arguments)},applyFilters:function(o){return gform.doHook("filter",o,arguments)},removeAction:function(o,n){gform.removeHook("action",o,n)},removeFilter:function(o,n,r){gform.removeHook("filter",o,n,r)},addHook:function(o,n,r,t,i){null==gform.hooks[o][n]&&(gform.hooks[o][n]=[]);var e=gform.hooks[o][n];null==i&&(i=n+"_"+e.length),gform.hooks[o][n].push({tag:i,callable:r,priority:t=null==t?10:t})},doHook:function(n,o,r){var t;if(r=Array.prototype.slice.call(r,1),null!=gform.hooks[n][o]&&((o=gform.hooks[n][o]).sort(function(o,n){return o.priority-n.priority}),o.forEach(function(o){"function"!=typeof(t=o.callable)&&(t=window[t]),"action"==n?t.apply(null,r):r[0]=t.apply(null,r)})),"filter"==n)return r[0]},removeHook:function(o,n,t,i){var r;null!=gform.hooks[o][n]&&(r=(r=gform.hooks[o][n]).filter(function(o,n,r){return!!(null!=i&&i!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][n]=r)}});
-</script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Static demonstration of style guide.">
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/img/apple-touch-icon-114x114.png">
+  <title>asmithdigital | home page</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="180x180" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/apple-touch-icon.png">
-  <link rel="icon" href="https://www.freshconsulting.com/favicon.svg">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="https://www.freshconsulting.com/safari-pinned-tab.svg" color="#283a3c">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="format-detection" content="telephone=no">
-  <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+  <!--[if gt IE 8]><!-->
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700%7CRoboto:400,500,700%7CRoboto+Condensed%7CLato:400,700" rel="stylesheet" type="text/css">
+  <link href="/css/app.css?t=1563926724152" rel="stylesheet">
+  <!--<![endif]-->
 
-	<!-- This site is optimized with the Yoast SEO plugin v17.6 - https://yoast.com/wordpress/plugins/seo/ -->
-	<title>UX/UI Design - Fresh Consulting</title>
-	<meta name="description" content="UX/UI Design focuses on tailoring products to people. Fulfill user needs and satisfy business goals. Let&#039;s create your next product today." />
-	<link rel="canonical" href="https://www.freshconsulting.com/services/design/ux-ui-design/" />
-	<meta property="og:locale" content="en_US" />
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content="UX/UI Design - Fresh Consulting" />
-	<meta property="og:description" content="UX/UI Design focuses on tailoring products to people. Fulfill user needs and satisfy business goals. Let&#039;s create your next product today." />
-	<meta property="og:url" content="https://www.freshconsulting.com/services/design/ux-ui-design/" />
-	<meta property="og:site_name" content="Fresh Consulting" />
-	<meta property="article:modified_time" content="2021-10-11T21:39:29+00:00" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.freshconsulting.com/#website","url":"https://www.freshconsulting.com/","name":"Fresh Consulting","description":"","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.freshconsulting.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://www.freshconsulting.com/services/design/ux-ui-design/#webpage","url":"https://www.freshconsulting.com/services/design/ux-ui-design/","name":"UX/UI Design - Fresh Consulting","isPartOf":{"@id":"https://www.freshconsulting.com/#website"},"datePublished":"2020-11-25T20:20:38+00:00","dateModified":"2021-10-11T21:39:29+00:00","description":"UX/UI Design focuses on tailoring products to people. Fulfill user needs and satisfy business goals. Let's create your next product today.","breadcrumb":{"@id":"https://www.freshconsulting.com/services/design/ux-ui-design/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://www.freshconsulting.com/services/design/ux-ui-design/"]}]},{"@type":"BreadcrumbList","@id":"https://www.freshconsulting.com/services/design/ux-ui-design/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.freshconsulting.com/"},{"@type":"ListItem","position":2,"name":"Services","item":"https://www.freshconsulting.com/services/"},{"@type":"ListItem","position":3,"name":"Design","item":"https://www.freshconsulting.com/services/design/"},{"@type":"ListItem","position":4,"name":"UX/UI Design"}]}]}</script>
-	<!-- / Yoast SEO plugin. -->
+</head>
 
+<body>
 
-<link rel='dns-prefetch' href='//cdn.polyfill.io' />
+  <div class="o-off-canvas__wrapper">
 
-<link rel='stylesheet' id='sage/service_subservice-css'  href='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/dist/styles/service_subservice_f2a6ed45.css' type='text/css' media='all' />
-<link rel='stylesheet' id='sage/service_subservice.css-css'  href='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/dist/styles/service_subservice_f2a6ed45.css' type='text/css' media='all' />
-<script type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.freshconsulting.com/xmlrpc.php?rsd" />
-<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.freshconsulting.com/wp-includes/wlwmanifest.xml" /> 
-<link rel='shortlink' href='https://www.freshconsulting.com/?p=24681' />
-<link rel="alternate" type="application/json+oembed" href="https://www.freshconsulting.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.freshconsulting.com%2Fservices%2Fdesign%2Fux-ui-design%2F" />
-<link rel="alternate" type="text/xml+oembed" href="https://www.freshconsulting.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.freshconsulting.com%2Fservices%2Fdesign%2Fux-ui-design%2F&#038;format=xml" />
+    <div class="o-off-canvas__content" data-off-canvas-content>
 
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/suisseintl/bold/suisseintl-bold-webfont.woff" crossorigin>
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/suisseintl/semibold/suisseintl-semibold-webfont.woff" crossorigin>
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/suisseintl/regular/suisseintl-regular-webfont.woff" crossorigin>
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/suisseintl/regular-italic/suisseintl-regular-italic-webfont.woff" crossorigin>
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/suisseintl/light/suisseintl-light-webfont.woff" crossorigin>
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/suisseintl/thin/suisseintl-thin-webfont.woff" crossorigin>
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/basier-mono-square/bold/basiersquaremono-bold-webfont.woff" crossorigin>
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/basier-mono-square/semibold/basiersquaremono-semibold-webfont.woff" crossorigin>
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/basier-mono-square/medium/basiersquaremono-medium-webfont.woff" crossorigin>
-<link rel="preload" as="font" href="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/fonts/basier-mono-square/regular/basiersquaremono-regular-webfont.woff" crossorigin>          <!-- Google Tag Manager -->
-          <script type="rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-54D8X8');</script>
-            <!-- End Google Tag Manager -->
-        		<style type="text/css" id="wp-custom-css">
-			.capabilities-list__figure {
-	display: none;
-}		</style>
-		</head>
-<body class="page-template page-template-template-service-subservice template-service-subservice page page-id-24681 page-child parent-pageid-24673 ux-ui-design app-data index-data singular-data page-data page-24681-data page-ux-ui-design-data template-service-subservice-data template-style-light">
-	            <!-- Google Tag Manager (noscript) -->
-            <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54D8X8"
-            height="0" width="0" style="display:none;visibility:hidden" title="gtm"></iframe></noscript>
-            <!-- End Google Tag Manager (noscript) -->
-            	<header
-  class="header
-  
-  
-  
-  
-  
-  
-    "
->
-  <div class="header__container">
-    
-    <div class="header__navbar-container">
-      <div class="container">
+      <header id="sp-header" class="o-layout__header menu-fixed-out" role="banner">
         <div class="row">
-          <div class="col-12">
-            <div class="header__navbar-wrapper">
-              <div class="header__logo-wrapper">
-                <a class="header__logo-link d-flex" href="https://www.freshconsulting.com" aria-label="Fresh Consulting">
-
-                  <svg class="header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137 29"
-                       shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
-
-                    <g class="header__logo-letters" mask="url(#logo-mask)">
-
-                      <g class="header__logo-value header__logo-value-f">
-                        <path
-                          d="M0,28.400000L6.500000,28.400000L6.500000,17L19.500000,17L19.500000,11.200000L6.500000,11.200000L6.500000,6.400000L20.400000,6.400000L20.400000,0.700000L0,0.700000L0,28.400000Z"
-                          transform="translate(-10.200000,-14.549999)"/>
-                      </g>
-
-                      <g class="header__logo-value header__logo-value-r">
-                        <path
-                          d="M35.200000,7.700000C34.900000,7.700000,34.600000,7.700000,34.200000,7.700000C31.300000,7.800000,29.500000,9.300000,28.600000,11.700000L28.600000,7.800000L22.500000,7.800000L22.500000,28.300000L28.800000,28.300000L28.800000,18.100000C28.800000,14.900000,30.400000,13.800000,33.400000,13.800000C34,13.800000,34.400000,13.800000,35.100000,13.900000L35.100000,7.700000Z"
-                          transform="translate(-28.850000,-17.999999)"/>
-                      </g>
-
-                      <g class="header__logo-value header__logo-value-e">
-                        <path
-                          d="M52.400000,21.900000C51.700000,23.100000,50.100000,24,47.800000,24C45.500000,24,43.300000,22.600000,43.100000,19.700000L58.300000,19.700000C58.700000,12.400000,54.500000,7.200000,47.700000,7.200000C41.700000,7.200000,36.700000,11.400000,36.700000,18C36.700000,24.800000,41.300000,28.900000,48,28.900000C52.100000,28.900000,56.400000,26.800000,58.200000,22L52.400000,22ZM47.700000,12C50.100000,12,51.900000,13.300000,52,15.900000L43.100000,15.900000C43.400000,13.200000,45.400000,12,47.700000,12Z"
-                          transform="translate(-47.513130,-18.050000)"/>
-                      </g>
-
-                      <g class="header__logo-value header__logo-value-s">
-                        <path
-                          d="M80.100000,13.900000C79.300000,9.200000,75.100000,7.300000,70.400000,7.300000C65.300000,7.300000,61,9.500000,61,13.600000C61,17.200000,63.700000,19.200000,67.700000,19.900000L71.400000,20.500000C73.800000,20.900000,74.600000,21.500000,74.600000,22.400000C74.600000,23.600000,73,24.200000,70.800000,24.200000C68.600000,24.200000,67,23.600000,66.500000,21.600000L60.700000,21.600000C61.400000,26.400000,65.400000,28.800000,70.800000,28.800000C76.500000,28.800000,80.700000,26.500000,80.700000,21.900000C80.700000,18.300000,78.400000,16.800000,73.400000,15.900000L69.600000,15.200000C67.800000,14.900000,67.100000,14.300000,67.100000,13.400000C67.100000,12.500000,68.200000,11.900000,70.400000,11.900000C72.400000,11.900000,74,12.400000,74.400000,13.900000L80.100000,13.900000Z"
-                          transform="translate(-70.699987,-18.050000)"/>
-                      </g>
-
-                      <g class="header__logo-value header__logo-value-h">
-                        <path
-                          d="M90.100000,10.500000L90.100000,0.700000L83.800000,0.700000L83.800000,28.400000L90.100000,28.400000L90.100000,17.800000C90.100000,14,91.300000,12.200000,94,12.200000C97.100000,12.200000,97.100000,14.600000,97.100000,17.500000L97.100000,28.300000L103.400000,28.300000L103.400000,16C103.400000,10.400000,101.800000,7.300000,96.500000,7.300000C93.200000,7.400000,91,9,90.100000,10.500000Z"
-                          transform="translate(-93.599998,-14.550000)"/>
-                      </g>
-
-                      <mask id="logo-mask">
-                        <g class="header__logo-mask">
-                          <rect width="100%" height="100%" rx="0" ry="0"/>
-                        </g>
-                      </mask>
-
-                    </g>
-
-                    <g class="header__logo-petal">
-                      <g class="header__logo-petal-wrap">
-                        <g class="header__logo-petal-block">
-                          <path d="M135.9,0.6h-12.6c-7.5,0-13.7,5.3-13.7,12.8v8.9C115.1,11,128.6,3.1,135.9,0.6z"/>
-                          <path d="M112.2,29h11.1c7.5,0,13.7-6.1,13.7-13.7v-14C125.4,7.7,117.4,17.8,112.2,29z"/>
-                        </g>
-                      </g>
-                    </g>
-
-                  </svg>
-
-                </a>
-              </div>
-              <div class="header__nav-wrapper d-none d-lg-flex align-items-center">
-                                  
-                  <nav class="header__nav-list-wrapper"><ul id="menu-primary-navigation" class="header__nav-list clean-list"><li id="menu-item-24752" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current_page_ancestor menu-item-has-children header__nav-item"><a href="https://www.freshconsulting.com/services/" class="header__nav-link">Services</a><div class="header__nav-dropdown-wrapper"><div class="container"><div class="row"><div class="col-12"><div class="header__nav-dropdown-link-title-wrapper"><a class="header__nav-dropdown-link-title arrow-cta cta-section-header arrow-cta--right" href="/services/">Services</a></div><div class="header__nav-dropdown-menu-wrapper">
-<ul class="header__nav-dropdown-list row clean-list">
-	<li id="menu-item-26593" class="d-lg-none menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/services/" class="header__nav-dropdown-list-item-link">Services Overview</a></li>
-	<li id="menu-item-24729" class="strategy menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/services/strategy/" class="header__nav-dropdown-list-item-link">Strategy</a>
-	<ul class="clean-list">
-		<li id="menu-item-28885" class="column-head menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/strategy/" class="header__nav-dropdown-list-item-link-last-level">Strategy Overview</a></li>
-		<li id="menu-item-24733" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/strategy/innovation-sprints/" class="header__nav-dropdown-list-item-link-last-level">Innovation Sprints</a></li>
-		<li id="menu-item-24732" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/strategy/innovation-as-a-service/" class="header__nav-dropdown-list-item-link-last-level">Innovation as a Service</a></li>
-		<li id="menu-item-24734" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/strategy/product-strategy/" class="header__nav-dropdown-list-item-link-last-level">Product Strategy</a></li>
-		<li id="menu-item-24735" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/strategy/systems-design/" class="header__nav-dropdown-list-item-link-last-level">Systems Design</a></li>
-		<li id="menu-item-24730" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/strategy/customer-experience-consulting/" class="header__nav-dropdown-list-item-link-last-level">Customer Experience</a></li>
-		<li id="menu-item-24731" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/strategy/digital-transformation/" class="header__nav-dropdown-list-item-link-last-level">Digital Transformation</a></li>
-	</ul>
-
-</li>
-	<li id="menu-item-24707" class="design menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/services/design/" class="header__nav-dropdown-list-item-link">Design</a>
-	<ul class="clean-list">
-		<li id="menu-item-28886" class="column-head menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/design/" class="header__nav-dropdown-list-item-link-last-level">Design Overview</a></li>
-		<li id="menu-item-24712" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/design/user-research-testing/" class="header__nav-dropdown-list-item-link-last-level">User Research &#038; Testing</a></li>
-		<li id="menu-item-24713" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-24681 current_page_item header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/design/ux-ui-design/" aria-current="page" class="header__nav-dropdown-list-item-link-last-level">UX/UI Design</a></li>
-		<li id="menu-item-24709" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/design/industrial-design/" class="header__nav-dropdown-list-item-link-last-level">Industrial Design</a></li>
-		<li id="menu-item-24708" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/design/brand-visual-design/" class="header__nav-dropdown-list-item-link-last-level">Brand &#038; Visual Design</a></li>
-		<li id="menu-item-24710" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/design/motion-design/" class="header__nav-dropdown-list-item-link-last-level">Motion Design</a></li>
-		<li id="menu-item-24736" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/design/professional-video-production-services/" class="header__nav-dropdown-list-item-link-last-level">Video Production</a></li>
-	</ul>
-
-</li>
-	<li id="menu-item-24722" class="software menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/services/software/" class="header__nav-dropdown-list-item-link">Software</a>
-	<ul class="clean-list">
-		<li id="menu-item-28887" class="column-head menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/software/" class="header__nav-dropdown-list-item-link-last-level">Software Overview</a></li>
-		<li id="menu-item-24727" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/software/website-development/" class="header__nav-dropdown-list-item-link-last-level">Website Development</a></li>
-		<li id="menu-item-24726" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/software/custom-web-app-development/" class="header__nav-dropdown-list-item-link-last-level">Web App Development</a></li>
-		<li id="menu-item-24724" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/software/mobile-app-development/" class="header__nav-dropdown-list-item-link-last-level">Mobile App Development</a></li>
-		<li id="menu-item-24723" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/software/ai-machine-learning/" class="header__nav-dropdown-list-item-link-last-level">AI/Machine Learning</a></li>
-		<li id="menu-item-24725" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/software/technology-architecture/" class="header__nav-dropdown-list-item-link-last-level">Technology Architecture</a></li>
-		<li id="menu-item-24728" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/software/xr-development/" class="header__nav-dropdown-list-item-link-last-level">XR Development</a></li>
-	</ul>
-
-</li>
-	<li id="menu-item-24715" class="hardware menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/services/hardware/" class="header__nav-dropdown-list-item-link">Hardware</a>
-	<ul class="clean-list">
-		<li id="menu-item-28888" class="column-head menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/hardware/" class="header__nav-dropdown-list-item-link-last-level">Hardware Overview</a></li>
-		<li id="menu-item-24718" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/hardware/manufacturing-automation-solutions/" class="header__nav-dropdown-list-item-link-last-level">Manufacturing Automation</a></li>
-		<li id="menu-item-24716" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/hardware/autonomous-mobile-robots/" class="header__nav-dropdown-list-item-link-last-level">Autonomous Mobile Robots</a></li>
-		<li id="menu-item-24719" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/hardware/product-development/" class="header__nav-dropdown-list-item-link-last-level">Product Development</a></li>
-		<li id="menu-item-24721" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/hardware/test-automation/" class="header__nav-dropdown-list-item-link-last-level">Test Automation</a></li>
-		<li id="menu-item-24720" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/hardware/robotic-system-integration/" class="header__nav-dropdown-list-item-link-last-level">Robotic Systems Integration</a></li>
-		<li id="menu-item-26386" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item-last-level"><a href="https://www.freshconsulting.com/services/hardware/robotic-software-development/" class="header__nav-dropdown-list-item-link-last-level">Robotic Software Development</a></li>
-	</ul>
-
-</li>
-</ul>
-<div class="header__nav-subline">From <a href ="https://www.freshconsulting.com/services/" >project work</a> to <a href="https://www.freshconsulting.com/services/managed-consulting-services/" target="_self">managed services</a>, Fresh is your end-to-end team for innovation.</div></div></div></div></div></div>
-</li>
-<li id="menu-item-24753" class="disable-submenu menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children header__nav-item"><a href="https://www.freshconsulting.com/insights/" class="header__nav-link">Insights</a><div class="header__nav-dropdown-wrapper"><div class="container"><div class="row"><div class="col-12"><div class="header__nav-dropdown-link-title-wrapper"><a class="header__nav-dropdown-link-title arrow-cta cta-section-header arrow-cta--right" href="/services/">Services</a></div><div class="header__nav-dropdown-menu-wrapper">
-<ul class="header__nav-dropdown-list row clean-list">
-	<li id="menu-item-28889" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/insights/" class="header__nav-dropdown-list-item-link">Insights Overview</a></li>
-	<li id="menu-item-28618" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/insights/processes/" class="header__nav-dropdown-list-item-link">Processes</a></li>
-	<li id="menu-item-28619" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/insights/collections/" class="header__nav-dropdown-list-item-link">Collections</a></li>
-	<li id="menu-item-28620" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/insights/blog/" class="header__nav-dropdown-list-item-link">Blog</a></li>
-	<li id="menu-item-28621" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-dropdown-list-item col-3"><a href="https://www.freshconsulting.com/insights/white-papers/" class="header__nav-dropdown-list-item-link">White Papers</a></li>
-</ul>
-</div></div></div></div></div>
-</li>
-<li id="menu-item-24754" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-item"><a href="https://www.freshconsulting.com/work/" class="header__nav-link">Work</a></li>
-<li id="menu-item-24755" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-item"><a href="https://www.freshconsulting.com/about/" class="header__nav-link">About</a></li>
-<li id="menu-item-31398" class="menu-item menu-item-type-post_type menu-item-object-page header__nav-item"><a href="https://www.freshconsulting.com/careers/" class="header__nav-link">Careers</a></li>
-<li id="menu-item-24756" class="button_cta menu-item menu-item-type-post_type menu-item-object-page header__nav-item"><a href="https://www.freshconsulting.com/contact/" class="header__nav-link">Contact Us</a></li>
-</ul></nav>                              </div>
-              <div class="header__hamburger-wrapper d-lg-none">
-                <button class="header__hamburger hamburger hamburger--squeeze d-flex" type="button"
-                        aria-label="Menu Button">
-                  <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                  </span>
-                </button>
-              </div>
+        <div class="inner">
+          <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="784px" height="224px" viewBox="0 0 784.4 224.47" class="logo_svg" alt="logo Lemiesiewicz Piotr Fotografia" style="fill-rule:evenodd" xml:space="preserve">
+              <defs><style>.cls-1 {fill:#75a6d9;} .cls-2 {font-size: 200px;} .cls-3 {fill:#ffffff;} .cls-4 {font-size:120px;}</style></defs>
+              <title>logo3</title>
+              <rect class="cls-1" width="183.47" height="183.47"/><text class="cls-2" transform="translate(60 155)"><tspan class="cls-3">a</tspan><tspan class="cls-4" x="150" y="0">smithdigital</tspan>
+              </text>
+            </svg>
+          </div>
+        
+          <nav role='navigation'>
+            <a class="hamburger" href="#0" title="Menu" data-toggle="offCanvas"><span>Menu</span></a>
+            <div class="off-canvas in-canvas-for-medium position-left" id="offCanvas" data-off-canvas>
+              <ul data-magellan>
+                <li><a href="#about" class="menu_item">About</a></li>
+                <li><a href="#portfolio" class="menu_item">Portfolio</a></li>
+                <li><a href="#contact" class="menu_item">Contact</a></li>
+              </ul>
+              <button class="close-button" aria-label="Close menu" type="button" data-close>
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-          </div>
+        
+          </nav>
         </div>
-      </div>
-    </div>
-
-          
-      <div class="header__mobile-primary-navigation d-none">
-        <nav id="mobile-primary-navigation" class="header__mobile-nav-container"><ul id="menu-primary-navigation-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current_page_ancestor menu-item-has-children menu-item-24752"><a href="https://www.freshconsulting.com/services/">Services</a>
-<ul class="sub-menu">
-	<li class="d-lg-none menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-26593"><a href="https://www.freshconsulting.com/services/">Services Overview</a></li>
-	<li class="strategy menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24729"><a href="https://www.freshconsulting.com/services/strategy/">Strategy</a>
-	<ul class="sub-menu">
-		<li class="column-head menu-item menu-item-type-post_type menu-item-object-page menu-item-28885"><a href="https://www.freshconsulting.com/services/strategy/">Strategy Overview</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24733"><a href="https://www.freshconsulting.com/services/strategy/innovation-sprints/">Innovation Sprints</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24732"><a href="https://www.freshconsulting.com/services/strategy/innovation-as-a-service/">Innovation as a Service</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24734"><a href="https://www.freshconsulting.com/services/strategy/product-strategy/">Product Strategy</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24735"><a href="https://www.freshconsulting.com/services/strategy/systems-design/">Systems Design</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24730"><a href="https://www.freshconsulting.com/services/strategy/customer-experience-consulting/">Customer Experience</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24731"><a href="https://www.freshconsulting.com/services/strategy/digital-transformation/">Digital Transformation</a></li>
-</ul>
-</li>
-	<li class="design menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-24707"><a href="https://www.freshconsulting.com/services/design/">Design</a>
-	<ul class="sub-menu">
-		<li class="column-head menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-28886"><a href="https://www.freshconsulting.com/services/design/">Design Overview</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24712"><a href="https://www.freshconsulting.com/services/design/user-research-testing/">User Research &#038; Testing</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-24681 current_page_item menu-item-24713"><a href="https://www.freshconsulting.com/services/design/ux-ui-design/" aria-current="page">UX/UI Design</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24709"><a href="https://www.freshconsulting.com/services/design/industrial-design/">Industrial Design</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24708"><a href="https://www.freshconsulting.com/services/design/brand-visual-design/">Brand &#038; Visual Design</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24710"><a href="https://www.freshconsulting.com/services/design/motion-design/">Motion Design</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24736"><a href="https://www.freshconsulting.com/services/design/professional-video-production-services/">Video Production</a></li>
-</ul>
-</li>
-	<li class="software menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24722"><a href="https://www.freshconsulting.com/services/software/">Software</a>
-	<ul class="sub-menu">
-		<li class="column-head menu-item menu-item-type-post_type menu-item-object-page menu-item-28887"><a href="https://www.freshconsulting.com/services/software/">Software Overview</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24727"><a href="https://www.freshconsulting.com/services/software/website-development/">Website Development</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24726"><a href="https://www.freshconsulting.com/services/software/custom-web-app-development/">Web App Development</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24724"><a href="https://www.freshconsulting.com/services/software/mobile-app-development/">Mobile App Development</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24723"><a href="https://www.freshconsulting.com/services/software/ai-machine-learning/">AI/Machine Learning</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24725"><a href="https://www.freshconsulting.com/services/software/technology-architecture/">Technology Architecture</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24728"><a href="https://www.freshconsulting.com/services/software/xr-development/">XR Development</a></li>
-</ul>
-</li>
-	<li class="hardware menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24715"><a href="https://www.freshconsulting.com/services/hardware/">Hardware</a>
-	<ul class="sub-menu">
-		<li class="column-head menu-item menu-item-type-post_type menu-item-object-page menu-item-28888"><a href="https://www.freshconsulting.com/services/hardware/">Hardware Overview</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24718"><a href="https://www.freshconsulting.com/services/hardware/manufacturing-automation-solutions/">Manufacturing Automation</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24716"><a href="https://www.freshconsulting.com/services/hardware/autonomous-mobile-robots/">Autonomous Mobile Robots</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24719"><a href="https://www.freshconsulting.com/services/hardware/product-development/">Product Development</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24721"><a href="https://www.freshconsulting.com/services/hardware/test-automation/">Test Automation</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24720"><a href="https://www.freshconsulting.com/services/hardware/robotic-system-integration/">Robotic Systems Integration</a></li>
-		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26386"><a href="https://www.freshconsulting.com/services/hardware/robotic-software-development/">Robotic Software Development</a></li>
-</ul>
-</li>
-<li class="mm-navbar__nav-subline">From <a href ="https://www.freshconsulting.com/services/" >project work</a> to <a href="https://www.freshconsulting.com/services/managed-consulting-services/" target="_self">managed services</a>, Fresh is your end-to-end team for innovation.</li></ul>
-</li>
-<li class="disable-submenu menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-24753"><a href="https://www.freshconsulting.com/insights/">Insights</a>
-<ul class="sub-menu">
-	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28889"><a href="https://www.freshconsulting.com/insights/">Insights Overview</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28618"><a href="https://www.freshconsulting.com/insights/processes/">Processes</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28619"><a href="https://www.freshconsulting.com/insights/collections/">Collections</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28620"><a href="https://www.freshconsulting.com/insights/blog/">Blog</a></li>
-	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28621"><a href="https://www.freshconsulting.com/insights/white-papers/">White Papers</a></li>
-</ul>
-</li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24754"><a href="https://www.freshconsulting.com/work/">Work</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24755"><a href="https://www.freshconsulting.com/about/">About</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31398"><a href="https://www.freshconsulting.com/careers/">Careers</a></li>
-<li class="button_cta menu-item menu-item-type-post_type menu-item-object-page menu-item-24756"><a href="https://www.freshconsulting.com/contact/">Contact Us</a></li>
-</ul></nav>      </div>
-      </div>
-</header>
-	<div class="wrap" role="document">
-	<main class="main ">
-		     <section class="insight-header insight-header--light">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-7 col-xl-6">
-
-        <h1 class="insight-header--main-header">
-          <p class="insight-header__tagline">Design</p>
-          <span class="hidden" aria-hidden="true">-</span>
-          <div class="insight-header__title">UX/UI Design</div>
-        </h1>
-
-      </div>
-            <div class="col-12 col-lg-4 offset-lg-1 offset-xl-2">
-                  <div class="insight-header__description">User experience and user interface design, or UX/UI, is the art of designing digital products tailored to the way humans think about and interact with technology. Fresh has established a proven, scientific process for creating experiences that fulfill user needs and satisfy business goals.  </div>
-              </div>
-          </div>
-      </div>
-</section>
-  <section class="page-section full-browser-image ">
-      <div class="full-browser-image__video-wrapper">
-      <div class="background-video ">
-          <div
-      class="plyr-background-video-wrapper "
-      data-video="540357863"
-      data-loop="">
-      <div
-        class="plyr-background-video plyr-background-video--mobile-video"
-        data-controls="false">
-        <iframe class="plyr-background-video__iframe background-video--mobile-video" title="Video" data-src=https://player.vimeo.com/video/540357863></iframe>
-      </div>
-    </div>
-    </div>
-    </div>
-  </section>
-    <section class="page-section fifty-fifty fifty-fifty--light ">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-5 offset-sm-1 order-sm-last fifty-fifty__media-wrapper">
-                  <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29421/design_ux_2-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29421/design_ux_2-768x9999.jpg 2x" /><img width="384px" height="527px" class="fifty-fifty__img lazy" alt="design_ux_2" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/29421/design_ux_2-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-                </div>
-      <div class="col-sm-6 col-md-6 col-lg-5 offset-lg-1">
-                          <h2 class="fifty-fifty__title">Get better results with data-driven UX</h2>
-                <div class="fifty-fifty__description">
-          <p class="fifty-fifty__paragraph">An exceptional user experience means fewer frustrated users, more loyal customers, and productivity savings for your company. By strategizing upfront, you can create products your users love and accomplish your business objectives simultaneously.</p>
-<p class="fifty-fifty__paragraph">Partner with Fresh to:</p>
-<ul>
-<li>Understand the psychology of user behavior</li>
-<li>Test designs and concepts iteratively</li>
-<li>Strategize for conversion, adoption, and retention</li>
-<li>Benchmark sales and marketing, and deliver on KPIs</li>
-</ul>
-
         </div>
-              </div>
-    </div>
-  </div>
-</section>
-      <section class="page-section full-grid-image  full-grid-image--light ">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-                      <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-1920x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-2392x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-1300x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-1920x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-1024x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-1300x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-1024x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/27665/design_ux_3-768x9999.jpg 2x" /><img width="1196px" height="670px" class="img-fluid lazy" alt="design_ux_3" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/27665/design_ux_3-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-                              </div>
-      </div>
-    </div>
-  </section>
-  <section class="page-section two-col-txt two-col-txt--light">
-    <div class="container">
-      <div class="row">
-        <div class="offset-md-1 col-md-10 col-lg-6">
-                      <h3 class="two-col-txt__title">Leveraging scientific methods for human-centered design</h3>
-                  </div>
-      </div>
-      <div class="row">
-        <div class="offset-md-1 col-md-10 col-lg-5 two-col-txt__description">
-            <p class="two-col-txt__paragraph">Creating cohesive user experiences requires considering the micro and macro details of design. We start with focused research about your market, your users&#8217; needs, and your business goals. With a broad, multi-dimensional perspective in place, we create experiences that deliver bottom-line value but are above all human-centered.</p>
+      </header>
 
-        </div>
-        <div class="offset-md-1 col-md-10 col-lg-5 two-col-txt__description">
-            <p class="two-col-txt__paragraph">We test concepts rigorously. Compelling product experiences embolden your brand and improve your customers&#8217; perceptions of it. Starting with our years of collective design experience is essential, but continually gathering data allows us to unlock deeper insights about your users and address their needs in a way that creates a long-lasting impression.</p>
+      <main class="o-layout__main">
 
-        </div>
-      </div>
-    </div>
-  </section>
-          <section class="featured-work featured-work--light">
-    <div class="container">
+        <article class="o-layout__main-content" id="main-content" role="main">
 
-      <section class="work-featured article-hover">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="work-featured__works">
-                       
-              <div class="work-featured__item">
-                <a href="https://www.freshconsulting.com/work/united-rentals-robot-operational-control/" class="card-work__item">
-          <div class="card-work__image-wrapper" data-fancy-cursor="right" >
-                  <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-768x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-768x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-768x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-768x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-768x9999.jpg 2x" /><img class="card-work__image lazy" alt="United Rentals_Robot Operational Control Application_Thm_1040x1258-2" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/32645/United-Rentals_Robot-Operational-Control-Application_Thm_1040x1258-2-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-              </div>
-      <p class="card-work__client">United Rentals</p>
-  <h2 class="card-work__title">Robot Operational Control</h2>
-</a>
-              </div>
-             
-              <div class="work-featured__item">
-                <a href="https://www.freshconsulting.com/work/nec-biometric-digital-id/" class="card-work__item">
-          <div class="card-work__image-wrapper" data-fancy-cursor="right" >
-                  <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-768x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-768x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-768x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-768x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-768x9999.jpg 2x" /><img class="card-work__image lazy" alt="Proving an Autonomous Fleet Concept_Landscape" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/31136/Proving-an-Autonomous-Fleet-Concept_Landscape-scaled-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-              </div>
-      <p class="card-work__client">NEC</p>
-  <h2 class="card-work__title">Biometric Digital ID</h2>
-</a>
-              </div>
-             
-              <div class="work-featured__item">
-                <a href="https://www.freshconsulting.com/work/middleby-ui-brand-unification/" class="card-work__item">
-          <div class="card-work__image-wrapper" data-fancy-cursor="right" >
-                  <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-576x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-768x9999.png 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-576x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-768x9999.png 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-576x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-768x9999.png 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-576x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-768x9999.png 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-576x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-768x9999.png 2x" /><img class="card-work__image lazy" alt="Middleby _Thumbnail Portrait &#8211; 1040 x 1259" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/31450/Middleby-_Thumbnail-Portrait-1040-x-1259-1024x1024.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-              </div>
-      <p class="card-work__client">Middleby</p>
-  <h2 class="card-work__title">UI &#038; Brand Unification</h2>
-</a>
-              </div>
-             
-              <div class="work-featured__item">
-                <a href="https://www.freshconsulting.com/work/epiq-design-language-system/" class="card-work__item">
-          <div class="card-work__image-wrapper" data-fancy-cursor="right" >
-                  <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-768x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-768x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-768x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-768x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-768x9999.jpg 2x" /><img class="card-work__image lazy" alt="EPIQ_Thm_2600x1565" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/26635/EPIQ_Thm_2600x1565-scaled-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-              </div>
-      <p class="card-work__client">Epiq</p>
-  <h2 class="card-work__title">A unified design language system</h2>
-</a>
-              </div>
-                              </div>
-      </div>
-    </div>
-  </div>
-</section>
+          <section class="hero" id="hero" data-magellan-target="hero"></section>
 
-    </div>
-  </section>
-  <section class="process-graphic">
-  <div class="container">
-    <div class="process-graphic__wrapper">
-      <div class="process-graphic__wrapper-head">
-                  <h3 class="process-graphic__title">Our proven UX/UI process</h3>
-                          <div class="process-graphic__description">
-            <div class="process-graphic__paragraph">
-              <p>Explore how we approach the art and science of designing digital products that fulfill user needs and satisfy business goals. With a holistic process, we tailor products to your users.</p>
-
+          <section id="about" class="row" style="margin: 200px auto 150px auto;">
+            <div class="column medium-8 medium-centered inner">
+              <h1>Hi, I'm Andrew</h1>
+              <p class="lead">I'm a strategic, creative and forward-thinking UX designer with a stong focus on usability, accessibility, and user-centric design.</p>
             </div>
-          </div>
-              </div>
-              <div class="process-graphic__wrapper-body">
-          <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-1920x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-2392x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-1300x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-1920x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-1024x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-1300x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-1024x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-768x9999.jpg 2x" /><img width="1196px" height="955px" class="process-graphic__img lazy" alt="ServiceProcess-UI-UX-Design-Process" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/29903/ServiceProcess-UI-UX-Design-Process-1-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-        </div>
-                    <div class="process-graphic__wrapper-footer">
-          <a href="https://www.freshconsulting.com/insights/processes/ux-ui-design-process/"  class="button-cta button-cta-animation">Download UX/UI Process</a>
-        </div>
-          </div>
-  </div>
-</section>
-  <section class="page-section capabilities-list capabilities-list--light">
-    <div class="container">
-      <div class="capabilities-list__wrap">
-        <div class="capabilities-list__box">
-          <div class="capabilities-list__text">
-                          <h1 class="capabilities-list__title">Related design capabilities</h1>
-                                      <div class="capabilities-list__description"><p>Explore our other creative services, which allow our team to solve challenges for your organization and others, regardless of size, industry vertical, or product category.</p>
-</div>
+          </section>
+
+          <section id="" class="row" data-magellan-target="" style="margin: 75px auto 150px auto;">
+            <div class="column medium-12 medium-centered">
+              <div id="js-grid-lightbox-gallery-2" class="cbp">
+                <div class="cbp-item ux web-design">
+                  <a href="assets/ajax/bass-new.html" class="cbp-caption cbp-singlePageInline" data-title="Bass Coast Podiatry<br>Wordpress site" rel="nofollow">
+                    <div class="cbp-caption-defaultWrap">
+                      <img src="assets/img/folio/bass-new.jpg" alt="">
+                    </div>
+                    <div class="cbp-caption-activeWrap">
+                      <div class="cbp-l-caption-alignLeft">
+                        <div class="cbp-l-caption-body">
+                          <div class="cbp-l-caption-title">Bass Coast Podiatry</div>
+                          <div class="cbp-l-caption-desc">Wordpress website</div>
+                        </div>
                       </div>
-        </div>
-      </div>
-              <div class="capabilities-list__menu">
-          <ul class="capabilities-list__data">
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/customer-experience-research/"  title="Customer Experience Research">Customer Experience Research</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/usability-testing/"  title="Usability Testing">Usability Testing</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/brand-strategy-consulting/"  title="Brand Strategy">Brand Strategy</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/application-design/"  title="Application Design">Application Design</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/ux-audits/"  title="UX Audits">UX Audits</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/product-design-development/"  title="Product Design">Product Design</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/rapid-prototyping/"  title="Rapid Prototyping">Rapid Prototyping</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/design-thinking-strategy/"  title="Design Thinking Strategy">Design Thinking Strategy</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/data-analytics/"  title="Data &amp; Analytics">Data &amp; Analytics</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/competitive-analysis/"  title="Competitive Analysis">Competitive Analysis</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/dashboard-design/"  title="Dashboard Design">Dashboard Design</a></li>
-                          <li class="capabilities-list__data-item"><a href="https://www.freshconsulting.com/capability/website-design/"  title="Website Design">Website Design</a></li>
-                      </ul>
-        </div>
+                    </div>
+                  </a>
+                  <div class="cbp-l-grid-projects-title">Moppahills Vineyard</div>
+                  <div class="cbp-l-grid-projects-desc">Wordpress website</div>
+                </div>
+                <div class="cbp-item ux web-design">
+                  <a href="assets/ajax/bass-new.html" class="cbp-caption cbp-singlePageInline" data-title="Bass Coast Podiatry<br>Wordpress site" rel="nofollow">
+                    <div class="cbp-caption-defaultWrap">
+                      <img src="assets/img/folio/bass-new.jpg" alt="">
+                    </div>
+                    <div class="cbp-caption-activeWrap">
+                      <div class="cbp-l-caption-alignLeft">
+                        <div class="cbp-l-caption-body">
+                          <div class="cbp-l-caption-title">Bass Coast Podiatry</div>
+                          <div class="cbp-l-caption-desc">Wordpress website</div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="cbp-l-grid-projects-title">Moppahills Vineyard</div>
+                  <div class="cbp-l-grid-projects-desc">Wordpress website</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="portfolio" data-magellan-target="portfolio">
+          <div class="row">
+            <div id="js-filters-juicy-projects" class="cbp-l-filters-button cbp-l-filters-alignCenter">
+              <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">
+                All <div class="cbp-filter-counter"></div>
+              </div>
+              <div data-filter=".ux" class="cbp-filter-item">
+                UX <div class="cbp-filter-counter"></div>
+              </div>
+              <div data-filter=".web-design" class="cbp-filter-item">
+                Web Design <div class="cbp-filter-counter"></div>
+              </div>
+              <div data-filter=".ecommerce" class="cbp-filter-item">
+                eCommerce <div class="cbp-filter-counter"></div>
+              </div>
+            </div>
+          
           </div>
-  </section>
-  <section class="related-insights related-insights--light article-hover">
-    <div class="container">
-
-      <div class="row">
-        <div class="col">
-          <h1 class="related-insights__section-title">Related Insights</h1>
-        </div>
-      </div>
-
-      <div class="related-insights__carousel-container mobile-carousel__swiper-container swiper-container">
-        <div class="row related-insights__carousel-wrapper mobile-carousel__swiper-wrapper swiper-wrapper">
-                      
-            
-              <div class="col-8 col-md-4 align-self-baseline related-insights__carousel-item mobile-carousel__swiper-slide swiper-slide">
-                <a href="https://www.freshconsulting.com/insights/white-papers/methods-ux-testing/" class="card-insight__card card-insight__card--light card-insight__card--thumbnail-free">
-  <div class="card-insight__card-thumbnail-wrapper article-hover">
-
-    
-    <div class="card-insight__card-thumbnail-wrapper-box" data-fancy-cursor="down">
-      <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-1024x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-1024x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-1024x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-1024x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-768x9999.jpg 2x" /><img class="card-insight__card-thumbnail lazy" alt="Methods-of-UX-Testing" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/29354/Methods-of-UX-Testing-1-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-    </div>
-  </div>
-  <div class="card-insight__card-body">
-    <p class="card-insight__card-tag">White Papers</p>
-    <h2 class="card-insight__card-title">Methods of UX Testing</h2>
-  </div>
-</a>
-              </div>
-
-                                  
-            
-              <div class="col-8 col-md-4 align-self-baseline related-insights__carousel-item mobile-carousel__swiper-slide swiper-slide">
-                <a href="https://www.freshconsulting.com/insights/white-papers/successful-dashboard-design/" class="card-insight__card card-insight__card--light card-insight__card--thumbnail-free">
-  <div class="card-insight__card-thumbnail-wrapper article-hover">
-
-    
-    <div class="card-insight__card-thumbnail-wrapper-box" data-fancy-cursor="down">
-      <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-1024x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-1024x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-1024x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-1024x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-768x9999.jpg 2x" /><img class="card-insight__card-thumbnail lazy" alt="Successful-Dashboard-Design" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/29356/Successful-Dashboard-Design-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-    </div>
-  </div>
-  <div class="card-insight__card-body">
-    <p class="card-insight__card-tag">White Papers</p>
-    <h2 class="card-insight__card-title">Successful Dashboard Design</h2>
-  </div>
-</a>
-              </div>
-
-                                  
-            
-              <div class="col-8 col-md-4 align-self-baseline related-insights__carousel-item mobile-carousel__swiper-slide swiper-slide">
-                <a href="https://www.freshconsulting.com/insights/white-papers/roi-ux-design/" class="card-insight__card card-insight__card--light card-insight__card--thumbnail-free">
-  <div class="card-insight__card-thumbnail-wrapper article-hover">
-
-    
-    <div class="card-insight__card-thumbnail-wrapper-box" data-fancy-cursor="down">
-      <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-1024x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-1024x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-1024x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-1024x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-768x9999.jpg 2x" /><img class="card-insight__card-thumbnail lazy" alt="The-ROI-of-UX-Work" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/29372/The-ROI-of-UX-Work-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-    </div>
-  </div>
-  <div class="card-insight__card-body">
-    <p class="card-insight__card-tag">White Papers</p>
-    <h2 class="card-insight__card-title">The ROI of UX Design</h2>
-  </div>
-</a>
-              </div>
-
-                                  
-            
-              <div class="col-8 col-md-4 align-self-baseline related-insights__carousel-item mobile-carousel__swiper-slide swiper-slide">
-                <a href="https://www.freshconsulting.com/insights/blog/defeat-boco-your-product-depends-on-it/" class="card-insight__card card-insight__card--light card-insight__card--thumbnail-free">
-  <div class="card-insight__card-thumbnail-wrapper article-hover">
-
-    
-    <div class="card-insight__card-thumbnail-wrapper-box" data-fancy-cursor="right">
-      <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-768x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-1024x9999.png 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-768x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-1024x9999.png 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-768x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-1024x9999.png 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-768x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-1024x9999.png 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-576x9999.png 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/835/blog-header-768x9999.png 2x" /><img class="card-insight__card-thumbnail lazy" alt="blog-header" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/835/blog-header-1024x1024.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-    </div>
-  </div>
-  <div class="card-insight__card-body">
-    <p class="card-insight__card-tag">Article</p>
-    <h2 class="card-insight__card-title">Defeat B.O.C.O. – Your Product Depends on It</h2>
-  </div>
-</a>
-              </div>
-
-                                  
-            
-              <div class="col-8 col-md-4 align-self-baseline related-insights__carousel-item mobile-carousel__swiper-slide swiper-slide">
-                <a href="https://www.freshconsulting.com/insights/white-papers/methods-information-architecture/" class="card-insight__card card-insight__card--light card-insight__card--thumbnail-free">
-  <div class="card-insight__card-thumbnail-wrapper article-hover">
-
-    
-    <div class="card-insight__card-thumbnail-wrapper-box" data-fancy-cursor="down">
-      <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-1024x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-1024x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-1024x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-1024x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-768x9999.jpg 2x" /><img class="card-insight__card-thumbnail lazy" alt="Methods-of-Information-Architecture" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/29352/Methods-of-Information-Architecture-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-    </div>
-  </div>
-  <div class="card-insight__card-body">
-    <p class="card-insight__card-tag">White Papers</p>
-    <h2 class="card-insight__card-title">Methods of Information Architecture</h2>
-  </div>
-</a>
-              </div>
-
-                                  
-            
-              <div class="col-8 col-md-4 align-self-baseline related-insights__carousel-item mobile-carousel__swiper-slide swiper-slide">
-                <a href="https://www.freshconsulting.com/insights/white-papers/methods-ux-analysis/" class="card-insight__card card-insight__card--light card-insight__card--thumbnail-free">
-  <div class="card-insight__card-thumbnail-wrapper article-hover">
-
-    
-    <div class="card-insight__card-thumbnail-wrapper-box" data-fancy-cursor="down">
-      <picture><source media="(min-width: 1200px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-1024x9999.jpg 2x" /><source media="(min-width: 992px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-1024x9999.jpg 2x" /><source media="(min-width: 768px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-1024x9999.jpg 2x" /><source media="(min-width: 576px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-768x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-1024x9999.jpg 2x" /><source media="(min-width: 320px)" data-srcset="https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-576x9999.jpg 1x, https://www.freshconsulting.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-768x9999.jpg 2x" /><img class="card-insight__card-thumbnail lazy" alt="Methods-of-UX-Analysis" data-src="https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/uploads/fly-images/29353/Methods-of-UX-Analysis-1-1024x1024.jpg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="  /></picture>
-    </div>
-  </div>
-  <div class="card-insight__card-body">
-    <p class="card-insight__card-tag">White Papers</p>
-    <h2 class="card-insight__card-title">Methods of UX Analysis</h2>
-  </div>
-</a>
-              </div>
-
-                              </div>
-      </div>
-
-    </div>
-  </section>
-
-  	</main>
-	</div>
-		<footer class="footer ">
-      <div class="footer--full">
-      <div class="stepper-form">
-  <div class="container">
-    <div class="row align-items-start">
-      <div class="col-12 col-md-10 col-lg-5">
-        <div class="stepper-form__title-wrapper">
-                      <div class="stepper-form__pre-title">Contact Us</div>
-                                <h2 class="stepper-form__title">Have a Project?</h2>
+          
+          <div id="js-grid-lightbox-gallery" class="cbp">
+          
+            <div class="cbp-item ux web-design">
+              <a href="assets/ajax/bass-new.html" class="cbp-caption cbp-singlePageInline" data-title="Bass Coast Podiatry<br>Wordpress site" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/bass-new.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Bass Coast Podiatry</div>
+                      <div class="cbp-l-caption-desc">Wordpress website</div>
+                    </div>
                   </div>
-      </div>
-      <div class="col-12 col-md-10 col-lg-6 offset-lg-1">
-        <div class="stepper-form__steps-wrapper">
-          <div class="input-group stepper-form__input-group">
-            <div class="input-group__input-wrapper">
-              <input class="input-group__input input-group__input--light-on-dark stepper-form__input stepper-form__input-name" type="text" placeholder="What's your name?" aria-label="What's your name?">
-              <input class="input-group__input input-group__input--light-on-dark stepper-form__input stepper-form__input-email" type="email" placeholder="What's your email?" aria-label="What's your email?">
-              <textarea class="input-group__textarea input-group__textarea--light-on-dark stepper-form__textarea" placeholder="Tell us more..." aria-label="Tell us more..."></textarea>
-              <div class="stepper-form__count-wrapper d-none d-md-block">
-                <span class="stepper-form__stepper-count">1/3</span>
-              </div>
+                </div>
+              </a>
             </div>
-            <div class="stepper-form__next-step-button-wrapper">
-              <button class="stepper-form__next-step-button button-cta-animation" aria-label="Next Step"><svg class="icon icon-arrow-right"><use xlink:href="https://www.freshconsulting.com/wp-content/themes/freshv6/resources/assets/icons/symbol-defs.svg#icon-arrow-right"></use></svg></button>
+            
+            <div class="cbp-item ux web-design">
+              <a href="assets/ajax/moppahills.html" class="cbp-caption cbp-singlePageInline" data-title="MoppaHills Vineyard<br>Wordpress site" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/moppahills.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignCenter">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Read more</div>
+                      <!-- <div class="cbp-l-caption-desc">Wordpress website</div> -->
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <div class="cbp-l-grid-projects-title">Moppahills Vineyard</div>
+              <div class="cbp-l-grid-projects-desc">Wordpress website</div>
+              <span class="lni lni-atlassian"></span>
             </div>
+            
+            <div class="cbp-item ux web-design">
+              <a href="assets/ajax/ua-sg.html" class="cbp-caption cbp-singlePageInline" data-title="Degree Finder UX<br>University of Adelaide" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/ua-sg-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Style guide</div>
+                      <div class="cbp-l-caption-desc">University of Adelaide</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item ux">
+              <a href="assets/ajax/df-ux.html" class="cbp-caption cbp-singlePage" data-title="Degree Finder UX<br>University of Adelaide" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/df-ux-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Degree Finder UX</div>
+                      <div class="cbp-l-caption-desc">University of Adelaide</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design">
+              <a href="assets/ajax/family-law.html" class="cbp-caption cbp-singlePageInline" data-title="Family Law Mediation<br>Wordpress website" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/family-law-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Family Law Mediation</div>
+                      <div class="cbp-l-caption-desc">Wordpress website</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design ecommerce">
+              <a href="assets/ajax/decor.html" class="cbp-caption cbp-singlePageInline" data-title="Decor Lighting<br>Concrete 5 website" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/decor-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Decor Lighting</div>
+                      <div class="cbp-l-caption-desc">Concrete 5 eCommerce</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design">
+              <a href="assets/ajax/seek-light.html" class="cbp-caption cbp-singlePageInline" data-title="Seek Light Campaign<br>University of Adelaide" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/seek-light-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Seek Light Campaign</div>
+                      <div class="cbp-l-caption-desc">University of Adelaide</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design">
+              <a href="assets/ajax/hand-property.html" class="cbp-caption cbp-singlePageInline" data-title="Hand Property<br>Wordpress website" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/handy-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Hand Property</div>
+                      <div class="cbp-l-caption-desc">Wordpress website</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design">
+              <a href="assets/ajax/martyn-parry.html" class="cbp-caption cbp-singlePageInline" data-title="Martyn Parry Dentist<br>Wordpress website" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/martyn-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Martyn Parry Dentist</div>
+                      <div class="cbp-l-caption-desc">Wordpress website</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item ux">
+              <a href="assets/ajax/syndeo.html" class="cbp-caption cbp-singlePageInline" data-title="SYNDEO<br>Start up UX project" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/syndeo-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">SYNDEO</div>
+                      <div class="cbp-l-caption-desc">Start up UX project</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design">
+              <a href="assets/ajax/jims-plumbing.html" class="cbp-caption cbp-singlePageInline" data-title="Jims Cleaning<br>Concrete 5 website" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/jims-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Jims Cleaning</div>
+                      <div class="cbp-l-caption-desc">Concrete 5 website</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design">
+              <a href="assets/ajax/mastracorp.html" class="cbp-caption cbp-singlePageInline" data-title="Mastrcorp Realestate<br>Campaign website" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/mastra-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Mastrcorp Realestate</div>
+                      <div class="cbp-l-caption-desc">Campaign website</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design ecommerce">
+              <a href="assets/ajax/yvonne.html" class="cbp-caption cbp-singlePageInline" data-title="Yvonne Faye<br>Concrete 5 eCommerce" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/yvonne-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Yvonne Faye</div>
+                      <div class="cbp-l-caption-desc">Concrete 5 eCommerce</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design">
+              <a href="assets/ajax/bass-podiatry.html" class="cbp-caption cbp-singlePageInline" data-title="Bass Coast Podiatry<br>Wordpress website" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/bass-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Bass Coast Podiatry</div>
+                      <div class="cbp-l-caption-desc">Wordpress website</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design">
+              <a href="assets/ajax/bcs.html" class="cbp-caption cbp-singlePageInline" data-title="Belconnen Community Services<br>Wordpress website" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/bcs-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">BCS</div>
+                      <div class="cbp-l-caption-desc">Wordpress website</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
+            <div class="cbp-item web-design">
+              <a href="assets/ajax/seg.html" class="cbp-caption cbp-singlePageInline" data-title="Strategic Efficiency Group<br>Wordpress website" rel="nofollow">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="assets/img/folio/seg-thumb.jpg" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignLeft">
+                    <div class="cbp-l-caption-body">
+                      <div class="cbp-l-caption-title">Strategic Efficiency Group</div>
+                      <div class="cbp-l-caption-desc">Wordpress website</div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          
           </div>
-          <div class="input-group__errors-wrapper stepper-form__errors-wrapper">
-            <span class="input-group__error"></span>
-          </div>
-          <div class="stepper-form__info-wrapper">
-            <span class="stepper-form__info"><span class="stepper-form__info-split">By submitting this form, you agree</span>&nbsp;<span class="stepper-form__info-split">to Fresh Consulting’s <a href="/privacy-policy/" class="stepper-form__privacy-policy">Privacy Policy</a> &nbsp;</span></span>
-            <span class="stepper-form__stepper-count d-md-none">1/3</span>
-          </div>
-        </div>
-      </div>
+          
+          <!--<div id="js-loadMore-lightbox-gallery" class="cbp-l-loadMore-button">-->
+            <!--<a href="assets/ajax/loadMore.html" class="cbp-l-loadMore-link" rel="nofollow">-->
+              <!--<span class="cbp-l-loadMore-defaultText">LOAD MORE (<span class="cbp-l-loadMore-loadItems">4</span>)</span>-->
+              <!--<span class="cbp-l-loadMore-loadingText">LOADING...</span>-->
+              <!--<span class="cbp-l-loadMore-noMoreLoading">NO MORE WORKS</span>-->
+            <!--</a>-->
+          <!--</div>-->          </section>
+
+        </article>
+
+      </main>
+
+      <footer class="o-layout__footer">
+        <section id="contact" class="row" data-magellan-target="contact">
+          <div class="inner  column medium-8 medium-centered">
+          If you would like to discuss a project or opportunity, please feel free to email me at <a href='ma&#105;lt&#111;&#58;i&#110;%66&#111;&#37;2E%61sm%69t&#104;digi&#116;al&#37;&#52;0g%6Dail&#46;com'>info&#46;a&#115;m&#105;&#116;hd&#105;gital&#64;gm&#97;i&#108;&#46;&#99;om</a>.          </div>
+        </section>
+      </footer>
+
     </div>
   </div>
-  <div class="stepper-form__gravity-form-wrapper d-none">
-    <script type="rocketlazyloadscript" data-rocket-type="text/javascript"></script>
-                <div class='gf_browser_chrome gform_wrapper gform_legacy_markup_wrapper' id='gform_wrapper_1' ><form method='post' enctype='multipart/form-data'  id='gform_1'  action='/services/design/ux-ui-design/' >
-                        <div class='gform_body gform-body'><ul id='gform_fields_1' class='gform_fields top_label form_sublabel_below description_below'><li id="field_1_1" class="gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible" ><div class='ginput_container ginput_container_text'><input name='input_1' id='input_1_1' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></div></li><li id="field_1_10" class="gfield gfield--width-full gform_hidden field_sublabel_below field_description_below gfield_visibility_visible" ><div class='ginput_container ginput_container_text'><input name='input_10' id='input_1_10' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></div></li><li id="field_1_2" class="gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible" ><div class='ginput_container ginput_container_text'><input name='input_2' id='input_1_2' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></div></li><li id="field_1_3" class="gfield gform_hidden field_sublabel_below field_description_below gfield_visibility_visible" ><div class='ginput_container ginput_container_text'><input name='input_3' id='input_1_3' type='hidden' class='gform_hidden'  aria-invalid="false" value='' /></div></li><li id="field_1_8" class="gfield field_admin_only field_sublabel_below field_description_below gfield_visibility_administrative" ><input name='input_8' id='input_1_8' class='gform_hidden' type='hidden' value=''/></li><li id="field_1_9" class="gfield ruid-field field_sublabel_below field_description_below gfield_visibility_visible" ><label class='gfield_label' for='input_1_9' >RUID</label><div class='ginput_container ginput_container_text'><input name='input_9' id='input_1_9' type='text' value='' class='medium'      aria-invalid="false"   /> </div></li></ul></div>
-        <div class='gform_footer top_label'> <button type='submit' id='gform_submit_button_1' class='button-cta gform-submit-button button-cta-animation gform_button button' value='Submit'  onclick='if(window["gf_submitting_1"]){return false;}  window["gf_submitting_1"]=true;  ' onkeypress='if( event.keyCode == 13 ){ if(window["gf_submitting_1"]){return false;} window["gf_submitting_1"]=true;  jQuery("#gform_1").trigger("submit",[true]); }' >Submit</button> 
-            <input type='hidden' class='gform_hidden' name='is_submit_1' value='1' />
-            <input type='hidden' class='gform_hidden' name='gform_submit' value='1' />
-            
-            <input type='hidden' class='gform_hidden' name='gform_unique_id' value='' />
-            <input type='hidden' class='gform_hidden' name='state_1' value='WyJbXSIsImM4MGY3ZTA5Nzk1OWVjMmJhODVmZDE3Y2E5YmU3ZTM5Il0=' />
-            <input type='hidden' class='gform_hidden' name='gform_target_page_number_1' id='gform_target_page_number_1' value='0' />
-            <input type='hidden' class='gform_hidden' name='gform_source_page_number_1' id='gform_source_page_number_1' value='1' />
-            <input type='hidden' name='gform_field_values' value='' />
-            
-        </div>
-                        </form>
-                        </div>  </div>
-</div>
-      <div class="footer__navigation-container">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-4 d-lg-none">
-              <ul class="footer__navigation-links-list row">
-                <li class="footer__navigation-link-item col-6 col-md-12">
-      <a class="footer__navigation-main-link" href="https://www.freshconsulting.com/services/">Services</a>
-    </li><li class="footer__navigation-link-item col-6 col-md-12">
-      <a class="footer__navigation-main-link" href="https://www.freshconsulting.com/insights/">Insights</a>
-    </li><li class="footer__navigation-link-item col-6 col-md-12">
-      <a class="footer__navigation-main-link" href="https://www.freshconsulting.com/work/">Work</a>
-    </li><li class="footer__navigation-link-item col-6 col-md-12">
-      <a class="footer__navigation-main-link" href="https://www.freshconsulting.com/about/">About</a>
-    </li><li class="footer__navigation-link-item col-6 col-md-12">
-      <a class="footer__navigation-main-link" href="https://www.freshconsulting.com/team/">Team</a>
-    </li><li class="footer__navigation-link-item col-6 col-md-12">
-      <a class="footer__navigation-main-link" href="https://www.freshconsulting.com/careers/">Careers</a>
-    </li>              </ul>
-            </div>
-            <div class="col-12 col-md-8 col-lg-12 d-none d-md-block">
-              <div class="services-list">
-  <div class="row align-items-lg-start">
-          <div class="col-6 col-lg-3">
-        <ul class="services-list__navigation-links-list services-list__navigation-links-list--first-row">
-          <li class="services-list__navigation-column-link-item">
-            <a href="https://www.freshconsulting.com/services/strategy/" class="services-list__navigation-column-link-first" title="Strategy">Strategy</a>
-          </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/strategy/innovation-sprints/" class="services-list__navigation-column-link" title="Innovation Sprints">Innovation Sprints</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/strategy/innovation-as-a-service/" class="services-list__navigation-column-link" title="Innovation as a Service">Innovation as a Service</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/strategy/product-strategy/" class="services-list__navigation-column-link" title="Product Strategy">Product Strategy</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/strategy/systems-design/" class="services-list__navigation-column-link" title="Systems Design">Systems Design</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/strategy/customer-experience-consulting/" class="services-list__navigation-column-link" title="Customer Experience">Customer Experience</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/strategy/digital-transformation/" class="services-list__navigation-column-link" title="Digital Transformation">Digital Transformation</a>
-            </li>
-                  </ul>
-      </div>
-          <div class="col-6 col-lg-3">
-        <ul class="services-list__navigation-links-list services-list__navigation-links-list--first-row">
-          <li class="services-list__navigation-column-link-item">
-            <a href="https://www.freshconsulting.com/services/design/" class="services-list__navigation-column-link-first" title="Design">Design</a>
-          </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/design/user-research-testing/" class="services-list__navigation-column-link" title="User Research &amp; Testing">User Research &amp; Testing</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/design/ux-ui-design/" class="services-list__navigation-column-link" title="UX/UI Design">UX/UI Design</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/design/industrial-design/" class="services-list__navigation-column-link" title="Industrial Design">Industrial Design</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/design/brand-visual-design/" class="services-list__navigation-column-link" title="Brand &amp; Visual Design">Brand &amp; Visual Design</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/design/motion-design/" class="services-list__navigation-column-link" title="Motion Design">Motion Design</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/design/professional-video-production-services/" class="services-list__navigation-column-link" title="Video Production">Video Production</a>
-            </li>
-                  </ul>
-      </div>
-          <div class="col-6 col-lg-3">
-        <ul class="services-list__navigation-links-list services-list__navigation-links-list--first-row">
-          <li class="services-list__navigation-column-link-item">
-            <a href="https://www.freshconsulting.com/services/software/" class="services-list__navigation-column-link-first" title="Software">Software</a>
-          </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/software/website-development/" class="services-list__navigation-column-link" title="Website Development">Website Development</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/software/custom-web-app-development/" class="services-list__navigation-column-link" title="Web App Development">Web App Development</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/software/mobile-app-development/" class="services-list__navigation-column-link" title="Mobile App Development">Mobile App Development</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/software/ai-machine-learning/" class="services-list__navigation-column-link" title="AI/Machine Learning">AI/Machine Learning</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/software/technology-architecture/" class="services-list__navigation-column-link" title="Technology Architecture">Technology Architecture</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/software/xr-development/" class="services-list__navigation-column-link" title="XR Development">XR Development</a>
-            </li>
-                  </ul>
-      </div>
-          <div class="col-6 col-lg-3">
-        <ul class="services-list__navigation-links-list services-list__navigation-links-list--first-row">
-          <li class="services-list__navigation-column-link-item">
-            <a href="https://www.freshconsulting.com/services/hardware/" class="services-list__navigation-column-link-first" title="Hardware">Hardware</a>
-          </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/hardware/manufacturing-automation-solutions/" class="services-list__navigation-column-link" title="Manufacturing Automation">Manufacturing Automation</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/hardware/autonomous-mobile-robots/" class="services-list__navigation-column-link" title="Autonomous Mobile Robots">Autonomous Mobile Robots</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/hardware/product-development/" class="services-list__navigation-column-link" title="Product Development">Product Development</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/hardware/test-automation/" class="services-list__navigation-column-link" title="Test Automation">Test Automation</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/hardware/robotic-system-integration/" class="services-list__navigation-column-link" title="Robotic Systems Integration">Robotic Systems Integration</a>
-            </li>
-                      <li class="services-list__navigation-column-link-item">
-              <a href="https://www.freshconsulting.com/services/hardware/robotic-software-development/" class="services-list__navigation-column-link" title="Robotic Software Development">Robotic Software Development</a>
-            </li>
-                  </ul>
-      </div>
-      </div>
-</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer__social-links-container">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-lg-9">
-              <div class="footer__social-links-wrapper">
-                <div class="footer__social-links-wrapper"><ul id="menu-footer-menu-1" class="footer__main-link-items d-none d-lg-flex"><li id="menu-item-27" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-27"><a href="https://www.freshconsulting.com/services/">Services</a></li>
-<li id="menu-item-24" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24"><a href="https://www.freshconsulting.com/insights/">Insights</a></li>
-<li id="menu-item-28" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-28"><a href="https://www.freshconsulting.com/work/">Work</a></li>
-<li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22"><a href="https://www.freshconsulting.com/about/">About</a></li>
-<li id="menu-item-29938" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-29938"><a href="https://www.freshconsulting.com/team/">Team</a></li>
-<li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a href="https://www.freshconsulting.com/careers/">Careers</a></li>
-</ul></div>              </div>
-            </div>
-            <div class="col-12 col-lg-3">
-                              <ul class="footer__social-links-items">
-                                      <li class="footer__social-link-item">
-                      <a class="footer__social-link" target="_blank" aria-label="LinkedIn" rel="noopener" href="https://www.linkedin.com/company/fresh-consulting/"><svg class="icon icon-linkedin"><use xlink:href="https://www.freshconsulting.com/wp-content/themes/freshv6/resources/assets/icons/symbol-defs.svg#icon-linkedin"></use></svg></a>
-                    </li>
-                                      <li class="footer__social-link-item">
-                      <a class="footer__social-link" target="_blank" aria-label="Facebook" rel="noopener" href="https://www.facebook.com/freshconsulting"><svg class="icon icon-facebook"><use xlink:href="https://www.freshconsulting.com/wp-content/themes/freshv6/resources/assets/icons/symbol-defs.svg#icon-facebook"></use></svg></a>
-                    </li>
-                                      <li class="footer__social-link-item">
-                      <a class="footer__social-link" target="_blank" aria-label="Twitter" rel="noopener" href="https://twitter.com/freshconsulting"><svg class="icon icon-twitter"><use xlink:href="https://www.freshconsulting.com/wp-content/themes/freshv6/resources/assets/icons/symbol-defs.svg#icon-twitter"></use></svg></a>
-                    </li>
-                                      <li class="footer__social-link-item">
-                      <a class="footer__social-link" target="_blank" aria-label="YouTube" rel="noopener" href="https://www.youtube.com/user/freshconsulting"><svg class="icon icon-youtube"><use xlink:href="https://www.freshconsulting.com/wp-content/themes/freshv6/resources/assets/icons/symbol-defs.svg#icon-youtube"></use></svg></a>
-                    </li>
-                                      <li class="footer__social-link-item">
-                      <a class="footer__social-link" target="_blank" aria-label="Instagram" rel="noopener" href="https://www.instagram.com/freshconsulting/"><svg class="icon icon-instagram"><use xlink:href="https://www.freshconsulting.com/wp-content/themes/freshv6/resources/assets/icons/symbol-defs.svg#icon-instagram"></use></svg></a>
-                    </li>
-                                  </ul>
-                          </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer__locations-container">
-        <div class="container">
-          <div class="row align-items-center">
-                          <div class="col-12 col-md-9">
-                <div class="footer__locations-wrapper">
-                  <ul class="footer__locations">
-                                          <li class="footer__location">
-                        <div class="footer__location-link-wrapper">
-                          <div class="footer__location-link footer__navigation-main-link footer__navigation-main-link--dark">
-                                                          Seattle
-                                                      </div>
-                        </div>
-                        <div class="footer__location-phone-number-wrapper">
-                                                      <a
-                              class="footer__location-phone-number"
-                              href="tel:+1-425-201-3713"
-                            >
-                              (425) 201-3713
-                            </a>
-                                                  </div>
-                      </li>
-                                          <li class="footer__location">
-                        <div class="footer__location-link-wrapper">
-                          <div class="footer__location-link footer__navigation-main-link footer__navigation-main-link--dark">
-                                                          Portland
-                                                      </div>
-                        </div>
-                        <div class="footer__location-phone-number-wrapper">
-                                                      <a
-                              class="footer__location-phone-number"
-                              href="tel:+1-503-610-8052"
-                            >
-                              (503) 610-8052
-                            </a>
-                                                  </div>
-                      </li>
-                                          <li class="footer__location">
-                        <div class="footer__location-link-wrapper">
-                          <div class="footer__location-link footer__navigation-main-link footer__navigation-main-link--dark">
-                                                          <a class="footer__location-city-link" href="https://www.freshconsulting.com/austin/" target="">Austin</a>
-                                                      </div>
-                        </div>
-                        <div class="footer__location-phone-number-wrapper">
-                                                      <a
-                              class="footer__location-phone-number"
-                              href="tel:+1-512-399-7029"
-                            >
-                              (512) 399-7029
-                            </a>
-                                                  </div>
-                      </li>
-                                          <li class="footer__location">
-                        <div class="footer__location-link-wrapper">
-                          <div class="footer__location-link footer__navigation-main-link footer__navigation-main-link--dark">
-                                                          Bangkok
-                                                      </div>
-                        </div>
-                        <div class="footer__location-phone-number-wrapper">
-                                                      <a
-                              class="footer__location-phone-number"
-                              href="tel:+66-2-287-1287"
-                            >
-                              +66 2 287 1287
-                            </a>
-                                                  </div>
-                      </li>
-                                      </ul>
-                </div>
-              </div>
-                        <div class="col-12 col-md-3">
-              <div class="footer__legal-copy-wrapper">
-                <div class="footer__year">&copy; 2022 Fresh Consulting</div>
-                <div class="footer__privacy-wrapper">
-                  <a class="footer__privacy-link" href="/privacy-policy/">Privacy Policy</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-	
-<!-- Start of Async HubSpot Analytics Code for WordPress v1.1.2 -->
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
-var _hsq = _hsq || [];
-_hsq.push(["setContentType", "standard-page"]);
-(function(d,s,i,r) {
-  if (d.getElementById(i)){return;}
-  var n = d.createElement(s),e = document.getElementsByTagName(s)[0];
-  n.id=i;n.src = '//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/1370049.js';
-  e.parentNode.insertBefore(n, e);
-})(document, "script", "hs-analytics", 300000);
-</script>
-<!-- End of Async HubSpot Analytics Code -->
-<!-- Start of Async HubSpot Analytics Code -->
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
-(function(d,s,i,r) {
-if (d.getElementById(i)){return;}
-var n=d.createElement(s),e=d.getElementsByTagName(s)[0];
-n.id=i;n.src='//js.hs-analytics.net/analytics/'+(Math.ceil(new Date()/r)*r)+'/1370049.js';
-e.parentNode.insertBefore(n, e);
-})(document,"script","hs-analytics",300000);
-</script>
-<!-- End of Async HubSpot Analytics Code -->
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript">/* <![CDATA[ */!function(e,n){var r={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":false,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"enlighter","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""},"resources":["https:\/\/www.freshconsulting.com\/wp-content\/plugins\/enlighter\/cache\/enlighterjs.min.css?F6JobzzBmexd298","https:\/\/www.freshconsulting.com\/wp-content\/plugins\/enlighter\/resources\/enlighterjs\/enlighterjs.min.js"]},o=document.getElementsByTagName("head")[0],t=n&&(n.error||n.log)||function(){};e.EnlighterJSINIT=function(){!function(e,n){var r=0,l=null;function c(o){l=o,++r==e.length&&(!0,n(l))}e.forEach(function(e){switch(e.match(/\.([a-z]+)(?:[#?].*)?$/)[1]){case"js":var n=document.createElement("script");n.onload=function(){c(null)},n.onerror=c,n.src=e,n.async=!0,o.appendChild(n);break;case"css":var r=document.createElement("link");r.onload=function(){c(null)},r.onerror=c,r.rel="stylesheet",r.type="text/css",r.href=e,r.media="all",o.appendChild(r);break;default:t("Error: invalid file extension",e)}})}(r.resources,function(e){e?t("Error: failed to dynamically load EnlighterJS resources!",e):"undefined"!=typeof EnlighterJS?EnlighterJS.init(r.selectors.block,r.selectors.inline,r.options):t("Error: EnlighterJS resources not loaded yet!")})},(document.querySelector(r.selectors.block)||document.querySelector(r.selectors.inline))&&e.EnlighterJSINIT()}(window,console); /* ]]> */</script><script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-browser-checker-js-after'>
-"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
-</script>
-<script type='text/javascript' id='rocket-preload-links-js-extra'>
-/* <![CDATA[ */
-var RocketPreloadLinksConfig = {"excludeUris":"\/terminology\/|\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/www.freshconsulting.com","onHoverDelay":"100","rateThrottle":"3"};
-/* ]]> */
-</script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-preload-links-js-after'>
-(function() {
-"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
-}());
-</script>
-<script type='text/javascript' id='sage/main.js-js-extra'>
-/* <![CDATA[ */
-var Fresh = {"ajaxUrl":"https:\/\/www.freshconsulting.com\/wp-admin\/admin-ajax.php","icons":"https:\/\/www.freshconsulting.com\/wp-content\/themes\/freshv6\/resources\/assets\/icons\/symbol-defs.js","iconsSvg":"https:\/\/www.freshconsulting.com\/wp-content\/themes\/freshv6\/resources\/assets\/icons\/symbol-defs.svg"};
-/* ]]> */
-</script>
-<script type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/dist/scripts/main_f2a6ed45.js' id='sage/main.js-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/dist/scripts/service_subservice_f2a6ed45.js' id='sage/service_subservice-js'></script>
-<script type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/dist/scripts/lazy_f2a6ed45.js' id='sage/lazy.js-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/dist/scripts/service_subservice_f2a6ed45.js' id='sage/templateServiceSubservice.js-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL' id='pollyfill.js-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/themes/freshv6/resources/assets/icons/svgxuse.js' id='svgxuse-js'></script>
-<script type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-includes/js/wp-embed.min.js?ver=5.8.3' id='wp-embed-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.7' id='regenerator-runtime-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-includes/js/dist/dom-ready.min.js?ver=71883072590656bf22c74c7b887df3dd' id='wp-dom-ready-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-includes/js/dist/hooks.min.js?ver=a7edae857aab69d69fa10d5aef23a5de' id='wp-hooks-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-includes/js/dist/i18n.min.js?ver=5f1269854226b4dd90450db411a12b79' id='wp-i18n-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='wp-i18n-js-after'>
-wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
-</script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='wp-a11y-js-translations'>
-( function( domain, translations ) {
-	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
-	localeData[""].domain = domain;
-	wp.i18n.setLocaleData( localeData, domain );
-} )( "default", { "locale_data": { "messages": { "": {} } } } );
-</script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-includes/js/dist/a11y.min.js?ver=0ac8327cc1c40dcfdf29716affd7ac63' id='wp-a11y-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type='text/javascript' defer='defer' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/js/jquery.json.min.js?ver=2.5.15' id='gform_json-js'></script>
-<script type='text/javascript' id='gform_gravityforms-js-extra'>
-/* <![CDATA[ */
-var gform_i18n = {"datepicker":{"days":{"monday":"Mon","tuesday":"Tue","wednesday":"Wed","thursday":"Thu","friday":"Fri","saturday":"Sat","sunday":"Sun"},"months":{"january":"January","february":"February","march":"March","april":"April","may":"May","june":"June","july":"July","august":"August","september":"September","october":"October","november":"November","december":"December"},"firstDay":1,"iconText":"Select date"}};
-var gf_global = {"gf_currency_config":{"name":"U.S. Dollar","symbol_left":"$","symbol_right":"","symbol_padding":"","thousand_separator":",","decimal_separator":".","decimals":2,"code":"USD"},"base_url":"https:\/\/www.freshconsulting.com\/wp-content\/plugins\/gravityforms","number_formats":[],"spinnerUrl":"https:\/\/www.freshconsulting.com\/wp-content\/plugins\/gravityforms\/images\/spinner.svg","strings":{"newRowAdded":"New row added.","rowRemoved":"Row removed","formSaved":"The form has been saved.  The content contains the link to return and complete the form."}};
-var gf_legacy_multi = {"1":"1"};
-/* ]]> */
-</script>
-<script type='text/javascript' defer='defer' src='https://djzhd32vo3nj5brf1bbctu11-wpengine.netdna-ssl.com/wp-content/plugins/gravityforms/js/gravityforms.min.js?ver=2.5.15' id='gform_gravityforms-js'></script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
-gform.initializeOnLoaded( function() { jQuery(document).on('gform_post_render', function(event, formId, currentPage){if(formId == 1) {} } );jQuery(document).bind('gform_post_conditional_logic', function(event, formId, fields, isInit){} ) } );
-</script>
-<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
-gform.initializeOnLoaded( function() { jQuery(document).trigger('gform_post_render', [1, 1]) } );
-</script>
-	<div id="fancy-cursor-element" class=""></div>
-</body>
-</html>
 
-<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
+  <script src="js/app.jquery.js"></script>
+
+  </body>
+</html>
