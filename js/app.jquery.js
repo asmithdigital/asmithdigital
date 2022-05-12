@@ -44,7 +44,7 @@
     gapHorizontal: 30,
     gapVertical: 20,
     gridAdjustment: 'responsive',
-    caption: 'zoom',
+    caption: 'overlayBottomPush',
     displayType: 'sequentially',
     displayTypeSpeed: 100,
 
@@ -135,7 +135,7 @@
     gapHorizontal: 50,
     gapVertical: 60,
     gridAdjustment: 'responsive',
-    caption: 'zoom',
+    caption: 'overlayBottomPush',
     displayType: 'sequentially',
     displayTypeSpeed: 100,
 

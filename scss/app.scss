@@ -136,6 +136,7 @@ nav {
 
 // Layout
 // ===============
+
 header {
   position: fixed;
   top: 0;
@@ -150,7 +151,7 @@ header {
     width: 100%;
     padding-top: 0;
     background: rgba(255,255,255,0.9);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid #fafafa;
   }
 }
 
@@ -159,6 +160,19 @@ header {
 }
 
 section {
+  padding: 100px 0;
+
+  &.odd {
+    background: #fff;
+  }
+
+  &.intro {
+    padding: 200px 0 300px;
+  }
+
+  &.footer {
+    padding: 300px 0;
+  }
 
   .inner {
     padding: 50px 3vw;

@@ -473,7 +473,7 @@ window.document.addEventListener("scroll",onScroll);let navbarToggler=document.q
     gapHorizontal: 30,
     gapVertical: 20,
     gridAdjustment: 'responsive',
-    caption: 'zoom',
+    caption: 'overlayBottomPush',
     displayType: 'sequentially',
     displayTypeSpeed: 100,
 
@@ -564,7 +564,7 @@ window.document.addEventListener("scroll",onScroll);let navbarToggler=document.q
     gapHorizontal: 50,
     gapVertical: 60,
     gridAdjustment: 'responsive',
-    caption: 'zoom',
+    caption: 'overlayBottomPush',
     displayType: 'sequentially',
     displayTypeSpeed: 100,
 
