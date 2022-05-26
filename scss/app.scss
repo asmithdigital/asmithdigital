@@ -168,6 +168,14 @@ section {
 
   &.intro {
     padding: 200px 0 300px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: rgba(0,0,0, 0.5);
+    min-height: 100vh;
+    color: #fff;
   }
 
   &.footer {
@@ -185,12 +193,12 @@ section {
   }
 
   &.hero {
-    //background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
-    // background: url('https://picsum.photos/1405/1053/?random') no-repeat center;
+    // background: url('https://upload.wikimedia.org/wikipedia/commons/c/c5/Moraine_Lake_17092005.jpg') no-repeat center;
+    background: url('https://picsum.photos/1405/1053/?random') no-repeat center;
     background-size: cover;
     // background-color: rgba(0,0,0,0.5);
     background-blend-mode: multiply;
-    // min-height: 100vh;
+    min-height: 100vh;
     width: 100%;
   }
 }
