@@ -37,15 +37,15 @@ body {
     display: block;
     max-width: 180px;
     max-height: 84px;
-    // fill: white;
+    fill: white;
     transition: 0.7s all;
     overflow: visible !important;
 
     .menu-fixed & {
-      max-width: 145px;
+      max-width: 135px;
       max-height: 64px;
       fill: black;
-      margin-top: 6px;
+      margin-top: 5px;
     }
   }
 }
@@ -75,12 +75,12 @@ nav {
     &,
     &:visited,
     .hamburger {
-      // color: #fff;
+      color: #fff;
       display: block;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 28px 25px;
-      transition: 0.3s all;
+      padding: 30px 25px 10px;
+      transition: 0.3s padding;
 
       @include breakpoint(medium) {
         display: inline-block;
@@ -96,8 +96,9 @@ nav {
 
       &,
       .menu-fixed & {
-        background: #75a6d9;
-        color: #FFF
+        // background: #75a6d9;
+        border-bottom: 3px solid #75a6d9;
+        color: #75a6d9;
       }
     }
 
@@ -141,7 +142,8 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  padding-top: 30px;
+  // padding-top: 30px;
+  // background: rgba(255,255,255,0.4);
   transition: 0.7s all;
   z-index: 100;
 
@@ -150,8 +152,12 @@ header {
     right: 0;
     width: 100%;
     padding-top: 0;
-    background: rgba(255,255,255,0.9);
+    background: #fff;
     border-bottom: 1px solid #fafafa;
+
+    .menu_item {
+      padding-top: 22px;
+    }
   }
 }
 
@@ -160,14 +166,19 @@ header {
 }
 
 section {
-  padding: 100px 0;
+  padding: 150px 0;
+
+  // &.services{
+  //   padding-top: 100px;
+  //   margin-top: 50px;
+  // }
 
   &.odd {
     background: #fff;
   }
 
   &.intro {
-    padding: 200px 0 300px;
+    padding-top: 220px;
     position: absolute;
     top: 0;
     left: 0;
@@ -179,7 +190,7 @@ section {
   }
 
   &.footer {
-    padding: 300px 0;
+    padding-bottom: 500px;
   }
 
   .inner {
