@@ -470,11 +470,11 @@ window.document.addEventListener("scroll",onScroll);let navbarToggler=document.q
     }],
     defaultFilter: '*',
     animationType: 'quicksand',
-    gapHorizontal: 30,
+    gapHorizontal: 20,
     gapVertical: 20,
     gridAdjustment: 'responsive',
-    caption: 'overlayBottomPush',
-    displayType: 'sequentially',
+    caption: 'fadeIn',
+    displayType: 'fadeIn',
     displayTypeSpeed: 100,
 
     // lightbox
@@ -564,8 +564,8 @@ window.document.addEventListener("scroll",onScroll);let navbarToggler=document.q
     gapHorizontal: 30,
     gapVertical: 20,
     gridAdjustment: 'responsive',
-    caption: 'overlayBottomPush',
-    displayType: 'sequentially',
+    caption: 'fadeIn',
+    displayType: 'fadeIn',
     displayTypeSpeed: 100,
 
     // lightbox

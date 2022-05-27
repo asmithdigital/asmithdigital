@@ -23,11 +23,11 @@
     }],
     defaultFilter: '*',
     animationType: 'quicksand',
-    gapHorizontal: 30,
+    gapHorizontal: 20,
     gapVertical: 20,
     gridAdjustment: 'responsive',
-    caption: 'overlayBottomPush',
-    displayType: 'sequentially',
+    caption: 'fadeIn',
+    displayType: 'fadeIn',
     displayTypeSpeed: 100,
 
     // lightbox
@@ -117,8 +117,8 @@
     gapHorizontal: 30,
     gapVertical: 20,
     gridAdjustment: 'responsive',
-    caption: 'overlayBottomPush',
-    displayType: 'sequentially',
+    caption: 'fadeIn',
+    displayType: 'fadeIn',
     displayTypeSpeed: 100,
 
     // lightbox
