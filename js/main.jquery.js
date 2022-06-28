@@ -541,20 +541,20 @@ window.document.addEventListener("scroll",onScroll);let navbarToggler=document.q
 
   // init cubeportfolio
   $('#js-grid-lightbox-gallery2').cubeportfolio({
-    filters: '#js-filters-juicy-projects',
+    filters: '#js-filters-juicy-projects2',
     layoutMode: 'grid',
     mediaQueries: [{
       width: 1500,
-      cols: 2,
+      cols: 4,
     }, {
       width: 1100,
-      cols: 2,
+      cols: 3,
     }, {
       width: 800,
-      cols: 2,
+      cols: 3,
     }, {
       width: 480,
-      cols: 1,
+      cols: 2,
       options: {
         caption: '',
       }
