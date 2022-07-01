@@ -146,6 +146,11 @@ nav {
 // Layout
 // ===============
 
+// .o-layout__footer {
+//   background: url('/assets/img/footer-bg.png') center bottom no-repeat;
+//   background-size: 100% auto;
+// }
+
 header {
   position: fixed;
   top: 0;
@@ -228,6 +233,17 @@ section {
   }
 }
 
+// Soails
+.social-icons {
+  font-size: 30px;
+
+  a {
+    display: inline-block;
+    color: #0a0a0a;
+    margin-right: 10px;
+  }
+}
+
 // Cube Portfolio
 // ===============
 .cbp-caption-zoom .cbp-caption-activeWrap {
@@ -236,6 +252,23 @@ section {
 
 #js-filters-juicy-projects2 {
   display: none;
+}
+
+.cbp-l-inline-left {
+  padding-right: 30px;
+}
+
+.cbp-l-inline-right {
+  padding: 30px;
+}
+
+.cbp-popup-singlePageInline .cbp-popup-navigation {
+  top: 20px;
+  right: 20px;
+}
+
+.cbp-popup-content {
+  margin-bottom: 120px;
 }
 
 // .cbp a.cbp-caption {
