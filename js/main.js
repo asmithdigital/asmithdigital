@@ -3,7 +3,7 @@
 
   // init cubeportfolio
   $('#js-grid-lightbox-gallery').cubeportfolio({
-    filters: '#js-filters-juicy-projects',
+    filters: '#js-filters-juicy-projects,#js-filters-juicy-projects2',
     layoutMode: 'grid',
     mediaQueries: [{
       width: 1500,

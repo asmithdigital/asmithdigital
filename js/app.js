@@ -19,4 +19,15 @@ $(document).ready(function() {
       $("#sp-header").removeClass("menu-fixed");
     }
   });
+
+  // show the sub filters
+  // $(".otherFIlters").click(function(){ 
+  //   $(".subFilter").removeClass("cbp-filter-item-active");
+  //   $( "#js-filters-juicy-projects2" ).hide();
+  // });
+
+  // $(".ecommerce").click(function(){ 
+  //   $( "#js-filters-juicy-projects2" ).show();
+  // });
+
 });

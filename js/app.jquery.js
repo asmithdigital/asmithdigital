@@ -21,7 +21,7 @@
 
   // init cubeportfolio
   $('#js-grid-lightbox-gallery').cubeportfolio({
-    filters: '#js-filters-juicy-projects',
+    filters: '#js-filters-juicy-projects,#js-filters-juicy-projects2',
     layoutMode: 'grid',
     mediaQueries: [{
       width: 1500,
@@ -223,4 +223,15 @@ $(document).ready(function() {
       $("#sp-header").removeClass("menu-fixed");
     }
   });
+
+  // show the sub filters
+  // $(".otherFIlters").click(function(){ 
+  //   $(".subFilter").removeClass("cbp-filter-item-active");
+  //   $( "#js-filters-juicy-projects2" ).hide();
+  // });
+
+  // $(".ecommerce").click(function(){ 
+  //   $( "#js-filters-juicy-projects2" ).show();
+  // });
+
 });
