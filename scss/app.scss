@@ -254,8 +254,15 @@ section {
   display: none;
 }
 
+
 .cbp-l-inline-left {
-  padding-right: 30px;
+  @media screen and (min-width:721px) {
+    padding-right: 30px;
+  }
+
+  @media screen and (max-width:721px) {
+    margin-top: 0px;
+  }
 }
 
 .cbp-l-inline-right {
@@ -269,6 +276,35 @@ section {
 
 .cbp-popup-content {
   margin-bottom: 120px;
+}
+
+.cbp-l-inline {
+  @media screen and (max-width:721px) {
+    padding: 0;
+  }
+}
+
+.cbp-popup-singlePageInline .cbp-popup-close {
+  @media screen and (max-width:721px) {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+.cbp-popup-singlePageInline .cbp-popup-navigation {
+  @media screen and (max-width:721px) {
+    top: 0px;
+    right: 0px;
+  }
+}
+
+.cbp-l-project-details-visit {
+  @media screen and (max-width:721px) {
+    float: none;
+    text-align: center;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
 }
 
 // .cbp a.cbp-caption {

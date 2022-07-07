@@ -463,7 +463,7 @@ window.document.addEventListener("scroll",onScroll);let navbarToggler=document.q
       cols: 3,
     }, {
       width: 480,
-      cols: 2,
+      cols: 1,
       options: {
         caption: '',
       }
