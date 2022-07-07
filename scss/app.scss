@@ -26,10 +26,15 @@ body {
 }
 // intro skills list
 .skills-list {
-  margin-top: 20px;
+  @media screen and (min-width:721px) {
+    margin-top: 20px;
+  }
+
   li {
     // color: #ddd;
-    margin-top: 10px;
+    @media screen and (min-width:721px) {
+      margin-top: 10px;
+    }
   }
 }
 
@@ -179,7 +184,11 @@ header {
 }
 
 section {
-  padding: 150px 0;
+  padding: 70px 0;
+
+  @media screen and (min-width:721px) {
+    padding: 150px 0;
+  }
 
   // &.services{
   //   padding-top: 100px;
@@ -191,7 +200,7 @@ section {
   }
 
   &.intro {
-    padding-top: 220px;
+    padding-top: 120px;
     position: absolute;
     top: 0;
     left: 0;
@@ -200,6 +209,11 @@ section {
     background: rgba(0,0,0, 0.5);
     min-height: 100vh;
     color: #fff;
+
+    @media screen and (min-width:721px) {
+      padding-top: 220px;
+    }
+    
 
     // .intro-content {
     //   position: absolute;
@@ -304,6 +318,14 @@ section {
     text-align: center;
   }
 }
+
+.cbp-l-filters-button {
+  @media only screen and (max-width: 480px) {
+    text-align: left;
+  }
+}
+
+
 
 // .cbp a.cbp-caption {
 //   display: block;
