@@ -210,6 +210,8 @@ section {
     min-height: 100vh;
     color: #fff;
 
+    // mix-blend-mode: difference;
+
     @media screen and (min-width:721px) {
       padding-top: 220px;
     }
