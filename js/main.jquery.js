@@ -540,8 +540,8 @@ window.document.addEventListener("scroll",onScroll);let navbarToggler=document.q
   });
 
   // init cubeportfolio
-  $('#js-grid-lightbox-gallery2').cubeportfolio({
-    filters: '#js-filters-juicy-projects2',
+  $('#js-grid-lightbox-gallery2, #js-grid-lightbox-gallery3').cubeportfolio({
+    filters: '',
     layoutMode: 'grid',
     mediaQueries: [{
       width: 1500,
