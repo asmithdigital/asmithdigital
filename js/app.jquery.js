@@ -28,7 +28,7 @@
       cols: 4,
     }, {
       width: 1100,
-      cols: 4,
+      cols: 3,
     }, {
       width: 800,
       cols: 3,
@@ -111,7 +111,7 @@
   });
 
   // init cubeportfolio
-  $('#js-grid-lightbox-gallery2, #js-grid-lightbox-gallery3').cubeportfolio({
+  $('#js-grid-lightbox-gallery2, #js-grid-lightbox-gallery3, #js-grid-lightbox-gallery4, #js-grid-lightbox-gallery5').cubeportfolio({
     filters: '',
     layoutMode: 'grid',
     mediaQueries: [{
@@ -119,7 +119,7 @@
       cols: 4,
     }, {
       width: 1100,
-      cols: 4,
+      cols: 3,
     }, {
       width: 800,
       cols: 3,
