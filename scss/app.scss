@@ -350,6 +350,13 @@ section {
   font-weight: bold;
 }
 
+.case-study-title2 {
+  text-transform: uppercase;
+  color: #4c4c4c;
+  font-size: 1em;
+  font-weight: bold;
+}
+
 .space-beneath-row {
   margin-bottom: 50px;
 }
@@ -359,8 +366,16 @@ section {
 }
 
 .case-study-image {
-  max-width: 230px;
   width: 100%;
+  
+  @include breakpoint(medium) {
+    width: 200px;
+  }
+
+  @include breakpoint(large) {
+    width: 300px;
+  }
+
 }
 
 
