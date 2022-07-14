@@ -457,7 +457,7 @@ window.document.addEventListener("scroll",onScroll);let navbarToggler=document.q
       cols: 4,
     }, {
       width: 1100,
-      cols: 3,
+      cols: 4,
     }, {
       width: 800,
       cols: 3,
@@ -548,7 +548,7 @@ window.document.addEventListener("scroll",onScroll);let navbarToggler=document.q
       cols: 4,
     }, {
       width: 1100,
-      cols: 3,
+      cols: 4,
     }, {
       width: 800,
       cols: 3,

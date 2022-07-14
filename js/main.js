@@ -10,7 +10,7 @@
       cols: 4,
     }, {
       width: 1100,
-      cols: 3,
+      cols: 4,
     }, {
       width: 800,
       cols: 3,
@@ -101,7 +101,7 @@
       cols: 4,
     }, {
       width: 1100,
-      cols: 3,
+      cols: 4,
     }, {
       width: 800,
       cols: 3,
