@@ -392,6 +392,14 @@ section {
 
 }
 
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center right;
+}
+
 
 // .cbp a.cbp-caption {
 //   display: block;
